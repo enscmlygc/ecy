@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esse İstanbul · Zarafetin Sade Hâli</title>
+  <title>Esse · Zarafetin Sade Hâli</title>
   <meta name="description" content="Esse — modern kadının zarafetini sade, zamansız ve özenle seçilmiş parçalarla buluşturan butik moda evi. Spring / Summer '26 koleksiyonu yayında.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="hero__img"><img src="assets/img/hero.jpg" alt="Esse Spring/Summer '26 koleksiyonu" fetchpriority="high"></div>
+      <div class="hero__img" data-parallax="0.12"><img src="assets/img/hero.jpg" alt="Esse Spring/Summer '26 koleksiyonu" fetchpriority="high"></div>
       <div class="wrap">
         <div class="hero__inner">
           <span class="eyebrow">Spring / Summer '26</span>
@@ -41,6 +41,14 @@
       </div>
     </section>
 
+    <!-- AKAN ŞERİT -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Zarafetin Sade Hâli</span><span>Spring / Summer '26</span><span>Zamansız Tasarım</span><span>Özenli Üretim</span>
+        <span>Zarafetin Sade Hâli</span><span>Spring / Summer '26</span><span>Zamansız Tasarım</span><span>Özenli Üretim</span>
+      </div>
+    </section>
+
     <!-- KATEGORİLER -->
     <section class="section wrap">
       <div class="s-head reveal">
@@ -48,10 +56,10 @@
         <h2>Kategoriler</h2>
         <p>Sezonun ruhunu yansıtan, birlikte ya da tek başına kusursuz parçalar.</p>
       </div>
-      <div class="cats">
-        <a href="shop.html?cat=elbise" class="cat reveal"><img src="assets/img/look-1.jpg" alt="Elbise"><div class="cat__label"><h3>Elbise</h3><span>Keşfet</span></div></a>
-        <a href="shop.html?cat=triko" class="cat reveal"><img src="assets/img/look-2.jpg" alt="Triko"><div class="cat__label"><h3>Triko</h3><span>Keşfet</span></div></a>
-        <a href="shop.html?cat=dis-giyim" class="cat reveal"><img src="assets/img/look-3.jpg" alt="Dış Giyim"><div class="cat__label"><h3>Dış Giyim</h3><span>Keşfet</span></div></a>
+      <div class="cats stagger">
+        <a href="shop.html?cat=elbise" class="cat reveal" data-rev="scale"><img src="assets/img/look-1.jpg" alt="Elbise"><div class="cat__label"><h3>Elbise</h3><span>Keşfet</span></div></a>
+        <a href="shop.html?cat=triko" class="cat reveal" data-rev="scale"><img src="assets/img/look-2.jpg" alt="Triko"><div class="cat__label"><h3>Triko</h3><span>Keşfet</span></div></a>
+        <a href="shop.html?cat=dis-giyim" class="cat reveal" data-rev="scale"><img src="assets/img/look-3.jpg" alt="Dış Giyim"><div class="cat__label"><h3>Dış Giyim</h3><span>Keşfet</span></div></a>
       </div>
     </section>
 
@@ -62,7 +70,7 @@
         <h2>Yeni Sezon</h2>
         <p>Spring / Summer '26 koleksiyonundan öne çıkan parçalar.</p>
       </div>
-      <div class="products" id="featured"></div>
+      <div class="products stagger" id="featured"></div>
       <div class="section__more reveal"><a href="shop.html" class="btn btn--ghost">Tüm Koleksiyon</a></div>
     </section>
 
@@ -80,9 +88,27 @@
       </div>
     </section>
 
+    <!-- SİNEMATİK SCROLL BÖLÜMÜ -->
+    <section class="story">
+      <div class="story__sticky">
+        <div class="story__media" data-video="assets/video/reel.mp4">
+          <img src="assets/img/look-3.jpg" alt="Esse koleksiyon" loading="lazy">
+        </div>
+        <div class="story__cap">
+          <span class="eyebrow">Esse '26</span>
+          <div class="story__lines">
+            <p class="story__line">Her parça, bir <em>duruş</em>.</p>
+            <p class="story__line">Sadelikte gizli <em>zarafet</em>.</p>
+            <p class="story__line">Dokunduğunda <em>hissedilir</em>.</p>
+          </div>
+        </div>
+        <span class="story__scroll">Kaydırın</span>
+      </div>
+    </section>
+
     <!-- LOOKBOOK BANNER -->
     <section class="banner">
-      <img src="assets/img/hero.jpg" alt="Esse Lookbook">
+      <img src="assets/img/look-4.jpg" alt="Esse Lookbook" loading="lazy">
       <div class="banner__inner">
         <span class="eyebrow">Lookbook '26</span>
         <h2>Bir mevsim, sonsuz kombin</h2>
@@ -98,7 +124,7 @@
         <h2>Sezon Sonu Seçkisi</h2>
         <p>Sevilen parçalar, özel fiyatlarla. Stoklarla sınırlı.</p>
       </div>
-      <div class="products products--3" id="onsale"></div>
+      <div class="products products--3 stagger" id="onsale"></div>
     </section>
 
     <!-- NEWSLETTER -->
@@ -118,16 +144,16 @@
     <!-- INSTAGRAM -->
     <section class="section--tight wrap" style="padding-bottom:clamp(56px,9vw,110px)">
       <div class="s-head reveal">
-        <span class="eyebrow">@esse.istanbul</span>
+        <span class="eyebrow">@esse.atelier</span>
         <h2>Esse'yi takip edin</h2>
       </div>
       <div class="insta-grid reveal">
-        <a href="#"><img src="assets/img/look-1.jpg" alt="Esse"></a>
-        <a href="#"><img src="assets/img/look-3.jpg" alt="Esse"></a>
-        <a href="#"><img src="assets/img/hero.jpg" alt="Esse"></a>
-        <a href="#"><img src="assets/img/look-2.jpg" alt="Esse"></a>
-        <a href="#"><img src="assets/img/look-1.jpg" alt="Esse"></a>
-        <a href="#"><img src="assets/img/look-3.jpg" alt="Esse"></a>
+        <a href="#"><img src="assets/img/look-1.jpg" alt="Esse" loading="lazy"></a>
+        <a href="#"><img src="assets/img/look-3.jpg" alt="Esse" loading="lazy"></a>
+        <a href="#"><img src="assets/img/look-4.jpg" alt="Esse" loading="lazy"></a>
+        <a href="#"><img src="assets/img/look-2.jpg" alt="Esse" loading="lazy"></a>
+        <a href="#"><img src="assets/img/look-5.jpg" alt="Esse" loading="lazy"></a>
+        <a href="#"><img src="assets/img/hero.jpg" alt="Esse" loading="lazy"></a>
       </div>
     </section>
   </main>
