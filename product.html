@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ürün · Esse İstanbul</title>
+  <title>Ürün · Esse</title>
   <meta name="description" content="Esse koleksiyonundan zarif bir parça.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
       var id = ctx.getParam("id");
       var p = ctx.byId(id) || ctx.P[0];
       document.getElementById("crumb").textContent = p.name;
-      document.title = p.name + " · Esse İstanbul";
+      document.title = p.name + " · Esse";
 
       var price = p.oldPrice
         ? '<span class="old">' + ctx.TL(p.oldPrice) + '</span><span class="new">' + ctx.TL(p.price) + '</span>'
