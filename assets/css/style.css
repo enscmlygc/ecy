@@ -170,6 +170,30 @@ ul { list-style: none; }
 .hero p { font-size: 16px; color: var(--espresso); max-width: 400px; margin-bottom: 30px; }
 .hero__cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
+/* Masaüstü: hero'yu ikiye böl — solda yazı, sağda görsel boydan (kırpılmasın) */
+@media (min-width: 861px) {
+  .hero {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1.04fr .96fr;
+    align-items: stretch;
+    gap: clamp(24px, 4vw, 70px);
+    padding-inline: var(--gut);
+  }
+  .hero > .wrap {
+    max-width: none; margin: 0; padding: clamp(40px, 6vw, 80px) 0;
+    display: flex; align-items: center;
+  }
+  .hero__img {
+    position: relative; inset: auto; order: 2;
+    height: min(84vh, 760px); align-self: center;
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .hero__img img { object-position: center 16%; transform: none !important; }
+  .hero::after { display: none; }
+  .hero__inner { max-width: 520px; margin-left: auto; }
+}
+
 /* =========================================================
    Hizmet/güven bandı
    ========================================================= */
