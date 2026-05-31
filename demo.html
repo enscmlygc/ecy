@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DXF → PDF · Canlı Demo · BIMHub</title>
+  <meta name="description" content="DXF dosyanızı tarayıcıda PDF'ye çevirin. Sıfır backend, gerçek vektör çıktısı.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#FAFAF7">
+
+  <style>
+    /* Demo-page only */
+    .demo-wrap { padding: clamp(56px, 8vw, 96px) 0 64px; min-height: 70vh; }
+    .demo-head { max-width: 760px; margin-bottom: 32px; }
+    .demo-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin-bottom: 14px; letter-spacing: -.025em; }
+    .demo-head h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; background: linear-gradient(135deg, var(--ochre), var(--violet)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .demo-head .lead { max-width: 60ch; }
+
+    .demo-grid { display: grid; grid-template-columns: 280px 1fr; gap: 14px; min-height: 560px; }
+    @media (max-width: 900px) { .demo-grid { grid-template-columns: 1fr; } }
+
+    .demo-side {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+      padding: 18px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .demo-side h4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); font-weight: 500; }
+    .demo-side .file-meta { font-size: 13px; color: var(--slate); line-height: 1.5; font-family: var(--mono); }
+    .demo-side .file-meta b { color: var(--ink); font-family: var(--sans); font-weight: 500; display: block; margin-bottom: 4px; word-break: break-all; }
+
+    .layers { display: flex; flex-direction: column; gap: 4px; max-height: 200px; overflow: auto; padding-right: 4px; }
+    .layer {
+      display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+      border-radius: 6px; cursor: pointer; transition: background .15s var(--ease);
+      font-size: 13px; user-select: none;
+    }
+    .layer:hover { background: var(--bg-2); }
+    .layer input { accent-color: var(--ink); margin: 0; }
+    .layer .dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .layer .name { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--graphite); }
+
+    .demo-stage {
+      position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+      overflow: hidden; display: flex; flex-direction: column; min-height: 480px;
+    }
+    .demo-stage.is-drag { border-color: var(--violet); background: rgba(99,102,241,.04); }
+
+    .drop {
+      position: absolute; inset: 38px 0 0 0; z-index: 5; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px; padding: 40px 20px; text-align: center; background: var(--surface);
+      transition: all .25s var(--ease);
+      background-image:
+        linear-gradient(to right, rgba(8,8,10,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(8,8,10,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-color: var(--surface);
+    }
+    .demo-stage.has-file .drop { display: none; }
+    .demo-stage:not(.has-file) .stage-canvas { display: none; }
+    .drop__icon {
+      width: 64px; height: 64px; border-radius: var(--radius-lg);
+      background: var(--surface); border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center; color: var(--violet);
+      box-shadow: var(--shadow-xs);
+    }
+    .drop__icon svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 1.4; fill: none; }
+    .drop__title { font-size: 19px; font-weight: 500; letter-spacing: -.015em; }
+    .drop__or { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--mute); text-transform: uppercase; }
+    .drop__buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    .stage-canvas {
+      flex: 1; padding: 12px; background:
+        linear-gradient(to right, rgba(8,8,10,.03) 1px, transparent 1px) 0 0/24px 24px,
+        linear-gradient(to bottom, rgba(8,8,10,.03) 1px, transparent 1px) 0 0/24px 24px,
+        var(--bg);
+      position: relative;
+    }
+    .stage-canvas svg { width: 100%; height: 100%; }
+
+    .stage-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--surface-2);
+      flex-wrap: wrap;
+    }
+    .stage-bar__left { display: inline-flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: .04em; }
+    .stage-bar__left .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px rgba(16,185,129,.7); animation: pulse 2.4s var(--ease) infinite; }
+
+    .demo-tagline { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--mute); text-transform: uppercase; margin-top: 8px; }
+  </style>
+</head>
+<body data-page="demo">
+  <div id="site-statusbar"></div>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="demo-wrap">
+      <div class="wrap">
+        <div class="demo-head reveal">
+          <span class="eyebrow eyebrow--green">CANLI DEMO · v0.4 BETA</span>
+          <h1 style="margin-top:18px;">DXF <em>→</em> PDF</h1>
+          <p class="lead">DXF dosyanızı buraya bırakın, anında vektör PDF'ye çevirelim. Tamamen tarayıcıda çalışır — dosyanız sunucuya yüklenmez. Katmanları açıp kapatabilir, indireceğiniz PDF'yi özelleştirebilirsiniz.</p>
+        </div>
+
+        <div class="demo-grid reveal">
+          <aside class="demo-side">
+            <div>
+              <h4 id="meta-title">DOSYA</h4>
+              <div id="filemeta" class="file-meta" style="margin-top:8px">—</div>
+            </div>
+            <div>
+              <h4>KATMANLAR</h4>
+              <div id="layers" class="layers" style="margin-top:8px"></div>
+            </div>
+            <div style="margin-top:auto">
+              <button id="download" class="btn" disabled style="width:100%; justify-content:center;">PDF olarak indir</button>
+              <div id="tagline" class="demo-tagline">Tarayıcıda · sıfır backend · gerçek vektör PDF</div>
+            </div>
+          </aside>
+
+          <div class="demo-stage" id="stage">
+            <div class="stage-bar">
+              <div class="stage-bar__left">
+                <span class="live-dot"></span>
+                <span id="stage-title">A.001 · DEMO</span>
+              </div>
+              <div style="font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: .04em;">SCALE FIT · BIMHUB DEMO ENGINE</div>
+            </div>
+
+            <div class="drop" id="drop">
+              <div class="drop__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 18v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg>
+              </div>
+              <div class="drop__title" id="drop-title">DXF dosyanızı buraya bırakın</div>
+              <div class="drop__or" id="drop-or">veya</div>
+              <div class="drop__buttons">
+                <button type="button" class="btn btn--ghost" id="browse">Dosya seç</button>
+                <button type="button" class="btn btn--ochre" id="sample">Örnek planı yükle</button>
+              </div>
+              <input type="file" id="file" accept=".dxf" style="display:none">
+            </div>
+
+            <div class="stage-canvas" id="stage-canvas"></div>
+          </div>
+        </div>
+
+        <p style="margin-top: 28px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; color: var(--mute);">
+          <span style="color: var(--ochre);">●</span> DWG için: Autodesk dosya formatı kapalıdır; demoda ASCII DXF kullanıyoruz. Pro sürümde ODA SDK ile DWG desteği canlı.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta-strip" id="waitlist">
+      <div class="cta-strip__bg" aria-hidden="true"></div>
+      <div class="cta-strip__grid" aria-hidden="true"></div>
+      <div class="wrap">
+        <span class="eyebrow eyebrow--ochre">EARLY ACCESS</span>
+        <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
+        <p class="lead" data-i18n="cta.lead">…</p>
+        <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
+          <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
+          <button type="submit" class="btn btn--ochre btn--shimmer"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+        </form>
+        <p class="signup__msg"></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-drawer"></div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/tools.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/demo-dxf.js"></script>
+</body>
+</html>

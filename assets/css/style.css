@@ -860,6 +860,11 @@ p { color: var(--slate); line-height: 1.6; }
 .changelog__list li[data-tag="FIX"]::before { color: var(--violet); background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.2); }
 .changelog__list li[data-tag="IMP"]::before { color: var(--ochre); background: rgba(180,123,62,.08); border: 1px solid rgba(180,123,62,.2); }
 
+/* ── Reveal ────────────────────────────────────── */
+.reveal { transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.js .reveal:not(.is-in) { opacity: 0; transform: translateY(12px); }
+.reveal.is-in { opacity: 1; transform: none; }
+
 /* ── Toast ─────────────────────────────────────── */
 .toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
@@ -874,6 +879,82 @@ p { color: var(--slate); line-height: 1.6; }
   display: inline-flex; align-items: center; justify-content: center;
 }
 .toast__icon svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2.5; fill: none; }
+
+/* ── Checkout demo modal ───────────────────────── */
+.checkout-modal {
+  position: fixed; inset: 0; z-index: 200; pointer-events: none;
+  background: rgba(8,8,10,0); backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  transition: background .25s var(--ease), backdrop-filter .25s var(--ease);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.checkout-modal.is-open {
+  pointer-events: auto; background: rgba(8,8,10,.5);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.checkout-modal__panel {
+  position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 48px); overflow: auto;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-xl);
+  padding: 28px 28px 24px; box-shadow: var(--shadow-lg);
+  transform: translateY(20px) scale(.96); opacity: 0;
+  transition: transform .35s var(--spring), opacity .25s var(--ease);
+}
+.checkout-modal.is-open .checkout-modal__panel { transform: translateY(0) scale(1); opacity: 1; }
+.checkout-modal__close {
+  position: absolute; top: 14px; right: 14px;
+  width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line);
+  background: var(--surface); display: flex; align-items: center; justify-content: center;
+  color: var(--graphite); transition: all .15s var(--ease);
+}
+.checkout-modal__close:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.checkout-modal__close svg { width: 14px; height: 14px; }
+.checkout-modal__head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+}
+.checkout-modal__brand { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 500; }
+.checkout-modal__tag {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em;
+  padding: 4px 8px; border-radius: 999px;
+  background: rgba(180,123,62,.1); color: var(--ochre); border: 1px solid rgba(180,123,62,.25);
+}
+.checkout-modal__h { font-size: 19px; font-weight: 500; letter-spacing: -.015em; margin-bottom: 16px; }
+.checkout-modal__summary {
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+  background: var(--surface-2); margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;
+}
+.checkout-modal__summary .row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 13.5px; color: var(--slate);
+}
+.checkout-modal__summary .row b { color: var(--ink); font-weight: 500; }
+.checkout-modal__summary .row.total { padding-top: 8px; border-top: 1px dashed var(--line); margin-top: 4px; font-size: 14px; }
+.checkout-modal__summary .row.total b { font-size: 18px; letter-spacing: -.02em; }
+.checkout-modal__summary .row.total small { color: var(--mute); font-weight: 400; font-size: 12px; margin-left: 4px; }
+.checkout-modal__form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.ch-field { display: flex; flex-direction: column; gap: 6px; }
+.ch-field span { font-size: 11.5px; font-family: var(--mono); letter-spacing: .08em; color: var(--mute); text-transform: uppercase; }
+.ch-field input {
+  width: 100%; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-2); font-size: 14px; color: var(--soft); font-family: var(--mono);
+}
+.ch-card { display: flex; gap: 8px; }
+.ch-card input:first-child { flex: 1; }
+.checkout-modal__pay {
+  width: 100%; justify-content: center; padding: 13px;
+  background: #635BFF; border-color: #635BFF; cursor: not-allowed; opacity: .6;
+  pointer-events: none;
+}
+.checkout-modal__secured {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; color: var(--mute);
+  justify-content: center; width: 100%;
+}
+.checkout-modal__note {
+  padding-top: 18px; border-top: 1px solid var(--line);
+}
+.checkout-modal__note p { font-size: 13px; color: var(--slate); line-height: 1.5; margin-bottom: 14px; }
+.checkout-modal__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.checkout-modal__actions .btn { flex: 1; justify-content: center; min-width: 130px; }
 
 /* ── Drawer ────────────────────────────────────── */
 .drawer { position: fixed; inset: 0; z-index: 90; pointer-events: none; transition: background .3s var(--ease); }
@@ -891,11 +972,6 @@ p { color: var(--slate); line-height: 1.6; }
 .drawer__links { display: flex; flex-direction: column; gap: 2px; }
 .drawer__links a { font-family: var(--sans); font-size: 22px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink); letter-spacing: -.015em; }
 .drawer__foot { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px; }
-
-/* ── Reveal ────────────────────────────────────── */
-.reveal { transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.js .reveal:not(.is-in) { opacity: 0; transform: translateY(12px); }
-.reveal.is-in { opacity: 1; transform: none; }
 
 /* ── Responsive ────────────────────────────────── */
 @media (max-width: 980px) {

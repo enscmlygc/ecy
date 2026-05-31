@@ -1,9 +1,11 @@
 /* BIMHub · Service Worker — offline support & fast boot */
-const CACHE = "bimhub-v2";
+const CACHE = "bimhub-v3";
 const ASSETS = [
-  "/index.html", "/tools.html", "/pricing.html", "/roadmap.html", "/changelog.html", "/about.html", "/waitlist.html",
+  "/index.html", "/tools.html", "/pricing.html", "/roadmap.html", "/changelog.html",
+  "/about.html", "/waitlist.html", "/demo.html",
   "/assets/css/style.css",
   "/assets/js/i18n.js", "/assets/js/tools.js", "/assets/js/app.js",
+  "/assets/js/checkout.js", "/assets/js/demo-dxf.js", "/assets/js/jspdf.umd.min.js",
   "/manifest.webmanifest",
   "/assets/img/favicon.svg", "/assets/img/logo.svg",
   "/assets/icons/apple-touch-icon.png", "/assets/icons/icon-192.png", "/assets/icons/icon-512.png"

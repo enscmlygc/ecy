@@ -77,3 +77,44 @@ Statik site — Vercel, Netlify, GitHub Pages'e olduğu gibi yüklenebilir
 | **Studio** | €79/kullanıcı/ay | Ofis · takım · SSO · API |
 
 İlk 500 erken erişim kullanıcısı için Pro 3 ay %50 indirimli.
+
+## 💳 Stripe Checkout
+
+`assets/js/checkout.js` Stripe Checkout için **production-ready**. Şu an `demo`
+modda — gerçek ödeme yerine Stripe-stili önizleme modal'ı açılır.
+
+Canlıya almak için her sayfada `</body>` öncesi şu config ekleyin:
+
+```html
+<script>
+window.BIMHUB_STRIPE_CONFIG = {
+  mode: "live",                              // "demo" → "live"
+  publicKey: "pk_live_…",                    // Stripe Dashboard'dan
+  prices: {
+    "pro-monthly":    { id: "price_…", amount: 19,  currency: "EUR" },
+    "pro-yearly":     { id: "price_…", amount: 180, currency: "EUR" },
+    "studio-monthly": { id: "price_…", amount: 79,  currency: "EUR" },
+    "studio-yearly":  { id: "price_…", amount: 792, currency: "EUR" }
+  }
+};
+</script>
+<script src="assets/js/checkout.js"></script>
+```
+
+Butonlara `data-checkout="pro"` veya `data-checkout="studio"` koyun;
+billing-toggle aktif değerine göre `-monthly` / `-yearly` çözülür.
+
+## 🛠 Canlı Demo: DXF → PDF
+
+`demo.html` — tamamen tarayıcıda çalışan ilk gerçek araç. Backend yok.
+
+- Drag/drop DXF (veya örnek planı yükle butonu)
+- ASCII DXF parser: LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, TEXT, MTEXT
+- SVG live preview, katman aç/kapa
+- jsPDF (lokal vendored, 356 KB) ile gerçek vektör PDF export
+- A3 landscape, ölçekli, BIMHub watermark + title block
+
+Ek araç eklemek için:
+1. `assets/js/tools.js` içinde `status: "live"` + `href: "demo-X.html"` ekleyin
+2. `demo-X.html` ve `assets/js/demo-X.js` oluşturun
+3. `sw.js` ASSETS listesine ekleyin

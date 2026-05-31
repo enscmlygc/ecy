@@ -52,13 +52,14 @@ window.BIMHUB_TOOLS = [
   // ───── Documentation ─────
   {
     id: "dwg-pdf",
-    cat: "doc", status: "beta",
-    name: { tr: "DWG ↔ PDF", en: "DWG ↔ PDF" },
+    cat: "doc", status: "live",
+    href: "demo.html",
+    name: { tr: "DXF → PDF", en: "DXF → PDF" },
     desc: {
-      tr: "Vektör katmanlarını koruyarak iki yönlü dönüşüm. Pafta düzeni, ölçek ve kalem kalınlıkları aynen aktarılır.",
-      en: "Bidirectional conversion preserving vector layers. Layout, scale and pen weights kept intact."
+      tr: "DXF dosyanızı tarayıcıda vektör PDF'ye çevirin. Katman aç-kapa, ölçekli çıktı. Tamamen tarayıcıda, sunucusuz.",
+      en: "Convert DXF to vector PDF in your browser. Toggle layers, scaled output. Fully client-side, no backend."
     },
-    io: { in: "DWG · DXF · PDF", out: "DWG · PDF" },
+    io: { in: "DXF", out: "PDF (vector)" },
     icon: `<path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><path d="M8 13h8M8 17h5"/>`
   },
   {

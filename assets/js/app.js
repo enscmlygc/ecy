@@ -235,7 +235,10 @@
   window.renderTools = function (selector, list) {
     const root = $(selector);
     if (!root) return;
-    root.innerHTML = list.map(t => `
+    root.innerHTML = list.map(t => {
+      const isLive = t.status === "live" && t.href;
+      const linkHref = isLive ? t.href : "#waitlist";
+      return `
       <article class="tool" data-cat="${t.cat}" data-id="${t.id}">
         <div class="tool__head">
           <div class="tool__icon"><svg viewBox="0 0 24 24">${t.icon}</svg></div>
@@ -248,10 +251,11 @@
         <p>${t.desc[LANG] || t.desc.tr}</p>
         <div class="tool__foot">
           <span class="mono">${t.io.in} → ${t.io.out}</span>
-          <a href="#waitlist" class="arrow" aria-label="open">→</a>
+          <a href="${linkHref}" class="arrow" aria-label="${isLive ? 'open' : 'waitlist'}">→</a>
         </div>
       </article>
-    `).join("");
+    `;
+    }).join("");
   };
 
   /* ── Tools page filter + search ───────────────────────── */
