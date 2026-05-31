@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140">
+  <rect width="360" height="140" fill="none"/>
+  <text x="180" y="78" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="500"
+        text-anchor="middle" fill="#2E2820" letter-spacing="14">esse</text>
+  <line x1="120" y1="96" x2="170" y2="96" stroke="#B8945F" stroke-width="1"/>
+  <circle cx="180" cy="96" r="2" fill="#B8945F"/>
+  <line x1="190" y1="96" x2="240" y2="96" stroke="#B8945F" stroke-width="1"/>
+  <text x="180" y="116" font-family="Jost, Arial, sans-serif" font-size="13" letter-spacing="10"
+        text-anchor="middle" fill="#8C7E6C">İSTANBUL</text>
+</svg>
