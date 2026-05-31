@@ -110,6 +110,21 @@ ul { list-style: none; }
   gap: 20px; padding: 18px var(--gut);
   max-width: var(--maxw); margin-inline: auto;
 }
+
+/* Masaüstü: logo üstte ortada, menü altında ortalı (iki katlı header) */
+@media (min-width: 861px) {
+  .header__bar {
+    grid-template-columns: none; grid-template-rows: auto auto;
+    justify-items: center; gap: 16px; padding: 22px var(--gut) 16px;
+    position: relative;
+  }
+  .header__bar .logo { order: 1; }
+  .header__bar .nav  { order: 2; flex-wrap: wrap; justify-content: center; }
+  /* İkonlar sağ üst köşeye, logoyla aynı hizada */
+  .header__actions {
+    position: absolute; top: 22px; right: var(--gut);
+  }
+}
 .nav { display: flex; gap: 30px; }
 .nav a {
   font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
