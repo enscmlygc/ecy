@@ -56,7 +56,7 @@
       <div class="header__bar">
         <nav class="nav">${nav}</nav>
         <button class="menu-toggle" id="menuToggle" aria-label="Menü">${I.menu}</button>
-        <a href="index.html" class="logo" aria-label="Esse anasayfa">esse<small>İstanbul</small></a>
+        <a href="index.html" class="logo" aria-label="Esse anasayfa">esse<small>atelier</small></a>
         <div class="header__actions">
           <button class="icon-btn" aria-label="Ara">${I.search}</button>
           <a href="about.html" class="icon-btn" aria-label="Hesabım">${I.user}</a>
@@ -80,7 +80,7 @@
       <div class="wrap">
         <div class="footer__top">
           <div class="footer__brand">
-            <div class="logo">esse<small>İstanbul</small></div>
+            <div class="logo">esse<small>atelier</small></div>
             <p>Modern kadının zarafetini sade, zamansız ve özenle seçilmiş parçalarla buluşturan butik moda evi.</p>
             <div class="footer__social">
               <a href="#" aria-label="Instagram">${I.ig}</a>
@@ -119,7 +119,7 @@
           </div>
         </div>
         <div class="footer__bottom">
-          <span>© ${new Date().getFullYear()} Esse İstanbul · Tüm hakları saklıdır.</span>
+          <span>© ${new Date().getFullYear()} Esse · Tüm hakları saklıdır.</span>
           <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>TROY</span><span>IYZICO</span></div>
         </div>
       </div>
@@ -295,18 +295,97 @@
     });
   }
 
-  /* ---- Reveal on scroll ---- */
+  /* ---- Reveal on scroll (stagger destekli) ---- */
   function bindReveal() {
     const els = $$(".reveal");
+    // Stagger: .stagger içindeki kardeşlere kademeli gecikme
+    $$(".stagger").forEach(group => {
+      group.querySelectorAll(".reveal").forEach((el, i) => {
+        el.style.transitionDelay = (i * 90) + "ms";
+      });
+    });
     if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("in")); return; }
     const io = new IntersectionObserver((ents) => {
       ents.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     els.forEach(e => io.observe(e));
+  }
+
+  /* ---- Hareket azaltma tercihi ---- */
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Tek rAF kaydırma motoru: ilerleme + parallax + story ---- */
+  function bindScrollEngine() {
+    if (reduceMotion) return;
+    const prog = $(".scroll-prog");
+    const parax = $$("[data-parallax]");
+    const story = $(".story");
+    const storyMedia = story && story.querySelector(".story__media img, .story__media video");
+    const storyLines = story ? $$(".story__line", story) : [];
+    let ticking = false;
+
+    function frame() {
+      ticking = false;
+      const y = window.scrollY || window.pageYOffset;
+      const vh = window.innerHeight;
+
+      // İlerleme çubuğu
+      if (prog) {
+        const max = document.documentElement.scrollHeight - vh;
+        prog.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+      }
+      // Parallax (görsel hafifçe kayar)
+      parax.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < vh) {
+          const speed = parseFloat(el.dataset.parallax) || 0.15;
+          const off = (r.top + r.height / 2 - vh / 2) * -speed;
+          el.style.transform = "translate3d(0," + off.toFixed(1) + "px,0) scale(1.12)";
+        }
+      });
+      // Sinematik story: kaydırma ilerlemesine göre zoom + yazı geçişi
+      if (story && storyMedia) {
+        const rect = story.getBoundingClientRect();
+        const total = rect.height - vh;
+        const p = Math.min(Math.max(-rect.top / (total || 1), 0), 1);
+        storyMedia.style.transform = "scale(" + (1.18 - p * 0.18).toFixed(3) + ")";
+        if (storyLines.length) {
+          const idx = Math.min(Math.floor(p * storyLines.length), storyLines.length - 1);
+          storyLines.forEach((l, i) => l.classList.toggle("on", i === idx));
+        }
+      }
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    frame();
+  }
+
+  /* ---- Video slotu: dosya varsa otomatik <video> yükle (yoksa görsel kalır) ---- */
+  function bindVideoSlots() {
+    $$("[data-video]").forEach(slot => {
+      const src = slot.dataset.video;
+      if (!src) return;
+      fetch(src, { method: "HEAD" }).then(r => {
+        if (!r.ok) return;
+        const v = document.createElement("video");
+        v.src = src; v.muted = true; v.loop = true; v.autoplay = true;
+        v.playsInline = true; v.setAttribute("playsinline", ""); v.preload = "metadata";
+        const poster = slot.querySelector("img");
+        if (poster) poster.replaceWith(v); else slot.prepend(v);
+        v.play().catch(() => {});
+      }).catch(() => {});
+    });
   }
 
   /* ===================== INIT ===================== */
   function init() {
+    // Üst ilerleme çizgisi
+    if (!reduceMotion && !$(".scroll-prog")) {
+      const bar = document.createElement("div");
+      bar.className = "scroll-prog";
+      document.body.prepend(bar);
+    }
     buildHeader(); buildFooter(); buildDrawer();
     renderCart(); bindGlobal(); bindNewsletter();
 
@@ -314,6 +393,8 @@
     if (typeof window.ESSE_PAGE === "function") window.ESSE_PAGE({ P, renderGrid, cardHtml, byId, TL, addToCart, mediaHtml, getParam, I });
 
     bindReveal();
+    bindVideoSlots();
+    bindScrollEngine();
   }
   function getParam(k) { return new URLSearchParams(location.search).get(k); }
 
