@@ -1,5 +1,5 @@
 /* Esse · Service Worker — çevrimdışı destek ve hızlı açılış */
-const CACHE = "esse-v1";
+const CACHE = "esse-v2";
 const ASSETS = [
   "/index.html", "/shop.html", "/product.html", "/about.html", "/contact.html",
   "/assets/css/style.css", "/assets/js/app.js", "/assets/js/products.js",
@@ -25,8 +25,11 @@ self.addEventListener("fetch", (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // sadece kendi varlıklarımız
 
-  // HTML için: önce ağ, olmazsa önbellek (taze içerik önceliği)
-  if (req.mode === "navigate" || (req.headers.get("accept") || "").includes("text/html")) {
+  // HTML, CSS ve JS için: önce ağ (her zaman güncel), olmazsa önbellek
+  const isCode = req.mode === "navigate" ||
+    (req.headers.get("accept") || "").includes("text/html") ||
+    /\.(css|js|webmanifest)$/.test(url.pathname);
+  if (isCode) {
     e.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();
@@ -37,7 +40,7 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Diğer varlıklar (görsel/CSS/JS): önce önbellek, arkada güncelle
+  // Görseller/ikonlar: önce önbellek, arkada sessizce güncelle (hız için)
   e.respondWith(
     caches.match(req).then((cached) => {
       const network = fetch(req).then((res) => {
