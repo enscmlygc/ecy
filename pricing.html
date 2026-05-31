@@ -8,33 +8,22 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#FAFAF7">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <style>
-    .compare { width: 100%; border-collapse: collapse; margin-top: 48px; font-size: 14px; }
-    .compare th, .compare td { padding: 18px 16px; text-align: left; border-bottom: 1px solid var(--line); }
-    .compare th { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); font-weight: 500; }
-    .compare th.feat { width: 40%; }
-    .compare td.center { text-align: center; }
-    .compare td.feat { color: var(--ink); }
-    .compare .yes { color: var(--green); font-weight: 600; }
-    .compare .no  { color: var(--soft); }
-    .compare tr.head th { background: var(--surface); border-bottom: 1px solid var(--line-strong); font-family: var(--serif); font-size: 18px; text-transform: none; letter-spacing: -.01em; color: var(--ink); }
-    .compare tr.head th .price__name { display:block; margin-bottom:4px; }
-  </style>
 </head>
 <body data-page="pricing">
+  <div id="site-statusbar"></div>
   <div id="site-header"></div>
 
   <main>
     <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="wrap reveal">
         <span class="eyebrow" data-i18n="pricingpage.eyebrow">Fiyatlandırma</span>
         <h1 data-i18n="pricingpage.title">Açık fiyat, sürpriz yok</h1>
-        <p class="lead" data-i18n="pricingpage.lead">Üç katman. Kredi kartı istemeden Free başlar. İstediğiniz zaman yükseltir, iptal edersiniz.</p>
+        <p class="lead" data-i18n="pricingpage.lead">…</p>
       </div>
     </section>
 
@@ -48,7 +37,7 @@
         <div class="pricing reveal">
           <div class="price">
             <div class="price__name" data-i18n="price.free.name">Free</div>
-            <h3>€0</h3>
+            <div class="price__amt"><b>€0</b></div>
             <div class="price__desc" data-i18n="price.free.desc">…</div>
             <ul class="price__list">
               <li data-i18n="price.free.f1">…</li>
@@ -74,7 +63,7 @@
               <li data-i18n="price.pro.f5">…</li>
               <li data-i18n="price.pro.f6">…</li>
             </ul>
-            <a href="#waitlist" class="btn" data-i18n="price.pro.cta">14 Gün Ücretsiz</a>
+            <a href="#waitlist" class="btn btn--shimmer" data-i18n="price.pro.cta">14 Gün Ücretsiz</a>
           </div>
 
           <div class="price">
@@ -94,8 +83,7 @@
           </div>
         </div>
 
-        <!-- Feature comparison table -->
-        <div class="section-head reveal" style="margin-top: 96px;">
+        <div class="section-head reveal" style="margin: 96px 0 16px;">
           <span class="eyebrow" data-i18n="pricingpage.compare">Tüm özellikler</span>
         </div>
         <table class="compare reveal">
@@ -112,11 +100,11 @@
             <tr><td class="feat" data-i18n="cmp.runs">Aylık işlem</td><td class="center">5</td><td class="center yes" data-i18n="cmp.unlimited">Sınırsız</td><td class="center yes" data-i18n="cmp.unlimited">Sınırsız</td></tr>
             <tr><td class="feat" data-i18n="cmp.wm">Filigransız çıktı</td><td class="center no">—</td><td class="center yes">✓</td><td class="center yes">✓</td></tr>
             <tr><td class="feat" data-i18n="cmp.queue">Öncelikli kuyruk</td><td class="center no">—</td><td class="center yes">✓</td><td class="center yes">✓</td></tr>
-            <tr><td class="feat" data-i18n="cmp.hires">Yüksek çözünürlük</td><td class="center">2K</td><td class="center yes">4K</td><td class="center yes">8K</td></tr>
+            <tr><td class="feat" data-i18n="cmp.hires">Çıktı çözünürlüğü</td><td class="center">2K</td><td class="center yes">4K</td><td class="center yes">8K</td></tr>
             <tr><td class="feat" data-i18n="cmp.storage">Depolama</td><td class="center">1 GB</td><td class="center">100 GB</td><td class="center yes">1 TB</td></tr>
             <tr><td class="feat" data-i18n="cmp.team">Takım çalışma alanı</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">✓</td></tr>
             <tr><td class="feat" data-i18n="cmp.lib">Ortak aile kütüphanesi</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">✓</td></tr>
-            <tr><td class="feat" data-i18n="cmp.sso">SSO + admin</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">✓</td></tr>
+            <tr><td class="feat" data-i18n="cmp.sso">SSO + yönetim paneli</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">✓</td></tr>
             <tr><td class="feat" data-i18n="cmp.api">API erişimi</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">✓</td></tr>
             <tr><td class="feat" data-i18n="cmp.sup">Destek</td><td class="center" data-i18n="cmp.sup.com">Topluluk</td><td class="center" data-i18n="cmp.sup.mail">E-posta</td><td class="center yes" data-i18n="cmp.sup.ded">Özel + SLA</td></tr>
           </tbody>
@@ -124,14 +112,30 @@
       </div>
     </section>
 
-    <section class="cta-strip" id="waitlist">
+    <section class="section--tight">
       <div class="wrap">
-        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="faq.eyebrow">Sık Sorulan Sorular</span>
+          <h2 data-i18n="faq.title">Cevapları hızlıca</h2>
+        </div>
+        <div class="faq reveal">
+          <div class="faq__item"><button class="faq__q" type="button"><span data-i18n="faq.q1">…</span><span class="plus"></span></button><div class="faq__a"><p data-i18n="faq.a1">…</p></div></div>
+          <div class="faq__item"><button class="faq__q" type="button"><span data-i18n="faq.q5">…</span><span class="plus"></span></button><div class="faq__a"><p data-i18n="faq.a5">…</p></div></div>
+          <div class="faq__item"><button class="faq__q" type="button"><span data-i18n="faq.q2">…</span><span class="plus"></span></button><div class="faq__a"><p data-i18n="faq.a2">…</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip" id="waitlist">
+      <div class="cta-strip__bg" aria-hidden="true"></div>
+      <div class="cta-strip__grid" aria-hidden="true"></div>
+      <div class="wrap">
+        <span class="eyebrow eyebrow--ochre">EARLY ACCESS</span>
         <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
-        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli.</p>
+        <p class="lead" data-i18n="cta.lead">…</p>
         <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
           <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
-          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+          <button type="submit" class="btn btn--ochre btn--shimmer"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
         </form>
         <p class="signup__msg"></p>
       </div>

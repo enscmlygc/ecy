@@ -8,17 +8,18 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#FAFAF7">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 </head>
 <body data-page="about">
+  <div id="site-statusbar"></div>
   <div id="site-header"></div>
 
   <main>
     <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="wrap reveal">
         <span class="eyebrow" data-i18n="about.eyebrow">Hakkımızda</span>
         <h1>
@@ -26,7 +27,7 @@
           <em data-i18n="about.title.b">yavaş.</em>
           <span data-i18n="about.title.c">Hızlandıralım.</span>
         </h1>
-        <p class="lead" data-i18n="about.lead">BIMHub, küçük ama keskin yapay zekâ araçlarıyla mimarın, mühendisin ve yüklenicinin günlük tekrar eden işlerini ortadan kaldırmak için kuruldu.</p>
+        <p class="lead" data-i18n="about.lead">…</p>
       </div>
     </section>
 
@@ -34,46 +35,43 @@
       <div class="wrap">
         <div class="about-split reveal">
           <div>
-            <p data-i18n="about.body1">Mimarlık ofislerinde günlerce süren işlerin çoğu, aslında tekrar eden teknik dönüşümlerdir.</p>
-            <p data-i18n="about.body2">Bizim odağımız büyük bir CAD platformu yapmak değil — küçük ve odaklı araçların toplamı, en sevdiğiniz alete dönüşür.</p>
+            <p data-i18n="about.body1">…</p>
+            <p data-i18n="about.body2">…</p>
           </div>
-          <!-- Architectural side illustration -->
           <div aria-hidden="true">
             <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%">
               <defs>
                 <pattern id="bp2" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(14,14,12,.07)" stroke-width="1"/>
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(8,8,10,.06)" stroke-width="1"/>
                 </pattern>
+                <linearGradient id="abv" x1="0" x2="1"><stop offset="0" stop-color="#6366F1" stop-opacity=".1"/><stop offset="1" stop-color="#B47B3E" stop-opacity=".06"/></linearGradient>
               </defs>
-              <rect width="400" height="320" fill="#FAFAF7"/>
+              <rect width="400" height="320" fill="#FFFFFF"/>
               <rect width="400" height="320" fill="url(#bp2)"/>
-              <!-- Plan view of building -->
-              <g transform="translate(40 40)" fill="none" stroke="#0E0E0C" stroke-width="1.2">
-                <rect x="0" y="0" width="320" height="200"/>
+              <rect width="400" height="320" fill="url(#abv)"/>
+              <g transform="translate(40 40)" fill="none" stroke="#08080A" stroke-width="1.2">
+                <rect x="0" y="0" width="320" height="200" fill="rgba(255,255,255,.7)"/>
                 <path d="M 0 80 L 320 80 M 0 140 L 200 140 M 200 80 L 200 200 M 120 0 L 120 80 M 60 140 L 60 200 M 260 80 L 260 140"/>
-                <!-- Door swings -->
-                <path d="M 60 80 A 16 16 0 0 1 60 64" />
-                <path d="M 200 140 A 14 14 0 0 0 186 140" />
-                <!-- Dimensions -->
+                <path d="M 60 80 A 16 16 0 0 1 60 64"/>
+                <path d="M 200 140 A 14 14 0 0 0 186 140"/>
                 <g stroke="#86867E" stroke-width=".8">
                   <path d="M 0 -20 L 320 -20 M 0 -24 L 0 -16 M 320 -24 L 320 -16 M 120 -24 L 120 -16"/>
                   <path d="M -20 0 L -20 200 M -24 0 L -16 0 M -24 200 L -16 200 M -24 80 L -16 80"/>
                 </g>
-                <g font-family="JetBrains Mono, monospace" font-size="9" fill="#86867E" text-anchor="middle">
+                <g font-family="Geist Mono, monospace" font-size="9" fill="#86867E" text-anchor="middle">
                   <text x="60" y="-28">5.20</text>
                   <text x="220" y="-28">8.40</text>
                   <text x="-32" y="44" transform="rotate(-90 -32 44)">4.00</text>
                   <text x="-32" y="144" transform="rotate(-90 -32 144)">6.00</text>
                 </g>
-                <!-- Furniture squares -->
                 <g stroke-width=".8" opacity=".7">
                   <rect x="20" y="20" width="40" height="40"/>
                   <rect x="140" y="100" width="48" height="28"/>
                   <rect x="220" y="100" width="30" height="30"/>
                 </g>
-                <circle cx="80" cy="40" r="3" fill="#B47B3E" stroke="none"/>
-                <line x1="83" y1="40" x2="160" y2="-10" stroke="#B47B3E" stroke-width=".8"/>
-                <text x="164" y="-12" font-family="JetBrains Mono, monospace" font-size="9" fill="#B47B3E">A·01</text>
+                <circle cx="80" cy="40" r="3" fill="#6366F1" stroke="none"/>
+                <line x1="83" y1="40" x2="160" y2="-10" stroke="#6366F1" stroke-width=".8"/>
+                <text x="164" y="-12" font-family="Geist Mono, monospace" font-size="9" fill="#6366F1">A·01</text>
               </g>
             </svg>
           </div>
@@ -87,31 +85,56 @@
         <div class="principles reveal">
           <div class="principle">
             <div class="principle__num">01</div>
-            <h4 data-i18n="pr1.t">Mimarlar için, mimarlarla</h4>
-            <p data-i18n="pr1.d">Ekibimizde gerçek BIM yöneticileri var. Her özelliği önce kendi iş akışımızda denedik.</p>
+            <h4 data-i18n="pr1.t">…</h4>
+            <p data-i18n="pr1.d">…</p>
           </div>
           <div class="principle">
             <div class="principle__num">02</div>
-            <h4 data-i18n="pr2.t">Şeffaf fiyat</h4>
-            <p data-i18n="pr2.d">Demoda fiyat saklayan, satıcı çağıran yok. Web sitesinde, açıkça.</p>
+            <h4 data-i18n="pr2.t">…</h4>
+            <p data-i18n="pr2.d">…</p>
           </div>
           <div class="principle">
             <div class="principle__num">03</div>
-            <h4 data-i18n="pr3.t">Veriniz sizindir</h4>
-            <p data-i18n="pr3.d">Eğitimde kullanmayız, satmayız. 30 gün sonra otomatik silinir.</p>
+            <h4 data-i18n="pr3.t">…</h4>
+            <p data-i18n="pr3.d">…</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 96px;">
+          <span class="eyebrow" data-i18n="stack.title">Üzerine inşa ettiğimiz teknoloji</span>
+          <h2 data-i18n="stack.title">Üzerine inşa ettiğimiz teknoloji</h2>
+        </div>
+        <div class="stack reveal">
+          <div class="stack__item">
+            <div class="stack__item__icon">AI</div>
+            <div><h5 data-i18n="stack.s1.t">Üretken AI</h5><span data-i18n="stack.s1.s">GPT-4 · Claude · SDXL</span></div>
+          </div>
+          <div class="stack__item">
+            <div class="stack__item__icon" style="background: var(--violet);">B</div>
+            <div><h5 data-i18n="stack.s2.t">BIM Motoru</h5><span data-i18n="stack.s2.s">IFC.js · ODA · Speckle</span></div>
+          </div>
+          <div class="stack__item">
+            <div class="stack__item__icon" style="background: var(--ochre);">▲</div>
+            <div><h5 data-i18n="stack.s3.t">Altyapı</h5><span data-i18n="stack.s3.s">Vercel Edge · Cloudflare R2</span></div>
+          </div>
+          <div class="stack__item">
+            <div class="stack__item__icon" style="background: var(--green);">⚿</div>
+            <div><h5 data-i18n="stack.s4.t">Güvenlik</h5><span data-i18n="stack.s4.s">AES-256 · SOC 2 yolda</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="cta-strip" id="waitlist">
+      <div class="cta-strip__bg" aria-hidden="true"></div>
+      <div class="cta-strip__grid" aria-hidden="true"></div>
       <div class="wrap">
-        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <span class="eyebrow eyebrow--ochre">EARLY ACCESS</span>
         <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
-        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli.</p>
+        <p class="lead" data-i18n="cta.lead">…</p>
         <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
           <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
-          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+          <button type="submit" class="btn btn--ochre btn--shimmer"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
         </form>
         <p class="signup__msg"></p>
       </div>

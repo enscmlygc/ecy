@@ -4,36 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Araçlar · BIMHub</title>
-  <meta name="description" data-i18n="toolspage.lead" content="16 BIM aracı, tek abonelik. Görselleştirme, dokümantasyon, analiz, ofis ve üretken AI kategorilerinde.">
+  <meta name="description" data-i18n="toolspage.lead" content="20 BIM aracı, tek abonelik. Görselleştirme, dokümantasyon, analiz, ofis ve üretken AI.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#FAFAF7">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 </head>
 <body data-page="tools">
+  <div id="site-statusbar"></div>
   <div id="site-header"></div>
 
   <main>
     <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="wrap reveal">
         <span class="eyebrow" data-i18n="toolspage.eyebrow">Araç Kataloğu</span>
-        <h1 data-i18n="toolspage.title">16 araç, tek abonelik</h1>
-        <p class="lead" data-i18n="toolspage.lead">Hepsi tek aboneliğin içinde. Yeni araçlar her ay ekleniyor — bekleme listesine katılırsanız ilk siz haber alırsınız.</p>
+        <h1 data-i18n="toolspage.title">20 araç, tek abonelik</h1>
+        <p class="lead" data-i18n="toolspage.lead">…</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
+        <div class="tools-search reveal">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="text" data-i18n-attr="placeholder" data-i18n="nav.search" placeholder="Araç ara…">
+          <kbd>⌘K</kbd>
+        </div>
+
         <div class="tools-bar reveal">
           <button class="is-active" data-filter="all" data-i18n="tools.filter.all">Tümü</button>
           <button data-filter="viz" data-i18n="tools.filter.viz">Görselleştirme</button>
           <button data-filter="doc" data-i18n="tools.filter.doc">Dokümantasyon</button>
-          <button data-filter="anl" data-i18n="tools.filter.anl">Analiz & Koordinasyon</button>
-          <button data-filter="ofc" data-i18n="tools.filter.ofc">Ofis & Üretkenlik</button>
+          <button data-filter="anl" data-i18n="tools.filter.anl">Analiz</button>
+          <button data-filter="ofc" data-i18n="tools.filter.ofc">Ofis</button>
           <button data-filter="gen" data-i18n="tools.filter.gen">Üretken AI</button>
         </div>
 
@@ -42,13 +49,15 @@
     </section>
 
     <section class="cta-strip" id="waitlist">
+      <div class="cta-strip__bg" aria-hidden="true"></div>
+      <div class="cta-strip__grid" aria-hidden="true"></div>
       <div class="wrap">
-        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <span class="eyebrow eyebrow--ochre">EARLY ACCESS</span>
         <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
-        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli.</p>
+        <p class="lead" data-i18n="cta.lead">…</p>
         <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
           <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
-          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+          <button type="submit" class="btn btn--ochre btn--shimmer"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
         </form>
         <p class="signup__msg"></p>
       </div>
@@ -65,7 +74,13 @@
     window.BIMHUB_RENDER = function () {
       var activeBtn = document.querySelector('.tools-bar button.is-active');
       var cat = activeBtn ? activeBtn.dataset.filter : "all";
+      var q = (document.querySelector('.tools-search input')?.value || "").trim().toLowerCase();
+      var lang = window.BIMHUB_CTX?.LANG ? window.BIMHUB_CTX.LANG() : "tr";
       var list = cat === "all" ? window.BIMHUB_TOOLS : window.BIMHUB_TOOLS.filter(function(t){ return t.cat === cat; });
+      if (q) list = list.filter(function(t){
+        return (t.name[lang] || t.name.tr).toLowerCase().indexOf(q) !== -1
+            || (t.desc[lang] || t.desc.tr).toLowerCase().indexOf(q) !== -1;
+      });
       window.renderTools("#tools-grid", list);
     };
   </script>

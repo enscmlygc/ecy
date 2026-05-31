@@ -1,7 +1,7 @@
 /* BIMHub · Service Worker — offline support & fast boot */
-const CACHE = "bimhub-v1";
+const CACHE = "bimhub-v2";
 const ASSETS = [
-  "/index.html", "/tools.html", "/pricing.html", "/about.html", "/waitlist.html",
+  "/index.html", "/tools.html", "/pricing.html", "/roadmap.html", "/changelog.html", "/about.html", "/waitlist.html",
   "/assets/css/style.css",
   "/assets/js/i18n.js", "/assets/js/tools.js", "/assets/js/app.js",
   "/manifest.webmanifest",
