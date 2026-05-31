@@ -379,7 +379,37 @@
   }
 
   /* ===================== INIT ===================== */
+  /* ---- Karşılama (splash) ekranı ---- */
+  function showSplash() {
+    // Sadece anasayfada ve oturum başına bir kez göster.
+    // Ana ekrana eklenmiş uygulamada (standalone) her açılışta gösterilir.
+    var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    if (document.body.getAttribute("data-page") !== "home") return;
+    if (!standalone && sessionStorage.getItem("esseSplash")) return;
+    sessionStorage.setItem("esseSplash", "1");
+
+    var el = document.createElement("div");
+    el.className = "splash";
+    el.setAttribute("aria-hidden", "true");
+    el.innerHTML =
+      '<div class="splash__mark">' +
+        '<div class="splash__logo">esse</div>' +
+        '<div class="splash__rule"><i></i><b></b><i></i></div>' +
+        '<div class="splash__sub">Atelier</div>' +
+      '</div>';
+    document.body.appendChild(el);
+    document.body.style.overflow = "hidden";
+
+    var hold = reduceMotion ? 600 : 1700;
+    setTimeout(function () {
+      el.classList.add("hide");
+      document.body.style.overflow = "";
+      setTimeout(function () { el.remove(); }, 750);
+    }, hold);
+  }
+
   function init() {
+    showSplash();
     // Üst ilerleme çizgisi
     if (!reduceMotion && !$(".scroll-prog")) {
       const bar = document.createElement("div");

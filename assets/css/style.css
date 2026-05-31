@@ -496,6 +496,43 @@ ul { list-style: none; }
   z-index: 200; pointer-events: none;
 }
 
+/* ===== Karşılama (splash) ekranı ===== */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  display: grid; place-items: center;
+  background: linear-gradient(165deg, #332D24 0%, #241F19 60%, #1E1A15 100%);
+  opacity: 1; transition: opacity .7s var(--ease), visibility .7s var(--ease);
+}
+.splash.hide { opacity: 0; visibility: hidden; }
+.splash__mark { text-align: center; }
+.splash__logo {
+  font-family: var(--serif); font-size: clamp(54px, 16vw, 88px); font-weight: 500;
+  letter-spacing: .22em; color: #E7D8C1; padding-left: .22em;
+  opacity: 0; transform: translateY(14px);
+  animation: splashIn .9s var(--ease) .15s forwards;
+}
+.splash__rule {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  margin-top: 16px; opacity: 0; animation: splashIn .8s var(--ease) .55s forwards;
+}
+.splash__rule i {
+  display: block; height: 1px; width: 0; background: var(--gold);
+  animation: splashRule 1s var(--ease) .7s forwards;
+}
+.splash__rule b { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex: none; }
+.splash__sub {
+  margin-top: 14px; font-family: var(--sans); font-size: 12px; letter-spacing: .42em;
+  text-transform: uppercase; color: #9C8E7C;
+  opacity: 0; animation: splashIn 1s var(--ease) .8s forwards;
+}
+@keyframes splashIn { to { opacity: 1; transform: none; } }
+@keyframes splashRule { to { width: clamp(34px, 12vw, 56px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .splash__logo, .splash__rule, .splash__sub { animation: none; opacity: 1; transform: none; }
+  .splash__rule i { width: clamp(34px, 12vw, 56px); animation: none; }
+}
+
 /* Akan editöryel şerit */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--cream-2); padding: 20px 0; }
 .marquee__track { display: flex; width: max-content; white-space: nowrap; animation: marquee 32s linear infinite; will-change: transform; }
