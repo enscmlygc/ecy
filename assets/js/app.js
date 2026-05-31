@@ -395,8 +395,18 @@
     bindReveal();
     bindVideoSlots();
     bindScrollEngine();
+    registerSW();
   }
   function getParam(k) { return new URLSearchParams(location.search).get(k); }
+
+  /* ---- Service Worker (PWA / çevrimdışı) ---- */
+  function registerSW() {
+    if (!("serviceWorker" in navigator)) return;
+    if (location.protocol !== "https:" && location.hostname !== "localhost") return;
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/sw.js").catch(function () {});
+    });
+  }
 
   document.addEventListener("DOMContentLoaded", init);
 })();
