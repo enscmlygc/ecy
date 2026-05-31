@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140">
-  <rect width="360" height="140" fill="none"/>
-  <text x="180" y="78" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="500"
-        text-anchor="middle" fill="#2E2820" letter-spacing="14">esse</text>
-  <line x1="120" y1="96" x2="170" y2="96" stroke="#B8945F" stroke-width="1"/>
-  <circle cx="180" cy="96" r="2" fill="#B8945F"/>
-  <line x1="190" y1="96" x2="240" y2="96" stroke="#B8945F" stroke-width="1"/>
-  <text x="180" y="116" font-family="Jost, Arial, sans-serif" font-size="13" letter-spacing="10"
-        text-anchor="middle" fill="#8C7E6C">ATELİER</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" role="img" aria-label="BIMHub">
+  <defs>
+    <style>
+      .wm{font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:36px;letter-spacing:-.02em;fill:#0E0E0C;}
+      .wm-b{font-weight:500;}
+      .wm-i{font-style:italic;font-weight:400;}
+      .accent{fill:#B47B3E;}
+      .ln{stroke:#0E0E0C;stroke-width:1.4;fill:none;stroke-linejoin:round;stroke-linecap:round;}
+    </style>
+  </defs>
+  <g transform="translate(6 10)">
+    <path class="ln" d="M18 4 L32 12 L32 28 L18 36 L4 28 L4 12 Z"/>
+    <path class="ln" d="M18 4 L18 20 L4 28 M18 20 L32 12"/>
+    <circle class="accent" cx="18" cy="20" r="2.4"/>
+  </g>
+  <text class="wm" x="50" y="38">
+    <tspan class="wm-b">BIM</tspan><tspan class="wm-i">hub</tspan>
+  </text>
 </svg>

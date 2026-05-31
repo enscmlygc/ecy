@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Araçlar · BIMHub</title>
+  <meta name="description" data-i18n="toolspage.lead" content="16 BIM aracı, tek abonelik. Görselleştirme, dokümantasyon, analiz, ofis ve üretken AI kategorilerinde.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#FAFAF7">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+</head>
+<body data-page="tools">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <span class="eyebrow" data-i18n="toolspage.eyebrow">Araç Kataloğu</span>
+        <h1 data-i18n="toolspage.title">16 araç, tek abonelik</h1>
+        <p class="lead" data-i18n="toolspage.lead">Hepsi tek aboneliğin içinde. Yeni araçlar her ay ekleniyor — bekleme listesine katılırsanız ilk siz haber alırsınız.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="tools-bar reveal">
+          <button class="is-active" data-filter="all" data-i18n="tools.filter.all">Tümü</button>
+          <button data-filter="viz" data-i18n="tools.filter.viz">Görselleştirme</button>
+          <button data-filter="doc" data-i18n="tools.filter.doc">Dokümantasyon</button>
+          <button data-filter="anl" data-i18n="tools.filter.anl">Analiz & Koordinasyon</button>
+          <button data-filter="ofc" data-i18n="tools.filter.ofc">Ofis & Üretkenlik</button>
+          <button data-filter="gen" data-i18n="tools.filter.gen">Üretken AI</button>
+        </div>
+
+        <div class="tools reveal" id="tools-grid"></div>
+      </div>
+    </section>
+
+    <section class="cta-strip" id="waitlist">
+      <div class="wrap">
+        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
+        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli.</p>
+        <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
+          <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
+          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+        </form>
+        <p class="signup__msg"></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-drawer"></div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/tools.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    window.BIMHUB_RENDER = function () {
+      var activeBtn = document.querySelector('.tools-bar button.is-active');
+      var cat = activeBtn ? activeBtn.dataset.filter : "all";
+      var list = cat === "all" ? window.BIMHUB_TOOLS : window.BIMHUB_TOOLS.filter(function(t){ return t.cat === cat; });
+      window.renderTools("#tools-grid", list);
+    };
+  </script>
+</body>
+</html>

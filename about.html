@@ -3,83 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hikâyemiz · Esse</title>
-  <meta name="description" content="Esse'nin hikâyesi — sadelikte gizli zarafet. Modern kadının zamansız gardırobu için özenle tasarlanmış butik moda.">
+  <title>Hakkımızda · BIMHub</title>
+  <meta name="description" data-i18n="about.lead" content="BIMHub, küçük ama keskin yapay zekâ araçlarıyla mimarın günlük tekrar eden işlerini ortadan kaldırmak için kuruldu.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- PWA / iOS uygulama deneyimi -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#2E2820">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Esse">
+  <meta name="theme-color" content="#FAFAF7">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon-152.png">
-  <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/icon-167.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
 </head>
 <body data-page="about">
   <div id="site-header"></div>
 
   <main>
-    <section class="pagehead">
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <span class="eyebrow" data-i18n="about.eyebrow">Hakkımızda</span>
+        <h1>
+          <span data-i18n="about.title.a">Yapı sektörü</span>
+          <em data-i18n="about.title.b">yavaş.</em>
+          <span data-i18n="about.title.c">Hızlandıralım.</span>
+        </h1>
+        <p class="lead" data-i18n="about.lead">BIMHub, küçük ama keskin yapay zekâ araçlarıyla mimarın, mühendisin ve yüklenicinin günlük tekrar eden işlerini ortadan kaldırmak için kuruldu.</p>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap">
-        <div class="breadcrumb"><a href="index.html">Anasayfa</a> · <span>Hikâyemiz</span></div>
-        <h1>Hikâyemiz</h1>
-        <p>Sadelikte gizli zarafet — Esse'nin doğuş hikâyesi.</p>
-      </div>
-    </section>
+        <div class="about-split reveal">
+          <div>
+            <p data-i18n="about.body1">Mimarlık ofislerinde günlerce süren işlerin çoğu, aslında tekrar eden teknik dönüşümlerdir.</p>
+            <p data-i18n="about.body2">Bizim odağımız büyük bir CAD platformu yapmak değil — küçük ve odaklı araçların toplamı, en sevdiğiniz alete dönüşür.</p>
+          </div>
+          <!-- Architectural side illustration -->
+          <div aria-hidden="true">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+              <defs>
+                <pattern id="bp2" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(14,14,12,.07)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="320" fill="#FAFAF7"/>
+              <rect width="400" height="320" fill="url(#bp2)"/>
+              <!-- Plan view of building -->
+              <g transform="translate(40 40)" fill="none" stroke="#0E0E0C" stroke-width="1.2">
+                <rect x="0" y="0" width="320" height="200"/>
+                <path d="M 0 80 L 320 80 M 0 140 L 200 140 M 200 80 L 200 200 M 120 0 L 120 80 M 60 140 L 60 200 M 260 80 L 260 140"/>
+                <!-- Door swings -->
+                <path d="M 60 80 A 16 16 0 0 1 60 64" />
+                <path d="M 200 140 A 14 14 0 0 0 186 140" />
+                <!-- Dimensions -->
+                <g stroke="#86867E" stroke-width=".8">
+                  <path d="M 0 -20 L 320 -20 M 0 -24 L 0 -16 M 320 -24 L 320 -16 M 120 -24 L 120 -16"/>
+                  <path d="M -20 0 L -20 200 M -24 0 L -16 0 M -24 200 L -16 200 M -24 80 L -16 80"/>
+                </g>
+                <g font-family="JetBrains Mono, monospace" font-size="9" fill="#86867E" text-anchor="middle">
+                  <text x="60" y="-28">5.20</text>
+                  <text x="220" y="-28">8.40</text>
+                  <text x="-32" y="44" transform="rotate(-90 -32 44)">4.00</text>
+                  <text x="-32" y="144" transform="rotate(-90 -32 144)">6.00</text>
+                </g>
+                <!-- Furniture squares -->
+                <g stroke-width=".8" opacity=".7">
+                  <rect x="20" y="20" width="40" height="40"/>
+                  <rect x="140" y="100" width="48" height="28"/>
+                  <rect x="220" y="100" width="30" height="30"/>
+                </g>
+                <circle cx="80" cy="40" r="3" fill="#B47B3E" stroke="none"/>
+                <line x1="83" y1="40" x2="160" y2="-10" stroke="#B47B3E" stroke-width=".8"/>
+                <text x="164" y="-12" font-family="JetBrains Mono, monospace" font-size="9" fill="#B47B3E">A·01</text>
+              </g>
+            </svg>
+          </div>
+        </div>
 
-    <section class="section wrap">
-      <div class="split reveal">
-        <div class="split__media"><img src="assets/img/look-1.jpg" alt="Esse"></div>
-        <div class="split__body">
-          <span class="eyebrow">Esse Nedir</span>
-          <h2>Bir kelimeden fazlası</h2>
-          <p class="lead">Esse, Latince'de "var olmak", "öz" anlamına gelir. Bizim için ise modern kadının özüne, sade ve zamansız zarafetine bir saygı duruşudur.</p>
-          <p>Küçük bir atölyede; gösterişten uzak ama her detayında özen barındıran bir moda anlayışıyla yola çıktık. Trendlerin peşinden koşmak yerine, yıllarca dolabınızda kalacak parçalar tasarlamayı seçtik.</p>
-          <p class="signature">Esin Erbey Yağcı</p>
-          <p class="muted" style="font-size:13px;letter-spacing:.1em">Kurucu & Kreatif Direktör</p>
+        <div class="section-head reveal" style="margin-top: 96px;">
+          <span class="eyebrow" data-i18n="about.principles">İlkelerimiz</span>
+          <h2 data-i18n="pillars.title">Tek platform, sayısız araç</h2>
+        </div>
+
+        <div class="principles reveal">
+          <div class="principle">
+            <div class="principle__num">01</div>
+            <h4 data-i18n="pr1.t">Mimarlar için, mimarlarla</h4>
+            <p data-i18n="pr1.d">Ekibimizde gerçek BIM yöneticileri var. Her özelliği önce kendi iş akışımızda denedik.</p>
+          </div>
+          <div class="principle">
+            <div class="principle__num">02</div>
+            <h4 data-i18n="pr2.t">Şeffaf fiyat</h4>
+            <p data-i18n="pr2.d">Demoda fiyat saklayan, satıcı çağıran yok. Web sitesinde, açıkça.</p>
+          </div>
+          <div class="principle">
+            <div class="principle__num">03</div>
+            <h4 data-i18n="pr3.t">Veriniz sizindir</h4>
+            <p data-i18n="pr3.d">Eğitimde kullanmayız, satmayız. 30 gün sonra otomatik silinir.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section--tight wrap">
-      <div class="split split--rev reveal">
-        <div class="split__media"><img src="assets/img/look-3.jpg" alt="Esse kumaş"></div>
-        <div class="split__body">
-          <span class="eyebrow">Felsefemiz</span>
-          <h2>Az ama öz</h2>
-          <p>Her sezon onlarca yeni parça çıkarmak yerine, özenle seçilmiş küçük koleksiyonlara inanıyoruz. Daha az, ama daha iyi.</p>
-          <p>Kumaşlarımızı dökümü, dayanıklılığı ve teni ile kurduğu ilişkiye göre seçiyoruz. Çünkü gerçek zarafet, en çok da dokunduğunda hissedilir.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section wrap">
-      <div class="s-head reveal">
-        <span class="eyebrow">Değerlerimiz</span>
-        <h2>Bizi biz yapan</h2>
-      </div>
-      <div class="values">
-        <div class="value reveal" id="v1"><h3>Zamansız Tasarım</h3><p>Sezonu değil, kadını merkeze alan; yıllarca giyilecek sade çizgiler.</p></div>
-        <div class="value reveal" id="v2"><h3>Özenli Üretim</h3><p>Küçük partiler hâlinde, kendi atölyemizde özenle dikilen parçalar.</p></div>
-        <div class="value reveal" id="v3"><h3>Bilinçli Kumaş</h3><p>Doğal ve kaliteli kumaşlar; tene yakın, dayanıklı ve sürdürülebilir.</p></div>
-      </div>
-    </section>
-
-    <section class="banner">
-      <img src="assets/img/hero.jpg" alt="Esse">
-      <div class="banner__inner">
-        <span class="eyebrow">Davet</span>
-        <h2>Esse dünyasına katılın</h2>
-        <p>Yeni koleksiyonu keşfedin, gardırobunuza zamansız bir dokunuş ekleyin.</p>
-        <a href="shop.html" class="btn btn--light">Koleksiyonu Keşfet</a>
+    <section class="cta-strip" id="waitlist">
+      <div class="wrap">
+        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
+        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli.</p>
+        <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
+          <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
+          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
+        </form>
+        <p class="signup__msg"></p>
       </div>
     </section>
   </main>
@@ -87,16 +121,8 @@
   <div id="site-footer"></div>
   <div id="site-drawer"></div>
 
-  <script src="assets/js/products.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/tools.js"></script>
   <script src="assets/js/app.js"></script>
-  <script>
-    window.ESSE_PAGE = function (ctx) {
-      var icons = { v1: ctx.I.scissors, v2: ctx.I.heart, v3: ctx.I.leaf };
-      Object.keys(icons).forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.insertAdjacentHTML("afterbegin", icons[id]);
-      });
-    };
-  </script>
 </body>
 </html>

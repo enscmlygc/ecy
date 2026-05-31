@@ -1,17 +1,17 @@
-# Esse — Netlify yapılandırması
-# Statik site: build adımı yok, kök dizin doğrudan yayınlanır.
+# BIMHub — Netlify configuration
+# Static site: no build step; root deploys directly.
 
 [build]
   publish = "."
   command = ""
 
-# Statik varlıkları uzun süre önbelleğe al (görsel, css, js)
+# Long cache for static assets (images, css, js)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# PWA manifest & service worker doğru servis edilsin
+# Manifest & service worker
 [[headers]]
   for = "/manifest.webmanifest"
   [headers.values]
@@ -22,7 +22,7 @@
   [headers.values]
     Cache-Control = "no-cache"
 
-# Temel güvenlik başlıkları
+# Basic security headers
 [[headers]]
   for = "/*"
   [headers.values]

@@ -3,169 +3,329 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esse · Zarafetin Sade Hâli</title>
-  <meta name="description" content="Esse — modern kadının zarafetini sade, zamansız ve özenle seçilmiş parçalarla buluşturan butik moda evi. Spring / Summer '26 koleksiyonu yayında.">
+  <title>BIMHub · Tüm BIM iş akışınız, tek merkezde</title>
+  <meta name="description" data-i18n="hero.lead" content="Eskizden metraja, koordinasyondan rendere — küçük, odaklı yapay zekâ araçları. Bir abonelik, sınırsız araç.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- PWA / iOS uygulama deneyimi -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#2E2820">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Esse">
+  <meta name="theme-color" content="#FAFAF7">
+  <meta name="apple-mobile-web-app-title" content="BIMHub">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon-152.png">
-  <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/icon-167.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BIMHub — One Hub for All BIM Tools">
+  <meta property="og:description" content="Sketch to render, takeoff to clash. Small focused AI tools for AEC.">
+  <meta property="og:type" content="website">
 </head>
 <body data-page="home">
   <div id="site-header"></div>
 
   <main>
-    <!-- HERO -->
+    <!-- ════════════════ HERO ════════════════ -->
     <section class="hero">
-      <div class="hero__img" data-parallax="0.12"><img src="assets/img/hero.jpg" alt="Esse Spring/Summer '26 koleksiyonu" fetchpriority="high"></div>
-      <div class="wrap">
-        <div class="hero__inner">
-          <span class="eyebrow">Spring / Summer '26</span>
-          <h1>Zarafetin<br><em>sade</em> hâli</h1>
-          <p>Modern kadının gardırobuna zamansız bir dokunuş. Özenle seçilmiş kumaşlar, sade çizgiler, sıcak nötr tonlar.</p>
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+          <h1>
+            <span data-i18n="hero.title.a">Tüm BIM iş akışınız</span>
+            <em data-i18n="hero.title.b">tek</em>
+            <span data-i18n="hero.title.c">merkezde.</span>
+          </h1>
+          <p class="hero__lead" data-i18n="hero.lead">Eskizden metraja, koordinasyondan rendere — küçük, odaklı yapay zekâ araçları. Bir abonelik, sınırsız araç.</p>
           <div class="hero__cta">
-            <a href="shop.html" class="btn">Koleksiyonu Keşfet</a>
-            <a href="about.html" class="btn btn--ghost">Hikâyemiz</a>
+            <a href="#waitlist" class="btn"><span data-i18n="hero.cta.primary">14 Gün Ücretsiz Deneyin</span> <span class="arrow">→</span></a>
+            <a href="tools.html" class="btn btn--ghost" data-i18n="hero.cta.secondary">Araçları Gör</a>
+          </div>
+          <div class="hero__meta">
+            <span><b>20</b> <span data-i18n="hero.meta.tools">Araç</span></span>
+            <span><b>2</b> <span data-i18n="hero.meta.langs">Dil</span></span>
+            <span><b>·</b> <span data-i18n="hero.meta.access">Erken Erişim</span></span>
+          </div>
+        </div>
+
+        <!-- Architectural isometric BIM illustration -->
+        <div class="hero__visual reveal" aria-hidden="true">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="bp" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(14,14,12,.06)" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="ground" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#F4F2EC"/>
+                <stop offset="1" stop-color="#FAFAF7"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="600" fill="url(#bp)"/>
+
+            <!-- Isometric building wireframe (compass) -->
+            <g transform="translate(300 330)" fill="none" stroke="#0E0E0C" stroke-width="1.2" stroke-linejoin="round">
+              <!-- Base slab -->
+              <path d="M -180 60 L 0 160 L 180 60 L 0 -40 Z" fill="url(#ground)" stroke="#0E0E0C"/>
+              <!-- Floor 1 -->
+              <g transform="translate(0 -70)">
+                <path d="M -160 50 L 0 140 L 160 50 L 0 -40 Z" fill="#FFFFFF" opacity=".85" stroke="#0E0E0C"/>
+                <path d="M -160 50 L -160 0 L 0 -90 L 160 0 L 160 50" stroke="#0E0E0C"/>
+                <path d="M 0 140 L 0 90" />
+                <!-- Mullions -->
+                <path d="M -120 28 L -120 -22 M -80 6 L -80 -44 M -40 -16 L -40 -66 M 40 -16 L 40 -66 M 80 6 L 80 -44 M 120 28 L 120 -22" opacity=".4" stroke-dasharray="3 4"/>
+              </g>
+              <!-- Floor 2 -->
+              <g transform="translate(0 -160)">
+                <path d="M -130 40 L 0 110 L 130 40 L 0 -30 Z" fill="#FFFFFF" opacity=".88" stroke="#0E0E0C"/>
+                <path d="M -130 40 L -130 -5 L 0 -75 L 130 -5 L 130 40" stroke="#0E0E0C"/>
+                <path d="M 0 110 L 0 65" />
+                <path d="M -90 20 L -90 -25 M -45 -2 L -45 -47 M 45 -2 L 45 -47 M 90 20 L 90 -25" opacity=".4" stroke-dasharray="3 4"/>
+              </g>
+              <!-- Roof -->
+              <g transform="translate(0 -240)">
+                <path d="M -100 30 L 0 80 L 100 30 L 0 -20 Z" fill="#0E0E0C"/>
+                <path d="M 0 80 L 0 40" stroke="#FAFAF7"/>
+              </g>
+              <!-- Annotation pins -->
+              <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing=".1em" fill="#B47B3E">
+                <circle cx="180" cy="60" r="3"/>
+                <line x1="183" y1="60" x2="230" y2="40" stroke="#B47B3E" stroke-width=".8"/>
+                <text x="234" y="44">IFC.4</text>
+
+                <circle cx="-160" cy="-20" r="3"/>
+                <line x1="-163" y1="-20" x2="-220" y2="-50" stroke="#B47B3E" stroke-width=".8"/>
+                <text x="-262" y="-54">A·02</text>
+
+                <circle cx="0" cy="-260" r="3"/>
+                <line x1="0" y1="-263" x2="0" y2="-290" stroke="#B47B3E" stroke-width=".8"/>
+                <text x="-30" y="-296">+24.30</text>
+              </g>
+              <!-- Cardinal -->
+              <g transform="translate(220 180)" font-family="JetBrains Mono, monospace" font-size="9" fill="#86867E">
+                <circle r="14" fill="none" stroke="#86867E" stroke-width=".8"/>
+                <path d="M0 -10 L 3 0 L 0 10 L -3 0 Z" fill="#0E0E0C"/>
+                <text x="-3" y="-18">N</text>
+              </g>
+            </g>
+
+            <!-- Scale bar -->
+            <g transform="translate(40 540)" font-family="JetBrains Mono, monospace" font-size="9" fill="#86867E">
+              <rect x="0" y="0" width="20" height="6" fill="#0E0E0C"/>
+              <rect x="20" y="0" width="20" height="6" fill="none" stroke="#0E0E0C"/>
+              <rect x="40" y="0" width="20" height="6" fill="#0E0E0C"/>
+              <text x="0" y="20">0     5      10 m</text>
+            </g>
+            <!-- Title block -->
+            <g transform="translate(420 540)" font-family="JetBrains Mono, monospace" font-size="9" fill="#86867E" text-anchor="end">
+              <text x="140" y="0">BIMHUB · DEMO · A.001</text>
+              <text x="140" y="14">SCALE 1:200 · IFC 4 · REV B</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ MARQUEE STRIP ════════════════ -->
+    <section class="strip" aria-hidden="true">
+      <div class="strip__track">
+        <span data-i18n="strip.1">Eskizden Rendere</span>
+        <span data-i18n="strip.2">DWG · PDF · IFC · RVT</span>
+        <span data-i18n="strip.3">Otomatik Metraj</span>
+        <span data-i18n="strip.4">AI Çakışma Kontrolü</span>
+        <span data-i18n="strip.5">Türkçe / English</span>
+        <span data-i18n="strip.6">Bulutta · Tarayıcıda</span>
+        <span data-i18n="strip.1">Eskizden Rendere</span>
+        <span data-i18n="strip.2">DWG · PDF · IFC · RVT</span>
+        <span data-i18n="strip.3">Otomatik Metraj</span>
+        <span data-i18n="strip.4">AI Çakışma Kontrolü</span>
+        <span data-i18n="strip.5">Türkçe / English</span>
+        <span data-i18n="strip.6">Bulutta · Tarayıcıda</span>
+      </div>
+    </section>
+
+    <!-- ════════════════ PILLARS ════════════════ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="pillars.eyebrow">Neden BIMHub</span>
+          <h2 data-i18n="pillars.title">Tek platform, sayısız araç</h2>
+        </div>
+        <div class="pillars reveal">
+          <div class="pillar">
+            <div class="pillar__num" data-i18n="p1.num">01</div>
+            <h4 data-i18n="p1.t">Modüler</h4>
+            <p data-i18n="p1.d">İhtiyacınız olanı kullanın. Her araç tek bir işe odaklanır; üstüne yığılan bir CAD canavarı değil.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__num" data-i18n="p2.num">02</div>
+            <h4 data-i18n="p2.t">AI Destekli</h4>
+            <p data-i18n="p2.d">Çakışmaları açıklayan, eskizinizi rende eden, şartnameyi okuyan modeller — el emeği değil, akıl.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__num" data-i18n="p3.num">03</div>
+            <h4 data-i18n="p3.t">Tarayıcıda</h4>
+            <p data-i18n="p3.d">Kurulum yok, lisans bekleme yok. Aç, sürükle bırak, sonuç al. Her cihazda.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__num" data-i18n="p4.num">04</div>
+            <h4 data-i18n="p4.t">İki Dilli</h4>
+            <p data-i18n="p4.d">Türk piyasası için Türk normları. Global proje için English. Tek tıkla geçiş.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRUST -->
-    <section class="trust">
-      <div class="trust__grid">
-        <div class="trust__item" id="t-truck"><b>Ücretsiz Kargo</b><span>1500 ₺ üzeri siparişlerde</span></div>
-        <div class="trust__item" id="t-refresh"><b>Kolay İade</b><span>14 gün içinde koşulsuz</span></div>
-        <div class="trust__item" id="t-lock"><b>Güvenli Ödeme</b><span>256-bit SSL · iyzico</span></div>
-        <div class="trust__item" id="t-gift"><b>Özel Paketleme</b><span>Her sipariş hediye gibi</span></div>
-      </div>
-    </section>
-
-    <!-- AKAN ŞERİT -->
-    <section class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Zarafetin Sade Hâli</span><span>Spring / Summer '26</span><span>Zamansız Tasarım</span><span>Özenli Üretim</span>
-        <span>Zarafetin Sade Hâli</span><span>Spring / Summer '26</span><span>Zamansız Tasarım</span><span>Özenli Üretim</span>
-      </div>
-    </section>
-
-    <!-- KATEGORİLER -->
-    <section class="section wrap">
-      <div class="s-head reveal">
-        <span class="eyebrow">Koleksiyon</span>
-        <h2>Kategoriler</h2>
-        <p>Sezonun ruhunu yansıtan, birlikte ya da tek başına kusursuz parçalar.</p>
-      </div>
-      <div class="cats stagger">
-        <a href="shop.html?cat=elbise" class="cat reveal" data-rev="scale"><img src="assets/img/look-1.jpg" alt="Elbise"><div class="cat__label"><h3>Elbise</h3><span>Keşfet</span></div></a>
-        <a href="shop.html?cat=triko" class="cat reveal" data-rev="scale"><img src="assets/img/look-2.jpg" alt="Triko"><div class="cat__label"><h3>Triko</h3><span>Keşfet</span></div></a>
-        <a href="shop.html?cat=dis-giyim" class="cat reveal" data-rev="scale"><img src="assets/img/look-3.jpg" alt="Dış Giyim"><div class="cat__label"><h3>Dış Giyim</h3><span>Keşfet</span></div></a>
-      </div>
-    </section>
-
-    <!-- YENİ SEZON ÜRÜNLERİ -->
-    <section class="section wrap" style="padding-top:0">
-      <div class="s-head reveal">
-        <span class="eyebrow">Yeni Gelenler</span>
-        <h2>Yeni Sezon</h2>
-        <p>Spring / Summer '26 koleksiyonundan öne çıkan parçalar.</p>
-      </div>
-      <div class="products stagger" id="featured"></div>
-      <div class="section__more reveal"><a href="shop.html" class="btn btn--ghost">Tüm Koleksiyon</a></div>
-    </section>
-
-    <!-- MARKA HİKAYESİ -->
-    <section class="section--tight wrap">
-      <div class="split reveal">
-        <div class="split__media"><img src="assets/img/look-2.jpg" alt="Esse atölyesi"></div>
-        <div class="split__body">
-          <span class="eyebrow">Esse Hakkında</span>
-          <h2>Sadelikte gizli zarafet</h2>
-          <p class="lead">Esse, gösterişten uzak ama her detayında özen barındıran bir moda anlayışıyla doğdu.</p>
-          <p>Her parçayı; dökümünden dikişine, kumaşından rengine kadar zamansız kalacak şekilde seçiyoruz. Amacımız, kadının kendini en rahat ve en zarif hissettiği gardırobu yaratmak.</p>
-          <a href="about.html" class="link-underline">Hikâyemizi Okuyun</a>
+    <!-- ════════════════ TOOLS (Featured 6) ════════════════ -->
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="tools.eyebrow">Araç Kataloğu</span>
+          <h2 data-i18n="tools.title">Küçük araçlar, büyük etki</h2>
+          <p data-i18n="tools.lead">Her biri bir mimarın gerçek hayatta karşılaştığı sıkıntıdan doğdu. Hepsi tek aboneliğin içinde.</p>
+        </div>
+        <div class="tools reveal" id="featured-tools"></div>
+        <div style="margin-top: 40px; display: flex; gap: 14px;" class="reveal">
+          <a href="tools.html" class="btn btn--ghost"><span data-i18n="tools.viewall">Tüm Araçlar</span> <span class="arrow">→</span></a>
         </div>
       </div>
     </section>
 
-    <!-- SİNEMATİK SCROLL BÖLÜMÜ -->
-    <section class="story">
-      <div class="story__sticky">
-        <div class="story__media" data-video="assets/video/reel.mp4">
-          <img src="assets/img/look-3.jpg" alt="Esse koleksiyon" loading="lazy">
+    <!-- ════════════════ HOW IT WORKS ════════════════ -->
+    <section class="section" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="flow.eyebrow">Nasıl Çalışır</span>
+          <h2 data-i18n="flow.title">Üç dakikada sonuç</h2>
         </div>
-        <div class="story__cap">
-          <span class="eyebrow">Esse '26</span>
-          <div class="story__lines">
-            <p class="story__line">Her parça, bir <em>duruş</em>.</p>
-            <p class="story__line">Sadelikte gizli <em>zarafet</em>.</p>
-            <p class="story__line">Dokunduğunda <em>hissedilir</em>.</p>
+        <div class="flow reveal">
+          <div class="flow__step"><div class="flow__num">01</div><h4 data-i18n="f1.t">Yükle</h4><p data-i18n="f1.d">DWG, PDF, IFC, RVT, fotoğraf, eskiz — ne varsa sürükleyip bırakın.</p></div>
+          <div class="flow__step"><div class="flow__num">02</div><h4 data-i18n="f2.t">Aracı seç</h4><p data-i18n="f2.d">Kataloğdan ihtiyacınız olan aracı tıklayın. Kurulum yok.</p></div>
+          <div class="flow__step"><div class="flow__num">03</div><h4 data-i18n="f3.t">AI çalışır</h4><p data-i18n="f3.d">Modeller saniyeler içinde sonuç üretir. Önizleyin, gerekirse ayarlayın.</p></div>
+          <div class="flow__step"><div class="flow__num">04</div><h4 data-i18n="f4.t">İndir</h4><p data-i18n="f4.d">PDF, DWG, IFC, XLSX, PNG — projenize uygun formatta indirin.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ PRICING (3 tier) ════════════════ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="pricing.eyebrow">Fiyatlandırma</span>
+          <h2 data-i18n="pricing.title">Bütçeye göre, ihtiyaca göre</h2>
+          <p data-i18n="pricing.lead">Hobistten ofise kadar herkese uygun katman. Aylık veya yıllık (%17 indirim) seçeneği.</p>
+        </div>
+
+        <div class="billing-toggle reveal">
+          <button type="button" class="is-active" data-bill="monthly"><span data-i18n="pricing.monthly">Aylık</span></button>
+          <button type="button" data-bill="yearly"><span data-i18n="pricing.yearly">Yıllık</span> <span class="save" data-i18n="pricing.save">−%17</span></button>
+        </div>
+
+        <div class="pricing reveal">
+          <!-- Free -->
+          <div class="price">
+            <div class="price__name" data-i18n="price.free.name">Free</div>
+            <h3>€0</h3>
+            <div class="price__desc" data-i18n="price.free.desc">Keşfetmek, denemek ve küçük projeler için.</div>
+            <ul class="price__list">
+              <li data-i18n="price.free.f1">Ayda 5 işlem</li>
+              <li data-i18n="price.free.f2">Tüm araçlara erişim</li>
+              <li data-i18n="price.free.f3">Sonuçlarda filigran</li>
+              <li data-i18n="price.free.f4">Topluluk desteği</li>
+              <li data-i18n="price.free.f5">1 GB depolama</li>
+            </ul>
+            <a href="#waitlist" class="btn btn--ghost" data-i18n="price.free.cta">Hemen Başla</a>
+          </div>
+
+          <!-- Pro -->
+          <div class="price price--feature">
+            <span class="price__tag" data-i18n="price.pro.tag">En Popüler</span>
+            <div class="price__name" data-i18n="price.pro.name">Pro</div>
+            <div class="price__amt" data-price-monthly><b>€19</b><span data-i18n="pricing.per">/ ay</span></div>
+            <div class="price__amt" data-price-yearly style="display:none"><b>€15</b><span data-i18n="pricing.per">/ ay</span></div>
+            <div class="price__desc" data-i18n="price.pro.desc">Serbest çalışan mimar ve küçük büro için.</div>
+            <ul class="price__list">
+              <li data-i18n="price.pro.f1">Sınırsız işlem</li>
+              <li data-i18n="price.pro.f2">Filigransız çıktı</li>
+              <li data-i18n="price.pro.f3">Öncelikli işlem kuyruğu</li>
+              <li data-i18n="price.pro.f4">Yüksek çözünürlük render</li>
+              <li data-i18n="price.pro.f5">100 GB depolama</li>
+              <li data-i18n="price.pro.f6">E-posta desteği</li>
+            </ul>
+            <a href="#waitlist" class="btn" data-i18n="price.pro.cta">14 Gün Ücretsiz</a>
+          </div>
+
+          <!-- Studio -->
+          <div class="price">
+            <div class="price__name" data-i18n="price.studio.name">Studio</div>
+            <div class="price__amt" data-price-monthly><b>€79</b><span data-i18n="pricing.peruser">/ kullanıcı / ay</span></div>
+            <div class="price__amt" data-price-yearly style="display:none"><b>€66</b><span data-i18n="pricing.peruser">/ kullanıcı / ay</span></div>
+            <div class="price__desc" data-i18n="price.studio.desc">Çok kullanıcılı ofis ve kurumsal ekipler.</div>
+            <ul class="price__list">
+              <li data-i18n="price.studio.f1">Pro'daki her şey</li>
+              <li data-i18n="price.studio.f2">Takım çalışma alanı</li>
+              <li data-i18n="price.studio.f3">Ortak aile kütüphanesi</li>
+              <li data-i18n="price.studio.f4">SSO + yönetim paneli</li>
+              <li data-i18n="price.studio.f5">API erişimi</li>
+              <li data-i18n="price.studio.f6">Özel destek + SLA</li>
+            </ul>
+            <a href="#waitlist" class="btn btn--ghost" data-i18n="price.studio.cta">Satış ile Görüşün</a>
           </div>
         </div>
-        <span class="story__scroll">Kaydırın</span>
       </div>
     </section>
 
-    <!-- LOOKBOOK BANNER -->
-    <section class="banner">
-      <img src="assets/img/look-4.jpg" alt="Esse Lookbook" loading="lazy">
-      <div class="banner__inner">
-        <span class="eyebrow">Lookbook '26</span>
-        <h2>Bir mevsim, sonsuz kombin</h2>
-        <p>Sezonun favori parçalarını bir araya getiren ilham veren kombinleri keşfedin.</p>
-        <a href="shop.html" class="btn btn--light">Şimdi Keşfet</a>
+    <!-- ════════════════ FAQ ════════════════ -->
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="faq.eyebrow">Sık Sorulan Sorular</span>
+          <h2 data-i18n="faq.title">Cevapları hızlıca</h2>
+        </div>
+        <div class="faq reveal">
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q1">Erken erişim ne demek?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a1">…</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q2">Dosyalarım güvende mi?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a2">…</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q3">Hangi dosya formatlarını destekliyorsunuz?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a3">…</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q4">Türkiye dışındaki normlara uyumlu mu?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a4">…</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q5">İptal etmek ne kadar kolay?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a5">…</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" type="button"><span data-i18n="faq.q6">Hesap makinemi tamamen değiştirir mi?</span><span class="plus"></span></button>
+            <div class="faq__a"><p data-i18n="faq.a6">…</p></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- İNDİRİM ŞERİDİ -->
-    <section class="section wrap">
-      <div class="s-head reveal">
-        <span class="eyebrow">Fırsatlar</span>
-        <h2>Sezon Sonu Seçkisi</h2>
-        <p>Sevilen parçalar, özel fiyatlarla. Stoklarla sınırlı.</p>
-      </div>
-      <div class="products products--3 stagger" id="onsale"></div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="section news">
-      <div class="wrap news__inner reveal">
-        <span class="eyebrow">Esse Bülteni</span>
-        <h2>Önce siz haberdar olun</h2>
-        <p>Yeni koleksiyonlar, özel davetler ve size özel %10 indirim için aramıza katılın.</p>
-        <form class="news__form" id="newsForm">
-          <input type="email" placeholder="E-posta adresiniz" required aria-label="E-posta">
-          <button type="submit" class="btn">Abone Ol</button>
+    <!-- ════════════════ CTA WAITLIST ════════════════ -->
+    <section class="cta-strip" id="waitlist">
+      <div class="wrap">
+        <span class="eyebrow" style="color: var(--ochre);" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+        <h2 style="margin-top: 18px;"><span data-i18n="cta.title.a">İlk arayı</span> <em data-i18n="cta.title.b">siz açın.</em></h2>
+        <p class="lead" data-i18n="cta.lead">Bekleme listesine katılın; ilk 500 kullanıcı için Pro 3 ay %50 indirimli. Sonra sıradan davet ediliyoruz.</p>
+        <form class="signup" data-waitlist data-redirect="true" autocomplete="off">
+          <input type="email" required data-i18n-attr="placeholder" data-i18n="cta.email" placeholder="ornek@studyo.com">
+          <button type="submit" class="btn btn--ochre"><span data-i18n="cta.button">Bekleme Listesine Katıl</span> <span class="arrow">→</span></button>
         </form>
-        <p class="news__msg" id="newsMsg"></p>
-      </div>
-    </section>
-
-    <!-- INSTAGRAM -->
-    <section class="section--tight wrap" style="padding-bottom:clamp(56px,9vw,110px)">
-      <div class="s-head reveal">
-        <span class="eyebrow">@esse.atelier</span>
-        <h2>Esse'yi takip edin</h2>
-      </div>
-      <div class="insta-grid reveal">
-        <a href="#"><img src="assets/img/look-1.jpg" alt="Esse" loading="lazy"></a>
-        <a href="#"><img src="assets/img/look-3.jpg" alt="Esse" loading="lazy"></a>
-        <a href="#"><img src="assets/img/look-4.jpg" alt="Esse" loading="lazy"></a>
-        <a href="#"><img src="assets/img/look-2.jpg" alt="Esse" loading="lazy"></a>
-        <a href="#"><img src="assets/img/look-5.jpg" alt="Esse" loading="lazy"></a>
-        <a href="#"><img src="assets/img/hero.jpg" alt="Esse" loading="lazy"></a>
+        <p class="signup__msg"></p>
+        <p style="margin-top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: rgba(250,250,247,.5); text-transform: uppercase;" data-i18n="cta.note">Spam yok. Tek tıkla ayrıl.</p>
       </div>
     </section>
   </main>
@@ -173,20 +333,15 @@
   <div id="site-footer"></div>
   <div id="site-drawer"></div>
 
-  <script src="assets/js/products.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/tools.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
-    window.ESSE_PAGE = function (ctx) {
-      // Güven ikonları
-      var map = { "t-truck": ctx.I.truck, "t-refresh": ctx.I.refresh, "t-lock": ctx.I.lock, "t-gift": ctx.I.gift };
-      Object.keys(map).forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.insertAdjacentHTML("afterbegin", map[id]);
-      });
-      // Öne çıkanlar (ilk 4)
-      ctx.renderGrid("#featured", ctx.P.slice(0, 4));
-      // İndirimdekiler
-      ctx.renderGrid("#onsale", ctx.P.filter(function (p) { return p.sale; }));
+    window.BIMHUB_RENDER = function () {
+      // Featured: 6 tools mixed across categories
+      var featured = ["sketch-render","pdf-takeoff","clash-ai","facade-gen","dwg-pdf","spec-reader"];
+      var list = featured.map(function(id){ return window.BIMHUB_TOOLS.find(function(t){ return t.id === id; }); }).filter(Boolean);
+      window.renderTools("#featured-tools", list);
     };
   </script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bekleme Listesi · BIMHub</title>
+  <meta name="description" data-i18n="wl.lead" content="Bekleme listesindesiniz. Sıra size geldiğinde davet alacaksınız.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..500,30..100&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#FAFAF7">
+</head>
+<body data-page="waitlist">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="waitlist-wrap">
+      <div class="wrap">
+        <div class="waitlist-card reveal">
+          <div class="check" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+          </div>
+          <span class="eyebrow" data-i18n="hero.eyebrow">BIM × AI · Erken Erişim</span>
+          <h2 style="margin-top: 16px;" data-i18n="wl.title">Hoş geldiniz.</h2>
+          <p data-i18n="wl.lead">Bekleme listesindesiniz. Sıra size geldiğinde davet e-postası gelecek; üstüne ilk 3 ay Pro %50 indirimli olacak.</p>
+          <p class="mono" id="wl-email" style="color: var(--ochre); margin-bottom: 28px;"></p>
+
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="index.html" class="btn btn--ghost" data-i18n="wl.back">Anasayfaya Dön</a>
+            <button type="button" class="btn btn--ochre" id="share-btn"><span data-i18n="wl.share">Bir arkadaşınızı da davet edin</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-drawer"></div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/tools.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      var url = new URL(location.href);
+      var email = url.searchParams.get("email");
+      if (email) document.getElementById("wl-email").textContent = email;
+
+      document.getElementById("share-btn").addEventListener("click", async function () {
+        var data = { title: "BIMHub", text: "BIM iş akışınızı tek merkezde toplayan AI araç koleksiyonu — erken erişim.", url: location.origin };
+        try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(data.url); this.textContent = "✓ Link kopyalandı"; } }
+        catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>

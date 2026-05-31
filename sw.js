@@ -1,10 +1,11 @@
-/* Esse · Service Worker — çevrimdışı destek ve hızlı açılış */
-const CACHE = "esse-v1";
+/* BIMHub · Service Worker — offline support & fast boot */
+const CACHE = "bimhub-v1";
 const ASSETS = [
-  "/index.html", "/shop.html", "/product.html", "/about.html", "/contact.html",
-  "/assets/css/style.css", "/assets/js/app.js", "/assets/js/products.js",
+  "/index.html", "/tools.html", "/pricing.html", "/about.html", "/waitlist.html",
+  "/assets/css/style.css",
+  "/assets/js/i18n.js", "/assets/js/tools.js", "/assets/js/app.js",
   "/manifest.webmanifest",
-  "/assets/img/favicon.svg",
+  "/assets/img/favicon.svg", "/assets/img/logo.svg",
   "/assets/icons/apple-touch-icon.png", "/assets/icons/icon-192.png", "/assets/icons/icon-512.png"
 ];
 
@@ -23,9 +24,9 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-  if (url.origin !== location.origin) return; // sadece kendi varlıklarımız
+  if (url.origin !== location.origin) return;
 
-  // HTML için: önce ağ, olmazsa önbellek (taze içerik önceliği)
+  // HTML: network-first, fallback to cache
   if (req.mode === "navigate" || (req.headers.get("accept") || "").includes("text/html")) {
     e.respondWith(
       fetch(req).then((res) => {
@@ -37,7 +38,7 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Diğer varlıklar (görsel/CSS/JS): önce önbellek, arkada güncelle
+  // Other assets: cache-first, refresh in background
   e.respondWith(
     caches.match(req).then((cached) => {
       const network = fetch(req).then((res) => {
