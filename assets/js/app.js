@@ -171,10 +171,20 @@
   const cartTotal = () => cart.reduce((s, c) => { const p = byId(c.id); return s + (p ? (p.oldPrice && p.sale ? p.price : p.price) * c.qty : 0); }, 0);
   const cartCount = () => cart.reduce((s, c) => s + c.qty, 0);
 
+  // Fotoğrafsız ürünler için ürünün kendi paletinden zarif, açık tonlu degrade
+  const PH_PAIRS = [
+    ["#EFE3D0", "#FAF6EF"], ["#E7D8C1", "#F4ECE0"], ["#E3D7C6", "#F7F1E7"],
+    ["#EAD9BF", "#F2EADC"], ["#E0D2BE", "#F5EFE4"], ["#ECDFCB", "#F8F3EA"],
+    ["#E6D5BA", "#F3ECDF"], ["#DECEB6", "#F6F0E6"]
+  ];
+  function phStyle(p) {
+    const i = Math.max(0, P.indexOf(p));
+    const [a, b] = PH_PAIRS[i % PH_PAIRS.length];
+    return `--g1:${a};--g2:${b}`;
+  }
   function mediaHtml(p, cls = "") {
-    return p.img
-      ? `<img class="${cls}" src="${p.img}" alt="${p.name}" loading="lazy">`
-      : `<div class="ph ${cls}"></div>`;
+    if (p.img) return `<img class="${cls}" src="${p.img}" alt="${p.name}" loading="lazy">`;
+    return `<div class="ph ${cls}" style="${phStyle(p)}"><b>esse</b><span>${p.cat}</span></div>`;
   }
 
   function renderCart() {
