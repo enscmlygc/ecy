@@ -104,6 +104,7 @@
               <li><a href="#">Giriş Yap</a></li>
               <li><a href="#">Siparişlerim</a></li>
               <li><a href="#">Favorilerim</a></li>
+              <li><a href="index.html#davet">Arkadaşını Davet Et</a></li>
               <li><a href="#">Sipariş Takibi</a></li>
             </ul>
           </div>
@@ -268,6 +269,8 @@
       if (q) { setQty(q.dataset.k, q.dataset.q === "+" ? 1 : -1); return; }
       const rm = e.target.closest("[data-rm]");
       if (rm) { removeItem(rm.dataset.rm); return; }
+      const cp = e.target.closest("[data-copy]");
+      if (cp) { copyCode(cp.dataset.copy); return; }
       if (e.target.closest("#cartToggle")) { openDrawer(); return; }
       if (e.target.closest("#drawerClose") || e.target.id === "overlay") { closeDrawer(); return; }
       if (e.target.closest("#checkout")) { toast("Ödeme adımı yakında — demo mağaza"); return; }
@@ -282,6 +285,23 @@
       const onScroll = () => hdr.classList.toggle("scrolled", window.scrollY > 10);
       window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
     }
+  }
+
+  /* ---- Davet kodu kopyala ---- */
+  function copyCode(code) {
+    const done = () => toast("Davet kodu kopyalandı: " + code);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch(() => fallbackCopy(code, done));
+    } else {
+      fallbackCopy(code, done);
+    }
+  }
+  function fallbackCopy(text, cb) {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); cb(); } catch (e) { /* sessiz */ }
+    document.body.removeChild(ta);
   }
 
   /* ---- Newsletter ---- */
