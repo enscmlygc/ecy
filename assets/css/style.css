@@ -382,48 +382,6 @@ ul { list-style: none; }
 .insta-grid a:hover img { transform: scale(1.08); }
 
 /* =========================================================
-   Müşteri yorumları
-   ========================================================= */
-.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.5vw, 28px); }
-.review {
-  background: var(--cream-2); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: clamp(24px, 3vw, 34px); display: flex; flex-direction: column; gap: 14px;
-}
-.review__stars { color: var(--gold); letter-spacing: .16em; font-size: 14px; }
-.review blockquote {
-  font-family: var(--serif); font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
-  color: var(--espresso); font-style: italic;
-}
-.review figcaption { margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
-.review figcaption b { font-size: 14px; letter-spacing: .02em; color: var(--ink); }
-.review figcaption span { font-size: 11px; color: var(--taupe); letter-spacing: .14em; text-transform: uppercase; }
-
-/* =========================================================
-   Davet et / Referans
-   ========================================================= */
-.refer { background: linear-gradient(135deg, var(--champagne) 0%, var(--cream-2) 100%); }
-.refer__inner { max-width: 640px; margin-inline: auto; text-align: center; }
-.refer h2 { font-size: clamp(30px, 4vw, 46px); margin: 14px 0 14px; color: var(--ink); }
-.refer p { color: var(--espresso); margin-bottom: 30px; font-size: 15.5px; }
-.refer p em { font-style: normal; color: var(--gold-d); font-weight: 500; }
-.refer__code { max-width: 420px; margin: 0 auto 28px; }
-.refer__code-label { display: block; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--taupe); margin-bottom: 10px; }
-.refer__code-box { display: flex; gap: 10px; align-items: stretch; }
-.refer__code-box code {
-  flex: 1; display: grid; place-items: center; font-family: var(--sans); font-size: 18px;
-  letter-spacing: .28em; background: var(--white); border: 1px dashed var(--gold);
-  border-radius: var(--radius); color: var(--gold-d); padding: 14px;
-}
-.refer__code-box .btn { white-space: nowrap; }
-.refer__rewards { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.refer__reward {
-  background: rgba(255, 255, 255, .55); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 18px 26px; min-width: 210px;
-}
-.refer__reward b { display: block; font-family: var(--serif); font-size: 21px; color: var(--ink); margin-bottom: 4px; }
-.refer__reward span { font-size: 13px; color: var(--taupe); }
-
-/* =========================================================
    Footer
    ========================================================= */
 .footer { background: var(--ink); color: #C9BEAD; padding: clamp(56px, 7vw, 84px) 0 30px; }
@@ -687,12 +645,9 @@ ul { list-style: none; }
   .split, .split--rev .split__media { grid-template-columns: 1fr; order: 0; }
   .values { grid-template-columns: 1fr; gap: 34px; }
   .split__media { aspect-ratio: 16/11; }
-  .reviews { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .news__form { flex-direction: column; }
-  .refer__code-box { flex-direction: column; }
-  .refer__reward { min-width: 0; width: 100%; }
   .trust__grid { grid-template-columns: 1fr 1fr; }
   .footer__top { grid-template-columns: 1fr; }
   .insta-grid { grid-template-columns: repeat(3, 1fr); }
