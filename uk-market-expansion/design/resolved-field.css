@@ -1,0 +1,142 @@
+/* ============================================================
+   RESOLVED FIELD — design system
+   measured chaos becoming order. point → line.
+   ECY Architecture & BIM Solutions · UK
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+:root{
+  /* three temperatures of warmth, held in disciplined relation */
+  --ground:      #1A140F;   /* espresso darkness that absorbs light */
+  --ground-2:    #211A13;   /* panel / second depth */
+  --ground-line: #2C2419;   /* hairline on dark */
+  --brass:       #BD9457;   /* brass drawn thin — the point that matters */
+  --brass-lit:   #DBB571;   /* registration / emphasis */
+  --bone:        #ECE3D1;   /* warm off-white — the few words permitted */
+  --bone-dim:    #B9AE99;
+  --ash:         #877C6B;   /* the apparatus of measurement */
+  --ash-dim:     #5B5345;
+
+  --grotesque: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --m: clamp(28px, 4.2vw, 72px);   /* governing margin */
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html,body{
+  background:#0D0A07;
+  color:var(--bone);
+  font-family:var(--grotesque);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---- the page / the plate ------------------------------------ */
+.plate{
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 78% 12%, #221A12 0%, var(--ground) 46%, #150F0B 100%);
+  overflow:hidden;
+  isolation:isolate;
+}
+.plate canvas.field{
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:0; display:block;
+}
+.plate > .ink{ position:relative; z-index:2; height:100%; }
+
+/* faint coordinate grid behind everything */
+.plate::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:
+    linear-gradient(var(--ground-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ground-line) 1px, transparent 1px);
+  background-size: 7.6923% 7.6923%, 7.6923% 7.6923%;
+  opacity:.18;
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 50%, #000 55%, transparent 100%);
+          mask-image:radial-gradient(120% 100% at 50% 50%, #000 55%, transparent 100%);
+}
+
+/* ---- registration marks (corner crosshairs) ------------------ */
+.reg{ position:absolute; z-index:3; width:13px; height:13px; opacity:.55; }
+.reg::before,.reg::after{ content:""; position:absolute; background:var(--ash); }
+.reg::before{ left:50%; top:0; width:1px; height:100%; transform:translateX(-.5px); }
+.reg::after{ top:50%; left:0; height:1px; width:100%; transform:translateY(-.5px); }
+.reg.tl{ left:calc(var(--m) - 6px); top:calc(var(--m) - 6px); }
+.reg.tr{ right:calc(var(--m) - 6px); top:calc(var(--m) - 6px); }
+.reg.bl{ left:calc(var(--m) - 6px); bottom:calc(var(--m) - 6px); }
+.reg.br{ right:calc(var(--m) - 6px); bottom:calc(var(--m) - 6px); }
+
+/* ---- typographic instruments --------------------------------- */
+.mono{ font-family:var(--mono); font-weight:400; }
+.tag{                                   /* clinical margin note */
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--ash); font-weight:400;
+}
+.coord{ font-family:var(--mono); font-size:10.5px; color:var(--ash-dim); letter-spacing:.06em; }
+.brass{ color:var(--brass); }
+.bone{ color:var(--bone); }
+
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.42em;
+  text-transform:uppercase; color:var(--brass);
+}
+
+h1.title{
+  font-weight:300; line-height:.96; letter-spacing:-.02em;
+  font-size:clamp(40px, 6.6vw, 104px); color:var(--bone);
+}
+h1.title em{ font-style:italic; color:var(--brass); font-weight:400; }
+
+h2.head{
+  font-weight:400; line-height:1.0; letter-spacing:-.015em;
+  font-size:clamp(28px, 4.4vw, 60px); color:var(--bone);
+}
+h2.head em{ font-style:italic; color:var(--brass); font-weight:400; }
+
+p.lede{
+  font-weight:300; font-size:clamp(15px,1.45vw,21px); line-height:1.5;
+  color:var(--bone-dim); max-width:46ch;
+}
+p.note{ font-weight:300; font-size:13.5px; line-height:1.6; color:var(--ash); max-width:40ch; }
+
+/* monumental reference numeral anchoring a quiet sea of points */
+.numeral{
+  font-family:var(--grotesque); font-weight:300; line-height:.8;
+  font-size:clamp(80px, 15vw, 230px); letter-spacing:-.04em; color:var(--bone);
+}
+.numeral .unit{
+  font-family:var(--mono); font-size:.085em; letter-spacing:.3em;
+  text-transform:uppercase; color:var(--ash); display:block; margin-top:.4em;
+}
+
+/* a measured row of figures */
+.figures{ display:flex; gap:clamp(26px,4vw,70px); flex-wrap:wrap; }
+.figure b{
+  display:block; font-weight:300; font-size:clamp(34px,4.6vw,62px);
+  letter-spacing:-.03em; color:var(--bone); line-height:1;
+}
+.figure span{
+  display:block; margin-top:10px; font-family:var(--mono); font-size:10.5px;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--ash);
+}
+
+/* index — the dense plate number */
+.index{ font-family:var(--mono); font-size:12px; letter-spacing:.2em; color:var(--ash); }
+.index .n{ color:var(--brass); }
+
+/* a single declared axis line */
+.axisline{ height:1px; background:linear-gradient(90deg, transparent, var(--brass) 18%, var(--brass) 82%, transparent); opacity:.7; }
+
+/* service / measured list */
+.measure{ border-top:1px solid var(--ground-line); }
+.measure li{ list-style:none; display:grid; grid-template-columns:auto 1fr auto;
+  gap:18px; align-items:baseline; padding:15px 0; border-bottom:1px solid var(--ground-line); }
+.measure li .k{ font-family:var(--mono); font-size:11px; color:var(--brass); letter-spacing:.1em; }
+.measure li .v{ font-weight:400; font-size:clamp(15px,1.5vw,19px); color:var(--bone); }
+.measure li .x{ font-family:var(--mono); font-size:10.5px; color:var(--ash-dim); letter-spacing:.16em; text-transform:uppercase; }
+
+a{ color:inherit; }

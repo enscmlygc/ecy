@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECY — Capability Statement</title>
+<link rel="stylesheet" href="resolved-field.css">
+<style>
+  body{ display:flex; justify-content:center; padding:34px 18px; }
+  .sheet{
+    width:794px; height:1123px;            /* A4 portrait @96dpi */
+    display:flex; flex-direction:column;
+    box-shadow:0 40px 120px rgba(0,0,0,.6); border:1px solid #2A2114;
+  }
+  .ink{ display:flex; flex-direction:column; padding:var(--m); height:100%; }
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .wordmark b{ font-weight:500; letter-spacing:.02em; font-size:17px; }
+  .wordmark span{ display:block; }
+  .hero{ margin-top:auto; }
+  .grow{ flex:1 1 auto; }
+  .between{ display:flex; gap:40px; }
+  .between > *{ flex:1; }
+  @media print{
+    @page{ size:A4 portrait; margin:0; }
+    body{ padding:0; background:#0D0A07; }
+    .sheet{ box-shadow:none; border:0; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet plate">
+    <canvas class="field" data-structure="elevation" data-phase="0.62" data-density="1700" data-seed="41"></canvas>
+    <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+
+    <div class="ink">
+      <!-- masthead -->
+      <div class="top">
+        <div class="wordmark">
+          <b>ECY <span class="brass" style="display:inline">·</span> ARCHITECTURE &amp; BIM</b>
+          <span class="tag" style="margin-top:8px">Capability Statement — United Kingdom</span>
+        </div>
+        <div style="text-align:right">
+          <div class="index">PLATE <span class="n">01</span> / 01</div>
+          <div class="coord" style="margin-top:6px">37.0000°N · 35.3213°E</div>
+          <div class="coord">ISO&nbsp;19650</div>
+        </div>
+      </div>
+
+      <div class="grow"></div>
+
+      <!-- declaration -->
+      <div class="hero">
+        <span class="eyebrow">From the scattered, the line</span>
+        <h1 class="title" style="margin-top:22px">Your offshore<br><em>BIM</em> partner.</h1>
+        <p class="lede" style="margin-top:24px">
+          We take the measured chaos — point clouds, deadlines, fragmented models —
+          and resolve it into coordinated, ISO&nbsp;19650 structure. You keep the
+          client and the design intent; we carry the production.
+        </p>
+      </div>
+
+      <div class="grow"></div>
+
+      <!-- the figures -->
+      <div class="figures">
+        <div class="figure"><b>218</b><span>Projects delivered</span></div>
+        <div class="figure"><b>17</b><span>Countries</span></div>
+        <div class="figure"><b>15</b><span>Years, team</span></div>
+        <div class="figure"><b class="brass">26</b><span>Years · UK contact</span></div>
+      </div>
+
+      <div class="axisline" style="margin:30px 0"></div>
+
+      <!-- measured services + why -->
+      <div class="between">
+        <ul class="measure" style="border-top:0">
+          <li><span class="k">S—01</span><span class="v">BIM Modelling · Revit</span><span class="x">LOD 300–400</span></li>
+          <li><span class="k">S—02</span><span class="v">Scan‑to‑BIM</span><span class="x">cloud → model</span></li>
+          <li><span class="k">S—03</span><span class="v">Coordination · Clash</span><span class="x">Navisworks</span></li>
+          <li><span class="k">S—04</span><span class="v">4D / 5D</span><span class="x">P6 · cost</span></li>
+          <li><span class="k">S—05</span><span class="v">BEP &amp; CDE setup</span><span class="x">ISO 19650</span></li>
+        </ul>
+        <div>
+          <span class="tag">Why ECY</span>
+          <p class="note" style="margin-top:14px">
+            A UK‑based point of contact — same time zone, no language gap.
+            Autodesk Expert Elite · buildingSMART openBIM · Primavera P6.
+            Cross‑border delivery: Netherlands, Iraq, 17 countries.
+          </p>
+          <span class="tag" style="display:block;margin-top:22px">Selected field</span>
+          <p class="note" style="margin-top:14px">
+            Erbil International Hospital — structural BIM.<br>
+            HEMA, Emmen — Scan‑to‑BIM.<br>
+            DMY House &amp; villas — design + BIM.
+          </p>
+        </div>
+      </div>
+
+      <div class="grow"></div>
+
+      <!-- contact -->
+      <div class="top" style="align-items:flex-end">
+        <div>
+          <span class="tag">UK Representative</span>
+          <div style="font-size:22px;font-weight:500;margin-top:8px">Rami Daşkın</div>
+          <div class="coord" style="margin-top:6px">{{UK phone}} · {{rami@ecy.com.tr}}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="coord">ECY Architecture &amp; BIM · Adana, Türkiye</div>
+          <div class="coord">info@ecy.com.tr · ecy.com.tr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="field.js"></script>
+</body>
+</html>
