@@ -11,6 +11,18 @@ kemik beyazı sözcükler · monospace koordinatlar.
 | `field.js` | Prosedürel motor — binlerce noktayı dağınıktan çizgiye çözer (canvas) |
 | `capability-statement.html` | Tek sayfa (A4 dikey) capability statement |
 | `deck.html` | 12 slaytlık sunum (16:9) — faz faz çözülen anlatı |
+| `scan-to-bim.html` | Tek karelik Scan‑to‑BIM gösterimi — sol ham nokta bulutu, sağ çözülmüş BIM modeli (hero/PDF olarak da kullanılır) |
+
+### Split mod (Scan‑to‑BIM before→after)
+`field.js` içinde `data-structure="split"`: sol yarı ham nokta bulutu, ortada pirinç
+ayraç, sağ yarı çözülmüş BIM yapısı; açılışta soldan sağa süzülen bir tarama ışını
+bulutu çizgiye çevirir. `scan-to-bim.html` ve deck slayt 07'de kullanılır. Kredi/AI
+gerektirmez — tamamen prosedürel.
+
+> Not: AI foto‑gerçekçi render (nano_banana_pro) görsel başına ~2 kredi ister; bağlı
+> görsel servisinin bakiyesi şu an 0 (free plan). Kredi eklenirse gerçek bir federated
+> model render'ı da üretip canvas üstüne yerleştirebiliriz — ama bu prosedürel dil zaten
+> markayla daha bütünleşik.
 
 ## Görüntüleme
 ```bash

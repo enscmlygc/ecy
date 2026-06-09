@@ -128,7 +128,105 @@
     }
   }
 
+  // ---- split: BEFORE (raw cloud) | AFTER (resolved model) ------
+  function buildSplit(canvas) {
+    var density = parseInt(canvas.dataset.density || "1700", 10);
+    var seed = parseInt(canvas.dataset.seed || "13", 10);
+    var rand = rng(seed);
+    var geo = elevation();
+    var segs = geo.segs, total = 0, lens = segs.map(function (g) {
+      var L = Math.hypot(g[2] - g[0], g[3] - g[1]); total += L; return L;
+    });
+    var ax = geo.axis;
+    // map normalized structure x[.30,.70] y[.12,.90] into the right half window
+    function mapR(x, y) {
+      return [0.545 + (x - 0.30) / 0.40 * 0.40, 0.16 + (y - 0.12) / 0.78 * 0.70];
+    }
+    var rax = mapR(ax[0], ax[1]).concat(mapR(ax[2], ax[3]));
+    var rsegs = segs.map(function (g) { var a = mapR(g[0], g[1]), b = mapR(g[2], g[3]); return [a[0], a[1], b[0], b[1], g[4]]; });
+
+    var pts = [];
+    for (var i = 0; i < density; i++) {
+      var brassPt = rand() < .12, tx, ty, emph = 0;
+      if (brassPt) { var u = rand(); tx = ax[0] + (ax[2] - ax[0]) * u; ty = ax[1] + (ax[3] - ax[1]) * u; emph = 1; }
+      else {
+        var r = rand() * total, k = 0;
+        while (k < lens.length - 1 && r > lens[k]) { r -= lens[k]; k++; }
+        var g = segs[k], t = rand(); tx = g[0] + (g[2] - g[0]) * t; ty = g[1] + (g[3] - g[1]) * t; emph = g[4];
+      }
+      var m = mapR(tx, ty);
+      // raw-scan twin on the left: structure x mirrored to left window + heavy noise
+      var lx = 0.05 + (tx - 0.30) / 0.40 * 0.40 + (rand() - .5) * 0.05;
+      var ly = 0.16 + (ty - 0.12) / 0.78 * 0.70 + (rand() - .5) * 0.05;
+      pts.push({ rx: m[0], ry: m[1], lx: lx, ly: ly, brass: brassPt, emph: emph,
+                 sz: .6 + rand() * 1.0, band: rand() });
+    }
+    return { pts: pts, segs: rsegs, axis: rax, split: true };
+  }
+
+  function renderSplit(canvas, model, sweep) {
+    var ctx = canvas.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== w * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var beam = 0.04 + sweep * 0.46;             // scan beam x-position, sweeps the left half
+
+    // LEFT — raw point cloud (measured truth, unresolved)
+    for (var i = 0; i < model.pts.length; i++) {
+      var p = model.pts[i];
+      var passed = p.lx < beam;                  // beam has captured this mark
+      var a = passed ? 0.16 : (0.30 + p.band * 0.22);
+      ctx.fillStyle = p.brass ? "rgba(208,160,90," + (a).toFixed(3) + ")"
+                              : "rgba(236,227,209," + (a).toFixed(3) + ")";
+      ctx.fillRect(p.lx * w, p.ly * h, p.sz, p.sz);
+    }
+    // the scan beam
+    var bx = beam * w;
+    var grd = ctx.createLinearGradient(bx - 26, 0, bx + 4, 0);
+    grd.addColorStop(0, "rgba(219,181,113,0)"); grd.addColorStop(1, "rgba(219,181,113,.18)");
+    ctx.fillStyle = grd; ctx.fillRect(bx - 26, 0, 30, h);
+    ctx.fillStyle = "rgba(219,181,113,.55)"; ctx.fillRect(bx, 0, 1, h);
+
+    // DIVIDER — the threshold where cloud becomes line
+    ctx.fillStyle = "rgba(189,148,87,.55)"; ctx.fillRect(w * 0.5 - 0.5, h * 0.10, 1, h * 0.80);
+
+    // RIGHT — resolved structure (revealed in step with the sweep)
+    var reveal = Math.min(1, sweep * 1.15);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(w * 0.5, 0, w * 0.5 * reveal + 0.001, h); ctx.clip();
+    ctx.lineWidth = 1; ctx.strokeStyle = "rgba(189,148,87,.26)"; ctx.beginPath();
+    for (var s = 0; s < model.segs.length; s++) { var g = model.segs[s]; ctx.moveTo(g[0] * w, g[1] * h); ctx.lineTo(g[2] * w, g[3] * h); }
+    ctx.stroke();
+    var ax = model.axis; ctx.strokeStyle = "rgba(219,181,113,.5)"; ctx.beginPath();
+    ctx.moveTo(ax[0] * w, ax[1] * h); ctx.lineTo(ax[2] * w, ax[3] * h); ctx.stroke();
+    for (var j = 0; j < model.pts.length; j++) {
+      var q = model.pts[j];
+      ctx.fillStyle = q.brass ? "rgba(208,160,90,.82)"
+                    : q.emph ? "rgba(236,227,209,.66)" : "rgba(236,227,209,.5)";
+      ctx.fillRect(q.rx * w, q.ry * h, q.sz + (q.brass ? .5 : .2), q.sz + (q.brass ? .5 : .2));
+    }
+    ctx.restore();
+  }
+
+  function mountSplit(canvas) {
+    var model = buildSplit(canvas);
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { renderSplit(canvas, model, 1); }
+    else {
+      var start = performance.now(), dur = 2600;
+      (function frame(now) {
+        var k = Math.min(1, (now - start) / dur);
+        renderSplit(canvas, model, easeInOut(k));
+        if (k < 1) requestAnimationFrame(frame);
+      })(start);
+    }
+    new ResizeObserver(function () { renderSplit(canvas, model, 1); }).observe(canvas);
+  }
+
   function mount(canvas) {
+    if (canvas.dataset.structure === "split") { mountSplit(canvas); return; }
     var model = build(canvas);
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var target = model.phase;

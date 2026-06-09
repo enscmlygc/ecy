@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECY — Scan-to-BIM</title>
+<link rel="stylesheet" href="resolved-field.css">
+<style>
+  body{ display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px; }
+  .frame{ position:relative; width:min(96vw,168vh); aspect-ratio:16/9;
+    border:1px solid #2A2114; box-shadow:0 30px 90px rgba(0,0,0,.55); }
+  .ink{ display:flex; flex-direction:column; padding:var(--m); height:100%; }
+  .row{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .grow{ flex:1 1 auto; }
+  .splitlbl{ position:absolute; top:calc(var(--m) + 2px); z-index:3;
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; }
+  .splitlbl.L{ left:calc(25% - 64px); color:var(--ash); }
+  .splitlbl.R{ right:calc(25% - 64px); color:var(--brass); }
+  @media print{ @page{ size:A4 landscape; margin:0; } body{ padding:0; } .frame{ width:100%; height:100%; aspect-ratio:auto; border:0; box-shadow:none; } }
+</style>
+</head>
+<body>
+  <div class="frame plate">
+    <canvas class="field" data-structure="split" data-density="2300" data-seed="58"></canvas>
+    <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+    <span class="splitlbl L">Before · point cloud</span>
+    <span class="splitlbl R">After · BIM model</span>
+    <div class="ink">
+      <div class="row"><span class="tag">ECY · Scan‑to‑BIM</span><span class="index">CLOUD <span class="brass">→</span> LINE</span></div>
+      <div class="grow"></div>
+      <span class="eyebrow">Measured chaos, resolved</span>
+      <h2 class="head" style="margin-top:14px;max-width:20ch">Your point cloud,<br>pulled into <em>structure</em>.</h2>
+      <div class="grow"></div>
+      <div class="row" style="align-items:flex-end">
+        <span class="coord">E57 / RCP → parametric Revit · QA against the registered scan</span>
+        <span class="coord">ISO 19650 · LOD 200–400</span>
+      </div>
+    </div>
+  </div>
+  <script src="field.js"></script>
+</body>
+</html>

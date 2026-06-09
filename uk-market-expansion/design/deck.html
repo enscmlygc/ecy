@@ -23,6 +23,10 @@
   .two.center{ align-items:center; }
   .pad{ display:flex; flex-direction:column; justify-content:center; }
   .navhint{ position:fixed; right:16px; bottom:14px; z-index:40; }
+  .splitlbl{ position:absolute; top:calc(var(--m) + 4px); z-index:3;
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; }
+  .splitlbl.L{ left:calc(25% - 60px); color:var(--ash); }
+  .splitlbl.R{ right:calc(25% - 60px); color:var(--brass); }
 
   /* on-dark cards for pricing / steps */
   .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
@@ -180,8 +184,10 @@
   <!-- 07 · CASE · HEMA (scan-to-bim, the resolution itself) -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="plan" data-phase="0.80" data-density="2000" data-seed="58"></canvas>
+      <canvas class="field" data-structure="split" data-density="2100" data-seed="58"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <span class="splitlbl L">Before · point cloud</span>
+      <span class="splitlbl R">After · BIM model</span>
       <div class="ink">
         <div class="row"><span class="tag">Field 02 · Netherlands</span><span class="index"><span class="n">07</span> / 12</span></div>
         <div class="grow"></div>
