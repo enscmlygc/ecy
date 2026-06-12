@@ -16,6 +16,28 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 
 ---
 
+## 0b) Apollo + manuel gönderim checklist (TR)
+
+İş akışı: **Apollo = sadece veri kaynağı** (firma + ilgili kişi + mail adresi). Gönderim
+Apollo'dan DEĞİL, `rami@ecy.com.tr` kutusundan **elle** yapılır. Bu, deliverability'yi korur
+ve her maile gerçek kişiselleştirme imkânı verir.
+
+**Gönderimden önce (bir kez):**
+- [ ] `rami@ecy.com.tr` Zoho'da açıldı (Admin Console → Users → Add User → `rami`).
+- [ ] **DMARC** eklendi: DNS'e `TXT _dmarc` → `v=DMARC1; p=none; rua=mailto:postmaster@ecy.com.tr`
+      (SPF ve DKIM/`zmail` zaten doğru — ek işlem yok). 2–3 hafta sonra `p=quarantine`.
+- [ ] Rami imzası + profesyonel fotoğraf mail imzasına eklendi.
+
+**Her gönderimde:**
+- [ ] **PPTX/EK YOK.** İlk mail sade metin. Deck'i sadece "yes, send it" diyene 2. mailde gönder.
+- [ ] Her maile **gerçek 1 cümle kişiselleştirme** ({{Personalised line}} boşsa o kişiyi atla).
+- [ ] Gönderen = imza. Bu maileri **Rami** atıyor → her zaman `rami@ecy.com.tr` kutusundan.
+- [ ] Günlük hacim: ilk hafta **≤10/gün**, sonra kademeli **20–25/gün**. Aniden 50 = spam sinyali.
+- [ ] Opt‑out satırını koru (PECR/GDPR).
+- [ ] 5–7 gün dönüş yoksa şablon #6 ile tek takip.
+
+---
+
 ## 1) Mimarlık ofisleri — soğuk mail (Rami'den)
 
 > **Subject:** Revit production support for {{Firm Name}}
@@ -34,6 +56,41 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 > - Competitive rates vs. hiring or local outsourcing
 >
 > Would a quick **15‑minute call** make sense to see if we could ease your production load?
+>
+> Best regards,
+> **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
+> 📱 +44 7786 410586 · ✉️ rami@ecy.com.tr · 🌐 ecy.com.tr
+> *Not relevant? Just reply "no thanks" and I won't follow up.*
+
+---
+
+## 2b) Tier‑1 / büyük yükleniciler — soğuk mail (peak capacity · Rami'den)
+
+*Mace gibi büyük müteahhitlere "peak workload" açısından yaklaşır. Rami'nin `rami@ecy.com.tr`
+kutusundan, elle, kişiselleştirilmiş gönderilir. PPTX EKLENMEZ.*
+
+> **Subject:** Extra BIM capacity for {{Company}}'s peak workloads
+
+> Hi {{First Name}},
+>
+> I'm Rami Daşkın, UK representative for **ECY Architecture & BIM Solutions** — an ISO 19650‑aligned
+> BIM production studio founded by an **Autodesk Expert Elite**, a recognition held by only ~250
+> professionals worldwide.
+>
+> {{Personalised line — e.g. "Congratulations on {{Company}}'s appointment on the {{project}} scheme…"}}
+>
+> We help contractors absorb peak BIM workloads without adding headcount:
+>
+> - Architectural, structural & MEP modelling — LOD 300–400, as‑built to LOD 500
+> - Coordination & clash detection — Navisworks federated models, prioritised reports
+> - Scan‑to‑BIM and rapid tender‑stage model production
+>
+> You keep a UK‑based contact (me) in your time zone; production runs from our Türkiye studio at
+> rates that make large‑volume BIM work genuinely cost‑efficient — delivered to your BEP, naming
+> conventions and CDE.
+>
+> Worth a **15‑minute call**? I'll walk you through a recent before/after — a 3,500 m² Scan‑to‑BIM
+> delivered in 8 weeks — and how we'd plug into your pipeline. Happy to share our capability pack too.
 >
 > Best regards,
 > **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
