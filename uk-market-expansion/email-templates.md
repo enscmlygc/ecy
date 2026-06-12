@@ -37,7 +37,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 >
 > Best regards,
 > **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
-> 📱 {{UK phone}} · ✉️ {{rami@ecy.com.tr}} · 🌐 ecy.com.tr
+> 📱 +44 7786 410586 · ✉️ rami@ecy.com.tr · 🌐 ecy.com.tr
 > *Not relevant? Just reply "no thanks" and I won't follow up.*
 
 ---
@@ -64,7 +64,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 >
 > Best regards,
 > **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
-> 📱 {{UK phone}} · ✉️ {{rami@ecy.com.tr}} · 🌐 ecy.com.tr
+> 📱 +44 7786 410586 · ✉️ rami@ecy.com.tr · 🌐 ecy.com.tr
 > *Not relevant? Just reply "no thanks" and I won't follow up.*
 
 ---
@@ -90,7 +90,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 >
 > Best regards,
 > **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
-> 📱 {{UK phone}} · ✉️ {{rami@ecy.com.tr}} · 🌐 ecy.com.tr
+> 📱 +44 7786 410586 · ✉️ rami@ecy.com.tr · 🌐 ecy.com.tr
 > *Not relevant? Just reply "no thanks" and I won't follow up.*
 
 ---
@@ -116,7 +116,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 >
 > Best regards,
 > **Rami Daşkın** — UK Representative, ECY Architecture & BIM Solutions
-> 📱 {{UK phone}} · ✉️ {{rami@ecy.com.tr}} · 🌐 ecy.com.tr
+> 📱 +44 7786 410586 · ✉️ rami@ecy.com.tr · 🌐 ecy.com.tr
 > *Not relevant? Just reply "no thanks" and I won't follow up.*
 
 ---
@@ -127,7 +127,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 
 > Dear {{First Name}},
 >
-> I'm {{Your Name}}, founder of **ECY Architecture & BIM Solutions**. Over 15 years our team
+> I'm Enes Cemil Yağcı, founder of **ECY Architecture & BIM Solutions**. Over 15 years our team
 > has delivered **218 projects across 17 countries**, and we now work as a dedicated BIM
 > production partner for architecture practices, contractors, survey firms and consultancies.
 >
@@ -139,7 +139,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 > always have a local contact. I'd be glad to arrange a short introductory call.
 >
 > Kind regards,
-> **{{Your Name}}** — Founder, ECY Architecture & BIM Solutions
+> **Enes Cemil Yağcı** — Founder, ECY Architecture & BIM Solutions
 > ✉️ info@ecy.com.tr · 🌐 ecy.com.tr
 
 ---

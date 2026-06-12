@@ -64,33 +64,35 @@ UK teams face:
 
 ---
 
-## Slide 6 — Case study: Erbil International Hospital
+## Slide 6 — Case study: Erbil International Hospital (Iraq)
 - Scope: structural BIM + federated coordination
-- {{LOD 350}} · {{X clashes resolved}} · {{X‑week turnaround}}
-- Outcome: {{coordinated model, reduced site rework}}
+- **LOD 350 · 829 clashes resolved · 20‑week turnaround**
+- Outcome: coordinated model, issues caught in the model not on site
 
-**[VISUAL]** Hastane modelinden federated/struct görsel + clash görüntüsü.
-**(Notes)** Rakamları doldur. Karmaşık, büyük ölçekli işi teslim edebildiğini gösterir.
+**[VISUAL]** Hastane modelinden federated/struct görsel + clash görüntüsü → `projects/erbil/`.
+**(Notes)** Karmaşık, büyük ölçekli işi teslim edebildiğini gösterir.
 
 ---
 
 ## Slide 7 — Case study: HEMA, Emmen (Scan‑to‑BIM)
 - Scope: point cloud → as‑built Revit model
-- {{area / LOD / turnaround}}
+- **3 500 m² · LOD 300 · 8‑week total delivery**
 - Outcome: accurate as‑built basis for refurbishment
 
-**[VISUAL]** Before (renkli point cloud) → After (temiz Revit modeli) yan yana. **En etkili slayt.**
+**[VISUAL]** Before (point cloud) → After (Revit modeli) — split arka plan prosedürel üretiliyor.
 **(Notes)** Survey firmaları için bu slaytta dur, before/after'ı anlat.
 
 ---
 
-## Slide 8 — Case study: DMY House & villas
-- Scope: full architectural design + BIM
-- {{m² / programme}}
-- Outcome: design‑to‑handover under one roof
+## Slide 8 — Selected experience: Leas Pavilion, Folkestone (UK)
+- A heritage commercial scheme in the UK
+- **BIM delivery led by ECY's BIM Manager, Enes Cemil Yağcı** (selected experience / track record)
+- Outcome: part of the UK expertise ECY now brings to British clients
 
-**[VISUAL]** Villa render'ı + plan/model.
-**(Notes)** Uçtan uca yetkinlik; tasarım dilini de anladığımızı gösterir.
+**[VISUAL]** Leas Pavilion görseli → `projects/leas/`. Künye metnini eklersen yer tutucuyla değişir.
+**(Notes / ÖNEMLİ)** Bu proje ECY'nin doğrudan aldığı iş gibi DEĞİL, **BIM Manager'ın profesyonel
+saha tecrübesi** olarak sunulur. Önceki işveren adı GEÇMEZ. "Selected experience · UK" / "Track
+record" çerçevesi yasal olarak güvenli ve dürüst: kişinin yürüttüğü BIM işine atıf yapar.
 
 ---
 
@@ -117,13 +119,16 @@ UK teams face:
 
 ---
 
-## Slide 11 — Your UK contact
+## Slide 11 — Your contacts (UK + Türkiye)
 **Rami Daşkın** — UK Representative
+- +44 7786 410586 · rami@ecy.com.tr
 - 26 years in the UK · same time zone · local meetings
-- Single point of contact from intro to delivery
 
-**[VISUAL]** Rami fotoğrafı + iletişim kutusu + UK haritası işareti.
-**(Notes)** İlişkiyi insana bağla. "You deal with me, not a faceless offshore team."
+**Enes Cemil Yağcı** — Founder & BIM Manager (Türkiye, head office)
+- +90 533 566 67 80 · info@ecy.com.tr · Adana
+
+**[VISUAL]** İki iletişim kutusu yan yana (UK | Türkiye) + fotoğraflar.
+**(Notes)** İlişkiyi insana bağla. "You deal with us, not a faceless offshore team."
 
 ---
 

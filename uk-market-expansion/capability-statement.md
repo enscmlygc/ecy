@@ -37,8 +37,8 @@ You keep the client relationship and the design intent; we take the modelling lo
 
 ## Selected projects
 - **Erbil International Hospital (Iraq)** — structural BIM, federated coordination.
-- **HEMA, Emmen (Netherlands)** — Scan‑to‑BIM, point cloud to as‑built model.
-- **DMY House & villa communities (Türkiye)** — full architectural + BIM delivery.
+- **HEMA, Emmen (Netherlands)** — Scan‑to‑BIM, 3 500 m², point cloud to as‑built model.
+- **Leas Pavilion, Folkestone (UK)** — BIM delivery led by our BIM Manager (selected experience).
 
 ## How we engage
 1. **Intro call (15 min)** — understand your pipeline and pain points.
@@ -47,7 +47,7 @@ You keep the client relationship and the design intent; we take the modelling lo
 
 ## Contact
 **Rami Daşkın** — UK Representative
-📱 {{UK phone}} · ✉️ {{rami@ecy.com.tr}}
+📱 +44 7786 410586 · ✉️ rami@ecy.com.tr
 
 **Head office** — ECY Architecture & BIM Solutions, Adana, Türkiye
 ✉️ info@ecy.com.tr · 📱 +90 533 566 67 80 · 🌐 ecy.com.tr
@@ -58,7 +58,7 @@ You keep the client relationship and the design intent; we take the modelling lo
 ---
 
 ### TR — Kullanım notları
-- `{{UK phone}}` ve `{{rami@ecy.com.tr}}` alanlarını doldur. Rami'ye bir UK numarası
+- `+44 7786 410586` ve `rami@ecy.com.tr` alanlarını doldur. Rami'ye bir UK numarası
   (mobil veya çevrimiçi UK hattı) ve mümkünse `rami@ecy.com.tr` kurumsal mail aç.
 - Bunu Canva/Word'de **tek sayfa PDF**'e dök: üstte logo, sağda Rami iletişim kutusu,
   ortada 3 proje görseli (özellikle Scan‑to‑BIM before/after). Görsel her şeyi satar.
