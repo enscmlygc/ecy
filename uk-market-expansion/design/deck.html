@@ -41,6 +41,11 @@
   .steps b{ font-family:var(--mono); color:var(--brass); font-size:12px; display:block; margin-bottom:8px; }
   .steps p{ font-size:12.5px; color:var(--bone-dim); font-weight:300; line-height:1.45; }
 
+  /* project plates — real imagery mounted on the dark field */
+  .shot{ display:block; width:100%; object-fit:cover; border:1px solid #2A2114; background:#fff; }
+  .shot.wide{ aspect-ratio:2.78/1; margin-top:8px; }
+  .shot.tall{ aspect-ratio:4/3; }
+
   @media print{
     @page{ size:A4 landscape; margin:0; }
     .deck{ height:auto; overflow:visible; }
@@ -173,17 +178,21 @@
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
         <div class="row"><span class="tag">Field 01 · Iraq</span><span class="index"><span class="n">06</span> / 12</span></div>
-        <div class="grow"></div>
-        <span class="eyebrow">Case study</span>
-        <h2 class="head" style="margin-top:14px">Erbil International Hospital</h2>
-        <div class="grow"></div>
-        <div class="figures">
-          <div class="figure"><b>350</b><span>LOD</span></div>
-          <div class="figure"><b class="brass">829</b><span>Clashes resolved</span></div>
-          <div class="figure"><b>20<span style="font-size:.5em"> wk</span></b><span>Turnaround</span></div>
-          <div class="figure"><b>—</b><span>Structural BIM · federated</span></div>
+        <div class="two center">
+          <div class="pad">
+            <span class="eyebrow">Case study</span>
+            <h2 class="head" style="margin-top:14px">Erbil International Hospital</h2>
+            <p class="note" style="margin-top:18px">A large, complex structure brought into a single coordinated model — issues caught in the model, not on site. Structural BIM · federated coordination.</p>
+            <div class="figures" style="margin-top:24px">
+              <div class="figure"><b>350</b><span>LOD</span></div>
+              <div class="figure"><b class="brass">829</b><span>Clashes resolved</span></div>
+              <div class="figure"><b>20<span style="font-size:.5em"> wk</span></b><span>Turnaround</span></div>
+            </div>
+          </div>
+          <div class="pad">
+            <img class="shot tall" src="../pptx/projects/erbil/STRUCTURAL BIM MODELLING AND SHEETS OF HOSPITAL  ERBIL IRAQ.jpg" alt="Erbil International Hospital">
+          </div>
         </div>
-        <p class="note" style="margin-top:22px">A large, complex structure brought into a single coordinated model — issues caught in the model, not on site.</p>
       </div>
     </div>
   </section>
@@ -191,21 +200,27 @@
   <!-- 07 · CASE · HEMA (scan-to-bim, the resolution itself) -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="split" data-density="2100" data-seed="58"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.58" data-density="1600" data-seed="58"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
-      <span class="splitlbl L">Before · point cloud</span>
-      <span class="splitlbl R">After · BIM model</span>
       <div class="ink">
         <div class="row"><span class="tag">Field 02 · Netherlands</span><span class="index"><span class="n">07</span> / 12</span></div>
-        <div class="grow"></div>
-        <span class="eyebrow">Scan‑to‑BIM · cloud resolves to line</span>
-        <h2 class="head" style="margin-top:14px">HEMA, <em>Emmen</em>.</h2>
-        <p class="lede" style="margin-top:20px">A registered point cloud, pulled patiently into an accurate as‑built Revit model — the literal proof of what we do.</p>
-        <div class="grow"></div>
-        <div class="figures">
-          <div class="figure"><b>3 500<span style="font-size:.42em"> m²</span></b><span>Area captured</span></div>
-          <div class="figure"><b class="brass">300</b><span>LOD · delivered</span></div>
-          <div class="figure"><b>8<span style="font-size:.5em"> wk</span></b><span>Total delivery</span></div>
+        <div class="two center">
+          <div class="pad">
+            <span class="eyebrow">Scan‑to‑BIM · cloud resolves to line</span>
+            <h2 class="head" style="margin-top:14px">HEMA, <em>Emmen</em>.</h2>
+            <p class="note" style="margin-top:18px">The same corner, twice: a registered point cloud, pulled patiently into an accurate as‑built Revit model — the literal proof of what we do.</p>
+            <div class="figures" style="margin-top:24px">
+              <div class="figure"><b>3 500<span style="font-size:.42em"> m²</span></b><span>Area captured</span></div>
+              <div class="figure"><b class="brass">300</b><span>LOD · delivered</span></div>
+              <div class="figure"><b>8<span style="font-size:.5em"> wk</span></b><span>Total delivery</span></div>
+            </div>
+          </div>
+          <div class="pad">
+            <span class="tag">Before · registered point cloud</span>
+            <img class="shot wide" src="../pptx/projects/hema/HEMA_012.jpg" alt="HEMA Emmen — registered point cloud">
+            <span class="tag brass" style="display:block;margin-top:16px">After · as‑built Revit model</span>
+            <img class="shot wide" src="../pptx/projects/hema/HEMA_01.png" alt="HEMA Emmen — as-built Revit model">
+          </div>
         </div>
       </div>
     </div>
@@ -218,12 +233,23 @@
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
         <div class="row"><span class="tag">Selected experience · United Kingdom</span><span class="index"><span class="n">08</span> / 12</span></div>
-        <div class="grow"></div>
-        <span class="eyebrow">Track record · UK</span>
-        <h2 class="head" style="margin-top:14px">Leas Pavilion, <em>Folkestone</em></h2>
-        <p class="lede" style="margin-top:20px">A heritage commercial scheme in the United Kingdom. BIM delivery led by ECY's BIM Manager, Enes Cemil Yağcı — part of the expertise we now bring to British clients.</p>
-        <div class="grow"></div>
-        <div class="row"><span class="coord">{{add Leas künye text}}</span><span class="coord">BIM delivery · led by our BIM Manager</span></div>
+        <div class="two center">
+          <div class="pad">
+            <span class="eyebrow">Track record · UK</span>
+            <h2 class="head" style="margin-top:14px">Leas Pavilion, <em>Folkestone</em></h2>
+            <p class="note" style="margin-top:18px">Restoration of a Grade II listed Edwardian tea room (1902), with a new nine‑storey development of 91 sea‑view apartments rising above it.</p>
+            <p class="note" style="margin-top:12px">RIBA Stage 5–7 execution drawings; structural, mechanical &amp; electrical coordination; BIM model and subcontractor drawing review for dimensional accuracy and tolerances — led by ECY's BIM Manager, Enes Cemil Yağcı.</p>
+            <div class="figures" style="margin-top:22px">
+              <div class="figure"><b class="brass">1902</b><span>Grade II listed</span></div>
+              <div class="figure"><b>91</b><span>Apartments</span></div>
+              <div class="figure"><b>5–7</b><span>RIBA stages</span></div>
+              <div class="figure"><b>133,715</b><span>Sq ft</span></div>
+            </div>
+          </div>
+          <div class="pad">
+            <img class="shot tall" src="../pptx/projects/leas/Leas-1.jpg" alt="Leas Pavilion, Folkestone — entrance">
+          </div>
+        </div>
       </div>
     </div>
   </section>

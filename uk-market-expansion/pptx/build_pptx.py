@@ -96,6 +96,14 @@ def cover_fit(src, w_in, h_in, out):
     return out
 
 
+def framed_image(slide, src, x, y, w, h):
+    out = os.path.join(REND, os.path.splitext(os.path.basename(src))[0] + "_fit.jpg")
+    cover_fit(src, w, h, out)
+    pic = slide.shapes.add_picture(out, Inches(x), Inches(y), Inches(w), Inches(h))
+    ln = pic.line; ln.color.rgb = RGBColor(0x2A, 0x21, 0x14); ln.width = Pt(1)
+    return pic
+
+
 def project_image(slide, folder, x, y, w, h):
     imgs = []
     for ext in ("*.jpg", "*.jpeg", "*.png", "*.webp", "*.JPG", "*.PNG"):
@@ -255,25 +263,29 @@ for n, lbl in [("LOD 350", "Detail"), ("829", "Clashes resolved"), ("20 wk", "Tu
         {"runs": [{"t": lbl.upper(), "font": MONO, "size": 8.5, "color": ASH}]}])
     ex += 1.85
 
-# 07 HEMA (split scan-to-bim background)
+# 07 HEMA — the real before/after: registered point cloud → as-built Revit model
 s = slide()
-background(s, "split07", density=2100, seed=58)
+background(s, "s07", structure="grid", phase=.58, density=1600, seed=58)
 masthead(s, "CASE STUDY · NETHERLANDS", "07 / 12")
-tx(s, M, 1.55, 3, 0.4, [{"runs": [{"t": "BEFORE · POINT CLOUD", "font": MONO, "size": 9, "color": ASH}]}])
-tx(s, 7.5, 1.55, 5, 0.4, [{"runs": [{"t": "AFTER · BIM MODEL", "font": MONO, "size": 9, "color": BRASS}]}])
-tx(s, M, 4.4, 6.2, 0.4, [{"runs": [{"t": "SCAN-TO-BIM · CLOUD RESOLVES TO LINE", "font": MONO, "size": 10.5, "color": BRASS}]}])
-tx(s, M, 4.85, 6.4, 1.2, [
+# right column: the literal proof, stacked plates
+tx(s, 6.0, 1.30, 5, 0.3, [{"runs": [{"t": "BEFORE · REGISTERED POINT CLOUD", "font": MONO, "size": 9, "color": ASH}]}])
+framed_image(s, os.path.join(PROJ, "hema", "HEMA_012.jpg"), 6.0, 1.62, 6.4, 2.3)
+tx(s, 6.0, 4.12, 5, 0.3, [{"runs": [{"t": "AFTER · AS-BUILT REVIT MODEL", "font": MONO, "size": 9, "color": BRASS}]}])
+framed_image(s, os.path.join(PROJ, "hema", "HEMA_01.png"), 6.0, 4.44, 6.4, 2.3)
+# left column: the story
+tx(s, M, 1.62, 4.7, 0.4, [{"runs": [{"t": "SCAN-TO-BIM · CLOUD RESOLVES TO LINE", "font": MONO, "size": 10, "color": BRASS}]}])
+tx(s, M, 2.1, 4.8, 1.0, [
     {"runs": [{"t": "HEMA, ", "font": DISP, "size": 34, "color": BONE},
               {"t": "Emmen", "font": DISP, "size": 34, "color": BRASS, "italic": True},
               {"t": ".", "font": DISP, "size": 34, "color": BONE}]}])
-tx(s, M, 5.7, 6.4, 0.8, [{"runs": [{"t": "A registered point cloud pulled patiently into an accurate as-built Revit model — the literal proof of what we do.",
+tx(s, M, 3.0, 4.7, 1.4, [{"runs": [{"t": "The same corner, twice: a registered point cloud pulled patiently into an accurate as-built Revit model — the literal proof of what we do.",
                                     "font": LIGHT, "size": 13, "color": BONEDIM}], "ls": 1.3}])
 hx = M
 for n, lbl in [("3 500 m²", "Area captured"), ("LOD 300", "Delivered"), ("8 wk", "Total delivery")]:
-    tx(s, hx, 6.55, 2.2, 0.9, [
-        {"runs": [{"t": n, "font": LIGHT, "size": 24, "color": BRASS if lbl == "Delivered" else BONE}], "ls": 0.9},
-        {"runs": [{"t": lbl.upper(), "font": MONO, "size": 8.5, "color": ASH}]}])
-    hx += 2.3
+    tx(s, hx, 5.6, 1.7, 0.9, [
+        {"runs": [{"t": n, "font": LIGHT, "size": 22, "color": BRASS if lbl == "Delivered" else BONE}], "ls": 0.9},
+        {"runs": [{"t": lbl.upper(), "font": MONO, "size": 8, "color": ASH}]}])
+    hx += 1.72
 
 # 08 LEAS PAVILION (UK) — framed as the BIM Manager's professional track record (no ESC)
 s = slide()
@@ -282,12 +294,17 @@ masthead(s, "SELECTED EXPERIENCE · UNITED KINGDOM", "08 / 12")
 project_image(s, "leas", 6.7, 1.5, 5.7, 4.2)
 tx(s, M, 1.6, 5.4, 0.4, [{"runs": [{"t": "TRACK RECORD · UK", "font": MONO, "size": 10.5, "color": BRASS}]}])
 tx(s, M, 2.05, 5.6, 1.0, [{"runs": [{"t": "Leas Pavilion", "font": DISP, "size": 32, "color": BONE}]}])
-tx(s, M, 2.85, 5.5, 2.4, [
-    {"runs": [{"t": "Folkestone, Kent — a heritage commercial scheme in the United Kingdom.",
-               "font": LIGHT, "size": 13.5, "color": BONEDIM}], "ls": 1.3, "space_after": 10},
-    {"runs": [{"t": "BIM delivery led by ECY's BIM Manager, Enes Cemil Yağcı, drawing on his professional experience on UK projects — part of the expertise ECY now brings to British clients.",
-               "font": LIGHT, "size": 12.5, "color": ASH}], "ls": 1.35}])
-tx(s, M, 5.5, 5.5, 0.4, [{"runs": [{"t": "{{replace caption with your künye text}}", "font": MONO, "size": 8.5, "color": ASHDIM}]}])
+tx(s, M, 2.85, 5.5, 2.6, [
+    {"runs": [{"t": "Folkestone, Kent — restoration of a Grade II listed Edwardian tea room (1902), with a new nine-storey development of 91 sea-view apartments rising above it.",
+               "font": LIGHT, "size": 13, "color": BONEDIM}], "ls": 1.3, "space_after": 10},
+    {"runs": [{"t": "RIBA Stage 5–7 execution drawings and structural, mechanical & electrical coordination; BIM model and subcontractor drawing review for dimensional accuracy and tolerances — led by ECY's BIM Manager, Enes Cemil Yağcı. Part of the expertise ECY now brings to British clients.",
+               "font": LIGHT, "size": 11.5, "color": ASH}], "ls": 1.35}])
+lx = M
+for n, lbl in [("1902", "Grade II listed"), ("91", "Apartments"), ("5–7", "RIBA stages"), ("133,715", "Sq ft")]:
+    tx(s, lx, 5.75, 1.5, 0.9, [
+        {"runs": [{"t": n, "font": LIGHT, "size": 22, "color": BRASS if lbl == "Grade II listed" else BONE}], "ls": 0.9},
+        {"runs": [{"t": lbl.upper(), "font": MONO, "size": 8, "color": ASH}]}])
+    lx += 1.42
 
 # 09 HOW WE WORK
 s = slide()

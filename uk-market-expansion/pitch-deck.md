@@ -86,17 +86,20 @@ ECY's founder, Enes Cemil Yağcı, is one of them.
 - **3 500 m² · LOD 300 · 8‑week total delivery**
 - Outcome: accurate as‑built basis for refurbishment
 
-**[VISUAL]** Before (point cloud) → After (Revit modeli) — split arka plan prosedürel üretiliyor.
+**[VISUAL]** Gerçek before/after: `HEMA_012.jpg` (kayıtlı nokta bulutu) üstte, `HEMA_01.png`
+(as-built Revit modeli) altta — aynı köşe, iki kez. En güçlü satış görseli.
 **(Notes)** Survey firmaları için bu slaytta dur, before/after'ı anlat.
 
 ---
 
 ## Slide 8 — Selected experience: Leas Pavilion, Folkestone (UK)
-- A heritage commercial scheme in the UK
+- Restoration of a **Grade II listed** Edwardian tea room (1902), with a new nine‑storey
+  development of **91 sea‑view apartments** above · **133,715 sq ft**
+- **RIBA Stage 5–7** execution drawings; structural, mechanical & electrical coordination;
+  BIM model and subcontractor drawing review for dimensional accuracy and tolerances
 - **BIM delivery led by ECY's BIM Manager, Enes Cemil Yağcı** (selected experience / track record)
-- Outcome: part of the UK expertise ECY now brings to British clients
 
-**[VISUAL]** Leas Pavilion görseli → `projects/leas/`. Künye metnini eklersen yer tutucuyla değişir.
+**[VISUAL]** `projects/leas/Leas-1.jpg` (giriş cephesi — heritage + modern kule tek karede).
 **(Notes / ÖNEMLİ)** Bu proje ECY'nin doğrudan aldığı iş gibi DEĞİL, **BIM Manager'ın profesyonel
 saha tecrübesi** olarak sunulur. Önceki işveren adı GEÇMEZ. "Selected experience · UK" / "Track
 record" çerçevesi yasal olarak güvenli ve dürüst: kişinin yürüttüğü BIM işine atıf yapar.
