@@ -210,38 +210,62 @@
     ctx.restore();
   }
 
+  // Animations replay each time a canvas scrolls/navigates into view,
+  // so every frame of the deck shows its resolution — not only the first.
+  var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function animate(canvas, dur, draw) {
+    if (canvas._rfRaf) cancelAnimationFrame(canvas._rfRaf);
+    if (REDUCE) { draw(1); return; }
+    var start = performance.now();
+    (function frame(now) {
+      var k = Math.min(1, (now - start) / dur);
+      draw(k);
+      if (k < 1) canvas._rfRaf = requestAnimationFrame(frame);
+    })(start);
+  }
+
+  var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var c = en.target, rf = c._rf;
+      if (!rf) return;
+      if (en.isIntersecting && en.intersectionRatio >= .4) {
+        if (!rf.played) { rf.played = true; rf.play(); }
+      } else if (en.intersectionRatio === 0) {
+        rf.played = false;                     // re-arm for the next visit
+      }
+    });
+  }, { threshold: [0, .4] }) : null;
+
   function mountSplit(canvas) {
     var model = buildSplit(canvas);
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) { renderSplit(canvas, model, 1); }
-    else {
-      var start = performance.now(), dur = 2600;
-      (function frame(now) {
-        var k = Math.min(1, (now - start) / dur);
-        renderSplit(canvas, model, easeInOut(k));
-        if (k < 1) requestAnimationFrame(frame);
-      })(start);
-    }
-    new ResizeObserver(function () { renderSplit(canvas, model, 1); }).observe(canvas);
+    canvas._rf = {
+      played: false,
+      still: function () { renderSplit(canvas, model, 1); },
+      play: function () {
+        animate(canvas, 2600, function (k) { renderSplit(canvas, model, easeInOut(k)); });
+      }
+    };
+    renderSplit(canvas, model, 0);
+    new ResizeObserver(function () { var rf = canvas._rf; if (rf.played) rf.still(); }).observe(canvas);
+    if (io) io.observe(canvas); else canvas._rf.play();
   }
 
   function mount(canvas) {
     if (canvas.dataset.structure === "split") { mountSplit(canvas); return; }
     var model = build(canvas);
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var target = model.phase;
-    if (reduce) { render(canvas, model, target); }
-    else {
-      var start = performance.now(), dur = 2200, from = Math.max(0, target - 0.55);
-      (function frame(now) {
-        var k = Math.min(1, (now - start) / dur);
-        render(canvas, model, from + (target - from) * k);
-        if (k < 1) requestAnimationFrame(frame);
-      })(start);
-    }
-    var ro = new ResizeObserver(function () { render(canvas, model, target); });
+    var target = model.phase, from = Math.max(0, target - 0.55);
+    canvas._rf = {
+      played: false,
+      still: function () { render(canvas, model, target); },
+      play: function () {
+        animate(canvas, 2200, function (k) { render(canvas, model, from + (target - from) * k); });
+      }
+    };
+    render(canvas, model, from);
+    var ro = new ResizeObserver(function () { var rf = canvas._rf; if (rf.played) rf.still(); });
     ro.observe(canvas);
-    canvas._rf = { model: model, target: target };
+    if (io) io.observe(canvas); else canvas._rf.play();
   }
 
   function init() {

@@ -25,10 +25,11 @@ You keep the client relationship and the design intent; we take the modelling lo
 - **Architectural Design & Turnkey** (for projects outside the UK)
 
 ## Why UK teams choose ECY
+- **Autodesk Expert Elite founder** — a global recognition held by only **~250
+  professionals worldwide**; our founder, Enes Cemil Yağcı, is one of them.
 - **A UK‑based point of contact** — Rami Daşkın, 26 years in the UK. Same time zone,
   no language gap, local meetings.
-- **Certified expertise** — Autodesk Expert Elite · buildingSMART openBIM Foundation ·
-  Oracle Primavera P6.
+- **Certified expertise** — buildingSMART openBIM Foundation · Oracle Primavera P6.
 - **International delivery track record** — incl. the Netherlands and Iraq; comfortable
   with cross‑border, multi‑standard projects.
 - **Competitive rates** — meaningful cost advantage vs. in‑house hires or local outsourcing.

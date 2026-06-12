@@ -29,7 +29,7 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 > {{Personalised line — e.g. "I saw {{Firm}} is expanding its residential portfolio…"}}
 >
 > What tends to matter to the practices we work with:
-> - Autodesk Expert Elite team, LOD 300–400, ISO 19650 workflows
+> - Founded by an **Autodesk Expert Elite** (held by only ~250 professionals worldwide) — LOD 300–400, ISO 19650 workflows
 > - A UK‑based contact (me) — same time zone, local meetings, no language gap
 > - Competitive rates vs. hiring or local outsourcing
 >
@@ -127,9 +127,10 @@ kişiselleştirilmiş, toplu DEĞİL. Her mailde opt‑out cümlesini koru (GDPR
 
 > Dear {{First Name}},
 >
-> I'm Enes Cemil Yağcı, founder of **ECY Architecture & BIM Solutions**. Over 15 years our team
-> has delivered **218 projects across 17 countries**, and we now work as a dedicated BIM
-> production partner for architecture practices, contractors, survey firms and consultancies.
+> I'm Enes Cemil Yağcı, founder of **ECY Architecture & BIM Solutions** and an **Autodesk
+> Expert Elite** — a recognition held by only around 250 professionals worldwide. Over 15 years
+> our team has delivered **218 projects across 17 countries**, and we now work as a dedicated
+> BIM production partner for architecture practices, contractors, survey firms and consultancies.
 >
 > We specialise in BIM modelling (Revit, LOD 300–400), Scan‑to‑BIM, coordination/clash
 > detection and 4D/5D — all ISO 19650‑aligned. Recent work includes Erbil International

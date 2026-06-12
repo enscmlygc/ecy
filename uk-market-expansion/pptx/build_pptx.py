@@ -143,8 +143,11 @@ tx(s, M, 3.3, 11.5, 2.2, [
 ])
 tx(s, M, 5.2, 8.5, 0.8, [{"runs": [{"t": "Your ISO 19650-aligned offshore BIM partner — with a UK-based point of contact.",
                                     "font": LIGHT, "size": 16, "color": BONEDIM}], "ls": 1.3}])
+tx(s, M, 5.85, 10.5, 0.4, [{"runs": [{"t": "FOUNDED BY AN AUTODESK EXPERT ELITE · A RECOGNITION HELD BY ONLY ~250 PROFESSIONALS WORLDWIDE",
+                                      "font": MONO, "size": 9.5, "color": BRASS}]}])
 tx(s, M, 6.55, 11.5, 0.4, [{"runs": [
-    {"t": "Rami Daşkın · UK Representative · " + UK_PHONE + "        ", "font": MONO, "size": 9.5, "color": ASH},
+    {"t": "Enes Cemil Yağcı · Founder & BIM Manager    ·    Rami Daşkın · UK Representative · " + UK_PHONE + "        ",
+     "font": MONO, "size": 9.5, "color": ASH},
     {"t": "ecy.com.tr", "font": MONO, "size": 9.5, "color": ASH}]}])
 
 # 02 WHO WE ARE
@@ -202,24 +205,37 @@ for k, v, x2 in [("S—01", "BIM Modelling · Revit · arch / struct / MEP", "LO
     tx(s, EMU_W.inches - M - 2.4, sy + 0.03, 2.4, 0.4, [{"runs": [{"t": x2.upper(), "font": MONO, "size": 9, "color": ASHDIM}]}], align=PP_ALIGN.RIGHT)
     sy += 0.66
 
-# 05 WHY ECY
+# 05 WHY ECY — Expert Elite featured panel + measured list
 s = slide()
 background(s, "s05", structure="elevation", phase=.55, density=1600, seed=31)
 masthead(s, "WHY ECY", "05 / 12")
-tx(s, M, 2.7, 5.6, 1.8, [
+tx(s, M, 1.9, 5.6, 1.6, [
     {"runs": [{"t": "An axis that ", "font": DISP, "size": 38, "color": BONE},
               {"t": "aligns", "font": DISP, "size": 38, "color": BRASS, "italic": True},
               {"t": ".", "font": DISP, "size": 38, "color": BONE}], "ls": 1.0, "space_after": 12},
     {"runs": [{"t": "One warm metal carries the tension: a contact in your time zone, on UK soil, from intro to delivery.",
                "font": LIGHT, "size": 13.5, "color": ASH}], "ls": 1.35}])
+# Expert Elite panel — the differentiator, framed in brass
+from pptx.enum.shapes import MSO_SHAPE
+ee = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(M), Inches(4.15), Inches(5.6), Inches(2.45))
+ee.fill.solid(); ee.fill.fore_color.rgb = RGBColor(0x24, 0x1C, 0x13)
+ee.line.color.rgb = BRASS; ee.line.width = Pt(1.5)
+ee.shadow.inherit = False
+tx(s, M + 0.28, 4.4, 5.1, 2.0, [
+    {"runs": [{"t": "AUTODESK EXPERT ELITE", "font": MONO, "size": 10, "color": BRASS}], "space_after": 6},
+    {"runs": [{"t": "~250 ", "font": LIGHT, "size": 34, "color": BRASSLIT},
+              {"t": "hold this worldwide", "font": LIGHT, "size": 13, "color": BONEDIM}], "space_after": 6},
+    {"runs": [{"t": "Our founder, Enes Cemil Yağcı, is one of them — Autodesk's global recognition of verified expertise and community contribution.",
+               "font": LIGHT, "size": 11.5, "color": ASH}], "ls": 1.3}])
 wy = 2.6
 for v, x2 in [("UK-based contact — Rami, 26 yrs in the UK", "local"),
-              ("Autodesk Expert Elite · openBIM · P6", "certified"),
+              ("Autodesk Expert Elite founder · ~250 worldwide", "elite"),
+              ("openBIM Foundation · Primavera P6 certified", "certified"),
               ("Delivery across 17 countries", "proven"),
               ("Competitive rates, kept quality", "value")]:
     tx(s, 7.4, wy, 5, 0.5, [{"runs": [
         {"t": "·  ", "font": MONO, "size": 13, "color": BRASS},
-        {"t": v, "font": BODY, "size": 14.5, "color": BONE}]}])
+        {"t": v, "font": BODY, "size": 14.5, "color": BRASSLIT if x2 == "elite" else BONE}]}])
     tx(s, EMU_W.inches - M - 1.7, wy + 0.03, 1.7, 0.4, [{"runs": [{"t": x2.upper(), "font": MONO, "size": 8.5, "color": ASHDIM}]}], align=PP_ALIGN.RIGHT)
     wy += 0.72
 

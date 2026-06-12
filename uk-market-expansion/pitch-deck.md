@@ -10,7 +10,10 @@ altında.
 **ECY Architecture & BIM Solutions**
 *Your ISO 19650‑aligned offshore BIM partner*
 
-UK contact: **Rami Daşkın** · {{UK phone}} · {{rami@ecy.com.tr}} · ecy.com.tr
+*Founded by an Autodesk Expert Elite — a recognition held by only ~250 professionals worldwide.*
+
+**Enes Cemil Yağcı** · Founder & BIM Manager
+UK contact: **Rami Daşkın** · +44 7786 410586 · rami@ecy.com.tr · ecy.com.tr
 
 **[VISUAL]** Tam ekran, koyu zemin üstüne kaliteli bir BIM/Revit federated model render'ı.
 Logo sol üstte.
@@ -53,14 +56,18 @@ UK teams face:
 ---
 
 ## Slide 5 — Why ECY
+**Featured panel — Autodesk Expert Elite:** held by only **~250 professionals worldwide**;
+ECY's founder, Enes Cemil Yağcı, is one of them.
+
 - **UK‑based point of contact** — Rami, 26 years in the UK
-- **Certified** — Autodesk Expert Elite · openBIM · Primavera P6
+- **Autodesk Expert Elite founder** — ~250 worldwide
+- **Certified** — openBIM Foundation · Primavera P6
 - **International delivery** — Netherlands, Iraq, 17 countries
 - **Cost advantage** without quality compromise
 - **Flexible engagement** — per project, per unit, or dedicated resource
 
-**[VISUAL]** Sertifika rozetleri satırı + Rami'nin profesyonel fotoğrafı.
-**(Notes)** En güçlü kozun Rami — "you always have someone in your time zone."
+**[VISUAL]** Pirinç çerçeveli Expert Elite paneli (~250 rakamı büyük puntoyla) + sertifika rozetleri + Rami'nin fotoğrafı.
+**(Notes)** İki koz birden: Rami ("someone in your time zone") + Expert Elite ("verified by Autodesk itself — ~250 people in the world").
 
 ---
 
