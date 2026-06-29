@@ -19,32 +19,71 @@
   .ink{ display:flex; flex-direction:column; padding:var(--m); height:100%; }
   .row{ display:flex; justify-content:space-between; align-items:flex-start; }
   .grow{ flex:1 1 auto; }
-  .two{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(24px,4vw,64px); align-items:end; flex:1; }
-  .two.center{ align-items:center; }
-  .pad{ display:flex; flex-direction:column; justify-content:center; }
   .navhint{ position:fixed; right:16px; bottom:14px; z-index:40; }
-  .splitlbl{ position:absolute; top:calc(var(--m) + 4px); z-index:3;
-    font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; }
-  .splitlbl.L{ left:calc(25% - 60px); color:var(--ash); }
-  .splitlbl.R{ right:calc(25% - 60px); color:var(--brass); }
 
-  /* on-dark cards for pricing / steps */
-  .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .card{ border:1px solid var(--ground-line); padding:18px; background:rgba(33,26,19,.5); }
-  .card.lit{ border-color:var(--brass); background:rgba(189,148,87,.08); }
-  .card h4{ font-weight:500; font-size:16px; margin-bottom:8px; }
-  .card p{ font-size:12.5px; color:var(--ash); line-height:1.5; font-weight:300; }
-  .card .pop{ font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass); display:block; margin-bottom:10px; }
-  .steps{ display:flex; gap:0; counter-reset:s; }
-  .steps div{ flex:1; padding:0 16px; border-left:1px solid var(--ground-line); }
-  .steps div:first-child{ border-left:0; padding-left:0; }
-  .steps b{ font-family:var(--mono); color:var(--brass); font-size:12px; display:block; margin-bottom:8px; }
-  .steps p{ font-size:12.5px; color:var(--bone-dim); font-weight:300; line-height:1.45; }
+  /* premium-minimal helpers */
+  .two-col{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,4vw,64px); align-items:center; flex:1; }
+  .pad{ display:flex; flex-direction:column; justify-content:center; }
+  .stats{ display:flex; gap:clamp(26px,4vw,64px); flex-wrap:wrap; }
+  .stat b{ display:block; font-weight:300; font-size:clamp(26px,3.4vw,42px); letter-spacing:-.03em; color:var(--bone); line-height:1; }
+  .stat.brass b{ color:var(--brass-lit); }
+  .stat span{ display:block; margin-top:9px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ash); }
+  .stat .sub{ font-size:8.5px; letter-spacing:.12em; color:var(--ash-dim); margin-top:3px; }
 
-  /* project plates — real imagery mounted on the dark field */
+  .diff3{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .diff3 > div{ padding:0 clamp(18px,2.2vw,34px); border-left:1px solid var(--ground-line); }
+  .diff3 > div:first-child{ border-left:0; padding-left:0; }
+  .bignum{ font-weight:300; font-size:clamp(34px,4.4vw,54px); letter-spacing:-.03em; color:var(--bone); line-height:1; }
+  .bignum.brass{ color:var(--brass-lit); }
+
+  .fit{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:clamp(16px,3vw,40px); }
+  .fit .zone b{ display:block; font-weight:300; font-size:clamp(28px,3.6vw,46px); color:var(--bone); letter-spacing:-.02em; }
+  .fit .zone.ecy b{ color:var(--brass-lit); }
+  .fit .zone span{ font-family:var(--mono); font-size:10.5px; color:var(--ash); letter-spacing:.06em; }
+  .fit .link{ position:relative; height:1px; background:linear-gradient(90deg,transparent,var(--brass) 15%,var(--brass) 85%,transparent); }
+  .fit .link em{ position:absolute; left:50%; top:-26px; transform:translateX(-50%); font-style:normal;
+    font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass); white-space:nowrap; }
+
+  .rows{ width:100%; }
+  .rows .r{ display:grid; grid-template-columns:170px 1fr; gap:24px; align-items:baseline;
+    padding:14px 0; border-bottom:1px solid var(--ground-line); }
+  .rows .r:first-child{ border-top:1px solid var(--ground-line); }
+  .rows .k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); }
+  .rows .v{ font-weight:300; font-size:clamp(12px,1.15vw,15px); color:var(--bone-dim); line-height:1.4; }
+
+  .artefact{ font-family:var(--mono); color:var(--brass-lit); font-size:clamp(13px,1.3vw,18px); letter-spacing:.04em; }
+  .artefact + .gloss{ font-family:var(--mono); font-size:10px; color:var(--ash); letter-spacing:.06em; margin-top:10px; line-height:1.7; }
+
   .shot{ display:block; width:100%; object-fit:cover; border:1px solid #2A2114; background:#fff; }
-  .shot.wide{ aspect-ratio:2.78/1; margin-top:8px; }
   .shot.tall{ aspect-ratio:4/3; }
+  .shot.wide{ aspect-ratio:2.78/1; }
+
+  .track{ display:flex; gap:0; align-items:flex-start; position:relative; margin-top:8px; }
+  .track::before{ content:""; position:absolute; left:6px; right:6px; top:64px; height:1px;
+    background:linear-gradient(90deg,var(--brass),var(--brass)); opacity:.8; }
+  .track > div{ flex:1; position:relative; padding-right:18px; }
+  .track .n{ font-family:var(--mono); color:var(--brass); font-size:12px; display:block; }
+  .track .nm{ font-weight:500; font-size:clamp(13px,1.4vw,17px); color:var(--bone); margin:6px 0 28px; }
+  .track .tick{ position:absolute; top:60px; left:0; width:1px; height:9px; background:var(--brass-lit); }
+  .track .ds{ font-weight:300; font-size:11.5px; color:var(--bone-dim); line-height:1.4; }
+
+  table.ptable{ width:100%; border-collapse:collapse; margin-top:8px; }
+  table.ptable th, table.ptable td{ text-align:left; padding:13px 16px; border-bottom:1px solid var(--ground-line);
+    font-weight:300; font-size:clamp(11px,1.1vw,13.5px); color:var(--bone-dim); vertical-align:top; }
+  table.ptable th{ font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--ash); border-bottom:0; }
+  table.ptable .rk{ font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ash); }
+  table.ptable thead .mh{ font-family:var(--grotesque); font-weight:500; font-size:clamp(12px,1.2vw,15px); }
+  table.ptable thead .mh small{ font-family:var(--mono); font-size:9px; color:var(--brass); letter-spacing:.1em; display:block; margin-bottom:3px; text-transform:uppercase; }
+  table.ptable col.hi, table.ptable td.hi, table.ptable th.hi{ background:rgba(189,148,87,.06); }
+  table.ptable th.hi{ border-top:2px solid var(--brass); }
+  table.ptable td.hi{ color:var(--bone); }
+  .pop{ font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass); }
+  .terms{ font-family:var(--mono); font-size:9.5px; color:var(--ash); letter-spacing:.04em; margin-top:14px; }
+
+  .contacts{ display:grid; grid-template-columns:1fr 1px 1fr; gap:clamp(24px,4vw,56px); align-items:start; }
+  .contacts .sep{ background:var(--ground-line); }
+  .contacts .nm{ font-size:clamp(20px,2.2vw,26px); font-weight:500; margin-top:8px; }
+  .contacts .ro{ color:var(--brass); font-size:13px; margin-top:4px; }
 
   @media print{
     @page{ size:A4 landscape; margin:0; }
@@ -58,135 +97,223 @@
 <body>
 <div class="deck" id="deck">
 
-  <!-- 01 · COVER — scatter -->
+  <!-- 01 · COVER -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.16" data-density="1900" data-seed="3"></canvas>
+      <canvas class="field" data-structure="elevation" data-phase="0.14" data-density="1200" data-seed="3"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">ECY · ARCHITECTURE &amp; BIM</span><span class="index">01 / 12</span></div>
+        <div class="row"><span class="tag">ECY · ARCHITECTURE &amp; BIM</span><span class="index">01 / 14</span></div>
         <div class="grow"></div>
-        <span class="eyebrow">Resolved field</span>
-        <h1 class="title" style="margin-top:20px">The scattered,<br><em>resolved</em> into form.</h1>
-        <p class="lede" style="margin-top:22px">Your ISO&nbsp;19650‑aligned offshore BIM partner — with a UK‑based point of contact.</p>
-        <p class="coord brass" style="margin-top:16px">Founded by an Autodesk Expert Elite — a recognition held by only ~250 professionals worldwide</p>
-        <div class="grow"></div>
+        <span class="eyebrow">Offshore BIM production partner · United Kingdom</span>
+        <h1 class="title" style="margin-top:20px">The <em>production engine</em><br>behind UK practices.</h1>
+        <p class="lede" style="margin-top:22px">You keep the client and the design intent. We take the modelling load.</p>
+        <div class="axisline" style="width:170px;margin:26px 0 18px"></div>
         <div class="row" style="align-items:flex-end">
-          <span class="coord">Enes Cemil Yağcı · Founder &amp; BIM Manager &nbsp;·&nbsp; Rami Daşkın · UK Representative · +44 7786 410586</span>
+          <span class="coord">Enes Cemil Yağcı — Founder &amp; BIM Manager &nbsp;·&nbsp; <span class="brass">Autodesk Expert Elite · ~250 worldwide</span><br>UK contact: Rami Daşkın · +44 7786 410586 · rami@ecy.com.tr</span>
           <span class="coord">ecy.com.tr</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 02 · WHO WE ARE -->
+  <!-- 02 · DIFFERENTIATORS -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="grid" data-phase="0.32" data-density="1500" data-seed="9"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.30" data-density="900" data-seed="9"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Who we are</span><span class="index"><span class="n">02</span> / 12</span></div>
-        <div class="two center">
+        <div class="row"><span class="tag">Why ECY</span><span class="index"><span class="n">02</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">Three reasons, up front</span>
+        <h2 class="head" style="margin-top:14px">A <em>UK contact</em>, an elite credential, proven delivery.</h2>
+        <div class="grow"></div>
+        <div class="diff3">
+          <div>
+            <div class="bignum brass">~250</div>
+            <span class="tag" style="display:block;margin-top:12px">Expert Elite worldwide</span>
+            <p class="note" style="margin-top:12px">Autodesk Expert Elite-led production — a recognition held by only ~250 professionals worldwide.</p>
+          </div>
+          <div>
+            <div class="bignum">UK</div>
+            <span class="tag" style="display:block;margin-top:12px">Representative · 26 yrs</span>
+            <p class="note" style="margin-top:12px">Rami Daşkın, 26 years in the UK. Same time zone, local meetings, no language gap.</p>
+          </div>
+          <div>
+            <div class="bignum">218</div>
+            <span class="tag" style="display:block;margin-top:12px">Projects · 17 countries</span>
+            <p class="note" style="margin-top:12px">A track record that travels — 15 years' team experience, standards-led throughout.</p>
+          </div>
+        </div>
+        <div class="grow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · UK PROOF · LEAS (BIM Manager's experience) -->
+  <section class="slide">
+    <div class="frame plate">
+      <canvas class="field" data-structure="elevation" data-phase="0.50" data-density="900" data-seed="66"></canvas>
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ink">
+        <div class="row"><span class="tag">UK Experience</span><span class="index"><span class="n">03</span> / 14</span></div>
+        <div class="two-col">
           <div class="pad">
-            <h2 class="head">A young studio,<br>a <em>measured</em> record.</h2>
-            <p class="note" style="margin-top:18px">Founded 2022 in Adana, Türkiye. Standards‑led, ISO&nbsp;19650. We are the production engine behind UK practices, contractors and surveyors — not a competitor.</p>
+            <span class="eyebrow">Folkestone, Kent</span>
+            <h2 class="head" style="margin-top:14px">Leas Pavilion — led by ECY's <em>BIM Manager</em>.</h2>
+            <p class="note" style="margin-top:16px">A UK project led by Enes Cemil Yağcı as BIM Manager — the 1902 Grade II listed tea room, restored beneath a new nine-storey, 91-home development.</p>
+            <ul class="measure" style="margin-top:18px;border-top:0">
+              <li><span class="k">·</span><span class="v">As BIM Manager, Enes led RIBA Stage 5–7 execution-drawing coordination — structural, mechanical &amp; electrical.</span></li>
+              <li><span class="k">·</span><span class="v">He ran the BIM model and subcontractor drawing review for dimensional accuracy and tolerances.</span></li>
+            </ul>
+            <span class="tag" style="display:block;margin-top:18px">Project context</span>
+            <div class="stats" style="margin-top:10px">
+              <div class="stat"><b>133,715</b><span>sq ft</span></div>
+              <div class="stat"><b>91</b><span>apartments</span></div>
+              <div class="stat"><b>9</b><span>storeys</span></div>
+            </div>
           </div>
           <div class="pad">
-            <div class="figures" style="flex-direction:column;gap:22px">
-              <div class="figure"><b>218</b><span>Projects delivered</span></div>
-              <div class="figure"><b>17</b><span>Countries</span></div>
-              <div class="figure"><b>15</b><span>Years of team experience</span></div>
-            </div>
+            <img class="shot tall" src="../pptx/projects/leas/Leas-1.jpg" alt="Leas Pavilion, Folkestone">
+            <span class="coord" style="display:block;margin-top:10px">Project context · BIM delivery led by ECY's BIM Manager</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 03 · PROBLEM -->
+  <!-- 04 · WHY NOW -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.24" data-density="1700" data-seed="17"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.40" data-density="800" data-seed="14"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">The problem</span><span class="index"><span class="n">03</span> / 12</span></div>
+        <div class="row"><span class="tag">Why now</span><span class="index"><span class="n">04</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">UK market conditions · 2025–2026</span>
+        <h2 class="head" style="margin-top:14px">The <em>modelling load</em> is rising. The people aren't.</h2>
         <div class="grow"></div>
-        <h2 class="head" style="max-width:18ch">Demand is measured.<br>Capacity is <em>not</em>.</h2>
-        <div class="grow"></div>
-        <ul class="measure">
-          <li><span class="k">01</span><span class="v">ISO 19650 obligations on almost every project</span><span class="x">regulation</span></li>
-          <li><span class="k">02</span><span class="v">BIM talent is scarce and expensive to hire</span><span class="x">cost</span></li>
-          <li><span class="k">03</span><span class="v">Deadline spikes don't justify permanent headcount</span><span class="x">load</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 · SERVICES -->
-  <section class="slide">
-    <div class="frame plate">
-      <canvas class="field" data-structure="grid" data-phase="0.50" data-density="1600" data-seed="23"></canvas>
-      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
-      <div class="ink">
-        <div class="row"><span class="tag">What we do</span><span class="index"><span class="n">04</span> / 12</span></div>
-        <div class="grow"></div>
-        <h2 class="head">Five instruments.</h2>
-        <ul class="measure" style="margin-top:24px">
-          <li><span class="k">S—01</span><span class="v">BIM Modelling · Revit · arch / struct / MEP</span><span class="x">LOD 300–400</span></li>
-          <li><span class="k">S—02</span><span class="v">Scan‑to‑BIM · point cloud to as‑built</span><span class="x">cloud → model</span></li>
-          <li><span class="k">S—03</span><span class="v">Coordination &amp; Clash Detection</span><span class="x">Navisworks</span></li>
-          <li><span class="k">S—04</span><span class="v">4D / 5D · programme &amp; cost</span><span class="x">Primavera P6</span></li>
-          <li><span class="k">S—05</span><span class="v">BEP &amp; CDE setup</span><span class="x">ISO 19650</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 · WHY ECY -->
-  <section class="slide">
-    <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.55" data-density="1600" data-seed="31"></canvas>
-      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
-      <div class="ink">
-        <div class="row"><span class="tag">Why ECY</span><span class="index"><span class="n">05</span> / 12</span></div>
-        <div class="two center">
-          <div class="pad">
-            <h2 class="head">An axis that <em>aligns</em>.</h2>
-            <p class="note" style="margin-top:18px">One warm metal carries the tension: a contact in your time zone, on UK soil, from intro to delivery.</p>
-            <div style="margin-top:26px;border:1px solid var(--brass);padding:18px 20px;background:rgba(189,148,87,.07)">
-              <span class="tag brass">Autodesk Expert Elite</span>
-              <div class="figures" style="margin-top:10px"><div class="figure"><b class="brass">~250</b><span>hold this worldwide</span></div></div>
-              <p class="note" style="margin-top:8px">Our founder, Enes Cemil Yağcı, is one of them — Autodesk's global recognition of verified expertise.</p>
-            </div>
-          </div>
-          <ul class="measure pad" style="border-top:0">
-            <li><span class="k">·</span><span class="v">UK‑based contact — Rami, 26 yrs in the UK</span><span class="x">local</span></li>
-            <li><span class="k">·</span><span class="v">Autodesk Expert Elite founder · ~250 worldwide</span><span class="x">elite</span></li>
-            <li><span class="k">·</span><span class="v">openBIM Foundation · Primavera P6 certified</span><span class="x">certified</span></li>
-            <li><span class="k">·</span><span class="v">Delivery across 17 countries</span><span class="x">proven</span></li>
-            <li><span class="k">·</span><span class="v">Competitive rates, kept quality</span><span class="x">value</span></li>
+        <div class="two-col" style="grid-template-columns:1.35fr .65fr;align-items:start">
+          <ul class="measure" style="border-top:0">
+            <li><span class="k">·</span><span class="v">Hardest hiring market in years — construction &amp; engineering are the UK's worst-hit sector for recruitment difficulty (BCC, 2024).</span></li>
+            <li><span class="k">·</span><span class="v">BIM headcount is a heavy fixed cost — a Coordinator runs c.£34k–£54k, a Manager up to c.£80k, before on-costs.</span></li>
+            <li><span class="k">·</span><span class="v">Pipeline is recovering as build costs climb — more delivery, less room to staff up permanently (RICS).</span></li>
+            <li><span class="k">·</span><span class="v">Standards are non-negotiable — ISO 19650 on UK public work; the Building Safety Act 'golden thread' on higher-risk buildings.</span></li>
           </ul>
+          <div style="border-left:1px solid var(--ground-line);padding-left:28px">
+            <div class="stat brass" style="margin-bottom:20px"><b>82%</b><span>constr. &amp; eng. firms</span><span class="sub">hiring difficulty · BCC Q2 2024</span></div>
+            <div class="stat" style="margin-bottom:20px"><b>+17%</b><span>forward workload</span><span class="sub">RICS · infra +32%</span></div>
+            <div class="stat"><b>~251.5k</b><span>extra workers by 2028</span><span class="sub">CITB skills network</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 06 · CASE · ERBIL -->
+  <!-- 05 · WHERE WE FIT -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.70" data-density="1800" data-seed="44"></canvas>
+      <canvas class="field" data-structure="elevation" data-phase="0.55" data-density="900" data-seed="31"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Field 01 · Iraq</span><span class="index"><span class="n">06</span> / 12</span></div>
-        <div class="two center">
+        <div class="row"><span class="tag">Where we fit</span><span class="index"><span class="n">05</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">The gap in UK delivery</span>
+        <h2 class="head" style="margin-top:14px">A production engine, <em>not a competitor</em>.</h2>
+        <div class="grow"></div>
+        <div class="fit">
+          <div class="zone"><b>YOU</b><span>Client relationship · design intent · your brand</span></div>
+          <div class="link" style="min-width:clamp(80px,16vw,260px)"><em>the modelling load →</em></div>
+          <div class="zone ecy" style="text-align:right"><b>ECY</b><span>BIM production · on your standards</span></div>
+        </div>
+        <div class="grow"></div>
+        <ul class="measure" style="border-top:0">
+          <li><span class="k">·</span><span class="v">The squeeze: rising ISO 19650 duties, scarce and expensive BIM talent, deadline spikes you can't permanently staff for.</span></li>
+          <li><span class="k">·</span><span class="v">Our answer: a dedicated, standards-led production team that works to your BEP, your naming and your CDE — white-label.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · SERVICES -->
+  <section class="slide">
+    <div class="frame plate">
+      <canvas class="field" data-structure="grid" data-phase="0.50" data-density="900" data-seed="23"></canvas>
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ink">
+        <div class="row"><span class="tag">What we do</span><span class="index"><span class="n">06</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">Five services</span>
+        <h2 class="head" style="margin-top:14px">From point cloud to <em>coordinated, costed</em> model.</h2>
+        <ul class="measure" style="margin-top:22px">
+          <li><span class="k">01</span><span class="v">BIM Modelling · Revit · arch / struct / MEP</span><span class="x">LOD 300–400 · as-built to 500</span></li>
+          <li><span class="k">02</span><span class="v">Scan-to-BIM · point cloud to as-built</span><span class="x">E57 / RCP → Revit</span></li>
+          <li><span class="k">03</span><span class="v">Coordination &amp; Clash Detection</span><span class="x">Navisworks federated</span></li>
+          <li><span class="k">04</span><span class="v">4D / 5D · programme &amp; cost</span><span class="x">Primavera P6</span></li>
+          <li><span class="k">05</span><span class="v">BEP &amp; CDE setup</span><span class="x">ISO 19650</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · UK STANDARDS -->
+  <section class="slide">
+    <div class="frame plate">
+      <canvas class="field" data-structure="grid" data-phase="0.62" data-density="900" data-seed="72"></canvas>
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ink">
+        <div class="row"><span class="tag">UK Standards</span><span class="index"><span class="n">07</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">ISO 19650 by default</span>
+        <h2 class="head" style="margin-top:14px">Built to <em>UK standard</em>, not retrofitted to it.</h2>
+        <div class="two-col" style="grid-template-columns:1.45fr .55fr;align-items:center;margin-top:8px">
+          <div class="rows">
+            <div class="r"><span class="k">Framework</span><span class="v">ISO 19650-1 to -5 — delivery, operational, exchange &amp; security-minded information management</span></div>
+            <div class="r"><span class="k">Naming</span><span class="v">BS EN ISO 19650-2 UK convention (Project-Originator-Volume-Level-Type-Role-Number); supersedes BS 1192</span></div>
+            <div class="r"><span class="k">CDE workflow</span><span class="v">Controlled suitability codes S0 WIP → S1–S4 Shared → A/B Published — full revision traceability</span></div>
+            <div class="r"><span class="k">Stage-aligned</span><span class="v">RIBA Plan of Work 2020 stages 0–7; proven at Stages 5–7 execution</span></div>
+          </div>
           <div class="pad">
-            <span class="eyebrow">Case study</span>
-            <h2 class="head" style="margin-top:14px">Erbil International Hospital</h2>
-            <p class="note" style="margin-top:18px">A large, complex structure brought into a single coordinated model — issues caught in the model, not on site. Structural BIM · federated coordination.</p>
-            <div class="figures" style="margin-top:24px">
-              <div class="figure"><b>350</b><span>LOD</span></div>
-              <div class="figure"><b class="brass">829</b><span>Clashes resolved</span></div>
-              <div class="figure"><b>20<span style="font-size:.5em"> wk</span></b><span>Turnaround</span></div>
+            <span class="tag">Naming example</span>
+            <div class="artefact" style="margin-top:10px">WBP-EDO-00-XX-SP-Z-0001</div>
+            <div class="gloss">Project · Originator · Volume<br>Level · Type · Role · Number</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · DE-RISK -->
+  <section class="slide">
+    <div class="frame plate">
+      <canvas class="field" data-structure="elevation" data-phase="0.60" data-density="900" data-seed="44"></canvas>
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ink">
+        <div class="row"><span class="tag">De-risking offshore</span><span class="index"><span class="n">08</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">Your three fears, answered</span>
+        <h2 class="head" style="margin-top:14px">Quality, revision risk, communication — each with <em>a mechanism</em>.</h2>
+        <div class="grow"></div>
+        <div class="rows">
+          <div class="r"><span class="k">Quality</span><span class="v">Every model is QA-gated against the BEP and EIR — model-health checks, Navisworks clash validation and a documented review at the S0 → S1/S2 transition. No model is issued to your CDE until it passes the QA gate against the agreed LOD.</span></div>
+          <div class="r"><span class="k">Revision risk</span><span class="v">ISO 19650 CDE workflow with controlled status codes (S0→S4→A/B): every issue traceable, single-source-of-truth, full revision history per container. No overwriting, no lost markups.</span></div>
+          <div class="r"><span class="k">Communication</span><span class="v">A UK-based representative — same time zone, local meetings, no language gap. Work flows to the BEP and MIDP/TIDP dates, with issue-tracked clash reports.</span></div>
+        </div>
+        <div class="grow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · CASE · ERBIL -->
+  <section class="slide">
+    <div class="frame plate">
+      <canvas class="field" data-structure="elevation" data-phase="0.70" data-density="900" data-seed="50"></canvas>
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ink">
+        <div class="row"><span class="tag">Case study · 01</span><span class="index"><span class="n">09</span> / 14</span></div>
+        <div class="two-col">
+          <div class="pad">
+            <span class="eyebrow">Erbil International Hospital · Iraq</span>
+            <h2 class="head" style="margin-top:14px">Caught in <em>the model</em>, not on site.</h2>
+            <p class="note" style="margin-top:16px">Structural BIM and federated multi-discipline coordination on a large, complex healthcare structure — issues resolved before construction.</p>
+            <div class="stats" style="margin-top:26px">
+              <div class="stat"><b>LOD 350</b><span>model detail</span></div>
+              <div class="stat brass"><b>829</b><span>clashes resolved</span></div>
+              <div class="stat"><b>20 wk</b><span>turnaround</span></div>
             </div>
           </div>
           <div class="pad">
@@ -197,153 +324,143 @@
     </div>
   </section>
 
-  <!-- 07 · CASE · HEMA (scan-to-bim, the resolution itself) -->
+  <!-- 10 · CASE · HEMA (the proof) -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="grid" data-phase="0.58" data-density="1600" data-seed="58"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.56" data-density="800" data-seed="58"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Field 02 · Netherlands</span><span class="index"><span class="n">07</span> / 12</span></div>
-        <div class="two center">
+        <div class="row"><span class="tag">Case study · 02</span><span class="index"><span class="n">10</span> / 14</span></div>
+        <div class="two-col">
           <div class="pad">
-            <span class="eyebrow">Scan‑to‑BIM · cloud resolves to line</span>
-            <h2 class="head" style="margin-top:14px">HEMA, <em>Emmen</em>.</h2>
-            <p class="note" style="margin-top:18px">The same corner, twice: a registered point cloud, pulled patiently into an accurate as‑built Revit model — the literal proof of what we do.</p>
-            <div class="figures" style="margin-top:24px">
-              <div class="figure"><b>3 500<span style="font-size:.42em"> m²</span></b><span>Area captured</span></div>
-              <div class="figure"><b class="brass">300</b><span>LOD · delivered</span></div>
-              <div class="figure"><b>8<span style="font-size:.5em"> wk</span></b><span>Total delivery</span></div>
+            <span class="eyebrow">HEMA, Emmen · Netherlands</span>
+            <h2 class="head" style="margin-top:14px">Point cloud in. As-built <em>model out</em>.</h2>
+            <p class="note" style="margin-top:16px">The literal before/after — a registered scan of a building corner, beside its parametric Revit twin.</p>
+            <div class="stats" style="margin-top:24px">
+              <div class="stat"><b>3,500 m²</b><span>captured</span></div>
+              <div class="stat brass"><b>LOD 300</b><span>as-built</span></div>
+              <div class="stat"><b>8 wk</b><span>delivery</span></div>
             </div>
           </div>
           <div class="pad">
             <span class="tag">Before · registered point cloud</span>
-            <img class="shot wide" src="../pptx/projects/hema/HEMA_012.jpg" alt="HEMA Emmen — registered point cloud">
-            <span class="tag brass" style="display:block;margin-top:16px">After · as‑built Revit model</span>
-            <img class="shot wide" src="../pptx/projects/hema/HEMA_01.png" alt="HEMA Emmen — as-built Revit model">
+            <img class="shot wide" style="margin-top:8px" src="../pptx/projects/hema/HEMA_012.jpg" alt="HEMA — registered point cloud">
+            <span class="tag brass" style="display:block;margin-top:14px">After · as-built Revit model</span>
+            <img class="shot wide" style="margin-top:8px" src="../pptx/projects/hema/HEMA_01.png" alt="HEMA — as-built Revit model">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 08 · EXPERIENCE · LEAS PAVILION (UK) — BIM Manager's track record, no prior-employer name -->
+  <!-- 11 · HOW WE WORK -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.74" data-density="1700" data-seed="66"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.60" data-density="900" data-seed="80"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Selected experience · United Kingdom</span><span class="index"><span class="n">08</span> / 12</span></div>
-        <div class="two center">
-          <div class="pad">
-            <span class="eyebrow">Track record · UK</span>
-            <h2 class="head" style="margin-top:14px">Leas Pavilion, <em>Folkestone</em></h2>
-            <p class="note" style="margin-top:18px">Restoration of a Grade II listed Edwardian tea room (1902), with a new nine‑storey development of 91 sea‑view apartments rising above it.</p>
-            <p class="note" style="margin-top:12px">RIBA Stage 5–7 execution drawings; structural, mechanical &amp; electrical coordination; BIM model and subcontractor drawing review for dimensional accuracy and tolerances — led by ECY's BIM Manager, Enes Cemil Yağcı.</p>
-            <div class="figures" style="margin-top:22px">
-              <div class="figure"><b class="brass">1902</b><span>Grade II listed</span></div>
-              <div class="figure"><b>91</b><span>Apartments</span></div>
-              <div class="figure"><b>5–7</b><span>RIBA stages</span></div>
-              <div class="figure"><b>133,715</b><span>Sq ft</span></div>
-            </div>
-          </div>
-          <div class="pad">
-            <img class="shot tall" src="../pptx/projects/leas/Leas-1.jpg" alt="Leas Pavilion, Folkestone — entrance">
-          </div>
+        <div class="row"><span class="tag">How we work</span><span class="index"><span class="n">11</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">To your BEP, naming and CDE</span>
+        <h2 class="head" style="margin-top:14px">Five steps, all on <em>your standards</em>.</h2>
+        <div class="grow"></div>
+        <div class="track">
+          <div><span class="n">01</span><div class="nm">Onboard</div><span class="tick"></span><p class="ds">Adopt your BEP, naming &amp; CDE; confirm scope vs the EIR.</p></div>
+          <div><span class="n">02</span><div class="nm">Produce</div><span class="tick"></span><p class="ds">Model to agreed LOD on the MIDP / TIDP schedule.</p></div>
+          <div><span class="n">03</span><div class="nm">QA</div><span class="tick"></span><p class="ds">Model-health &amp; standards checks, clash validation, review.</p></div>
+          <div><span class="n">04</span><div class="nm">Deliver</div><span class="tick"></span><p class="ds">Issue through the CDE with controlled status codes.</p></div>
+          <div><span class="n">05</span><div class="nm">Report</div><span class="tick"></span><p class="ds">Issue-tracked clash reports &amp; progress vs plan.</p></div>
         </div>
+        <div class="grow"></div>
       </div>
     </div>
   </section>
 
-  <!-- 09 · HOW WE WORK -->
+  <!-- 12 · PRICING -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="grid" data-phase="0.60" data-density="1500" data-seed="72"></canvas>
+      <canvas class="field" data-structure="grid" data-phase="0.64" data-density="800" data-seed="88"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">How we work</span><span class="index"><span class="n">09</span> / 12</span></div>
-        <div class="grow"></div>
-        <h2 class="head">We work to <em>your</em> standards.</h2>
-        <div class="grow"></div>
-        <div class="steps">
-          <div><b>01</b><p>Onboard — your BEP, naming, CDE</p></div>
-          <div><b>02</b><p>Produce — agreed LOD, WIP check‑ins</p></div>
-          <div><b>03</b><p>QA — internal checks before issue</p></div>
-          <div><b>04</b><p>Deliver — via your CDE, ISO status codes</p></div>
-          <div><b>05</b><p>Report — clear progress &amp; issues</p></div>
-        </div>
+        <div class="row"><span class="tag">Engagement</span><span class="index"><span class="n">12</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">Three ways to work · GBP</span>
+        <h2 class="head" style="margin-top:14px">Pick the model that <em>fits the work</em>.</h2>
+        <table class="ptable">
+          <colgroup><col style="width:16%"><col style="width:28%"><col class="hi" style="width:28%"><col style="width:28%"></colgroup>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="mh"><small>A</small>Fixed-fee per project</th>
+              <th class="mh hi"><span class="pop">Most popular</span><small style="margin-top:2px">B</small>Dedicated BIM resource</th>
+              <th class="mh"><small>C</small>Per-unit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rk">Best for</td><td>Bounded, defined-scope deliverables</td><td class="hi">Ongoing capacity as part of your team</td><td>High-volume Scan-to-BIM</td></tr>
+            <tr><td class="rk">Commitment</td><td>Per project</td><td class="hi">Monthly FTE, scalable</td><td>None — pay per item</td></tr>
+            <tr><td class="rk">Billing</td><td>Milestone payments</td><td class="hi">Predictable monthly fee</td><td>Per model / sheet / m²</td></tr>
+            <tr><td class="rk">Scaling</td><td>Fixed to scope</td><td class="hi">Add or release resources</td><td>Flexes with volume</td></tr>
+          </tbody>
+        </table>
+        <div class="terms">Priced in GBP · NDA + simple service agreement · deposit + milestones · UK reverse-charge VAT applies</div>
       </div>
     </div>
   </section>
 
-  <!-- 10 · PRICING -->
+  <!-- 13 · CONTACTS -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="grid" data-phase="0.65" data-density="1500" data-seed="80"></canvas>
+      <canvas class="field" data-structure="elevation" data-phase="0.82" data-density="900" data-seed="91"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Engagement</span><span class="index"><span class="n">10</span> / 12</span></div>
+        <div class="row"><span class="tag">Your contacts</span><span class="index"><span class="n">13</span> / 14</span></div>
+        <span class="eyebrow" style="margin-top:18px">United Kingdom and Türkiye</span>
+        <h2 class="head" style="margin-top:14px">One <em>UK call</em> away. One production team behind it.</h2>
         <div class="grow"></div>
-        <h2 class="head" style="margin-bottom:24px">Three ways to engage.</h2>
-        <div class="cards">
-          <div class="card"><span class="pop">Model A</span><h4>Fixed‑fee per project</h4><p>Defined scope, milestone payments. Best for bounded deliverables.</p></div>
-          <div class="card lit"><span class="pop">Most popular</span><h4>Dedicated BIM resource</h4><p>A monthly FTE who works as part of your team. Predictable, scalable.</p></div>
-          <div class="card"><span class="pop">Model C</span><h4>Per‑unit</h4><p>Per model / sheet / m². Transparent for high‑volume Scan‑to‑BIM.</p></div>
-        </div>
-        <div class="grow"></div>
-        <div class="row"><span class="coord">Priced in GBP · NDA + service agreement · deposit + milestones</span><span class="coord">reverse charge applies</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11 · CONTACTS -->
-  <section class="slide">
-    <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="0.86" data-density="1700" data-seed="91"></canvas>
-      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
-      <div class="ink">
-        <div class="row"><span class="tag">Your contacts</span><span class="index"><span class="n">11</span> / 12</span></div>
-        <div class="grow"></div>
-        <span class="eyebrow">Two points, one team</span>
-        <h2 class="head" style="margin-top:14px">Always someone to talk to.</h2>
-        <div class="grow"></div>
-        <div class="two" style="align-items:flex-start;flex:0 0 auto">
+        <div class="contacts">
           <div>
             <span class="tag">United Kingdom</span>
-            <div style="font-size:26px;font-weight:500;margin-top:8px">Rami Daşkın</div>
-            <div class="brass" style="font-size:13px;margin-top:4px">UK Representative</div>
-            <div class="coord" style="margin-top:10px">+44 7786 410586</div>
+            <div class="nm">Rami Daşkın</div>
+            <div class="ro">UK Representative</div>
+            <div class="coord" style="margin-top:12px">+44 7786 410586</div>
             <div class="coord">rami@ecy.com.tr</div>
-            <p class="note" style="margin-top:10px">26 years in the UK · same time zone.</p>
+            <p class="note" style="margin-top:10px">26 years in the UK · same time zone · local meetings.</p>
           </div>
+          <div class="sep"></div>
           <div>
             <span class="tag">Türkiye · Head office</span>
-            <div style="font-size:26px;font-weight:500;margin-top:8px">Enes Cemil Yağcı</div>
-            <div class="brass" style="font-size:13px;margin-top:4px">Founder &amp; BIM Manager</div>
-            <div class="coord" style="margin-top:10px">+90 533 566 67 80</div>
+            <div class="nm">Enes Cemil Yağcı</div>
+            <div class="ro">Founder &amp; BIM Manager</div>
+            <div class="coord" style="margin-top:12px">+90 533 566 67 80</div>
             <div class="coord">info@ecy.com.tr</div>
-            <p class="note" style="margin-top:10px">Adana · ecy.com.tr</p>
+            <p class="note" style="margin-top:10px">Autodesk Expert Elite · openBIM · Primavera P6 · Adana.</p>
           </div>
         </div>
+        <div class="grow"></div>
       </div>
     </div>
   </section>
 
-  <!-- 12 · CTA — fully resolved -->
+  <!-- 14 · CTA -->
   <section class="slide">
     <div class="frame plate">
-      <canvas class="field" data-structure="elevation" data-phase="1.0" data-density="2100" data-seed="100"></canvas>
+      <canvas class="field" data-structure="elevation" data-phase="1.0" data-density="1200" data-seed="100"></canvas>
       <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
       <div class="ink">
-        <div class="row"><span class="tag">Begin</span><span class="index"><span class="n">12</span> / 12</span></div>
+        <div class="row"><span class="tag">Next step</span><span class="index"><span class="n">14</span> / 14</span></div>
         <div class="grow"></div>
-        <span class="eyebrow">Start small</span>
-        <h1 class="title" style="margin-top:18px">Let's resolve<br>a <em>pilot</em>.</h1>
-        <p class="lede" style="margin-top:22px">One floor of Scan‑to‑BIM, or a single building at LOD&nbsp;300. Low risk — judge our quality first‑hand, then scale.</p>
-        <div class="axisline" style="margin:30px 0 22px"></div>
+        <span class="eyebrow">Low-risk by design</span>
+        <h1 class="title" style="margin-top:18px">Start with <em>a pilot</em>.</h1>
+        <p class="lede" style="margin-top:20px">One bounded deliverable, on your standards, so the proof is yours before the commitment is.</p>
+        <ul class="measure" style="margin-top:16px;border-top:0">
+          <li><span class="k">·</span><span class="v">Send us a defined scope — a model, a scan, a coordination package.</span></li>
+          <li><span class="k">·</span><span class="v">We deliver it to your BEP, naming and CDE, QA-gated and issue-tracked.</span></li>
+          <li><span class="k">·</span><span class="v">Judge us on the output, then scale only if it earns it.</span></li>
+        </ul>
+        <div class="axisline" style="margin:22px 0 18px"></div>
         <div class="row" style="align-items:flex-end">
           <div>
-            <div style="font-size:20px;font-weight:500">Book a 15‑minute call</div>
-            <div class="coord" style="margin-top:6px">Rami · +44 7786 410586 &nbsp;·&nbsp; Enes · +90 533 566 67 80 &nbsp;·&nbsp; info@ecy.com.tr</div>
+            <div style="font-size:19px;font-weight:500">Book a 15-minute call</div>
+            <div class="coord" style="margin-top:6px">Rami Daşkın · +44 7786 410586 · rami@ecy.com.tr</div>
           </div>
           <span class="coord">ecy.com.tr</span>
         </div>
@@ -353,11 +470,10 @@
 
 </div>
 
-<div class="navhint tag">← / → · 12 frames</div>
+<div class="navhint tag">← / → · 14 frames</div>
 
 <script src="field.js"></script>
 <script>
-  // keyboard navigation between frames
   var deck = document.getElementById('deck');
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   function current(){ var i=0,min=1e9; slides.forEach(function(s,k){var d=Math.abs(s.getBoundingClientRect().top); if(d<min){min=d;i=k;}}); return i; }
