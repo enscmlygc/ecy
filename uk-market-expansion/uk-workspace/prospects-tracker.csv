@@ -1,0 +1,4 @@
+Company,Segment,Contact name,Role,Email,City,Source,Personalisation note,Status,First contact,Follow-up due,Capability sent,Call booked,Outcome,Owner,Notes
+,,,,,,,,,,,,,,,
+EXAMPLE — Foster Studio,Architecture practice,Jane Doe,Associate / BIM Lead,j.doe@example.co.uk,London,Apollo,Saw their new residential scheme on LinkedIn,Emailed,2026-07-01,2026-07-07,No,No,,Rami,Opened email twice — no reply yet
+EXAMPLE — Mace,Contractor,John Smith,Digital Delivery Manager,j.smith@example.co.uk,London,Apollo,Congrats on tender win on X scheme,New,,,No,No,,Rami,Tier-1 — use template 2b
