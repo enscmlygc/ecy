@@ -11,7 +11,7 @@
 - **Ürün kataloğu:** 12 ürün, kategori filtreleri, indirim etiketleri, renk seçenekleri
 - **Tamamen responsive:** mobil menü dahil; masaüstü/tablet/telefon
 - **Bağımsız:** framework yok, build adımı yok — saf HTML/CSS/JS
-- **AI üretimi editöryel görseller** + ölçeklenebilir SVG logo/favicon
+- **AI üretimi editöryel görseller** ([Higgsfield MCP](docs/higgsfield-mcp.md) ile) + ölçeklenebilir SVG logo/favicon
 
 ## 📁 Yapı
 
@@ -26,6 +26,8 @@ assets/
   js/products.js  Ürün kataloğu verisi
   js/app.js       Header/footer/sepet enjeksiyonu + tüm etkileşimler
   img/            Hero & lookbook görselleri, logo.svg, favicon.svg
+docs/
+  higgsfield-mcp.md  Higgsfield AI MCP kullanım kılavuzu (görsel üretimi)
 ```
 
 ## ▶ Çalıştırma
@@ -47,3 +49,4 @@ Statik site olduğu için Vercel, Netlify veya GitHub Pages'e olduğu gibi yükl
 - **Ürünler:** `assets/js/products.js` içinden düzenleyin (fiyat, isim, kategori, görsel).
 - **Renkler/yazı tipleri:** `assets/css/style.css` en üstteki `:root` token'ları.
 - **Metinler/menü:** ilgili `.html` dosyaları ve `app.js` içindeki `navLinks` / footer.
+- **Görseller:** editöryel kareleri markaya sadık üretmek/yenilemek için → [`docs/higgsfield-mcp.md`](docs/higgsfield-mcp.md)
