@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enes Cemil Yağcı — CV (Showcase)</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+  :root{
+    --ground:   #1A140F;
+    --ground-2: #211A13;
+    --g-line:   #2C2419;
+    --brass:    #BD9457;
+    --brass-lit:#DBB571;
+    --bone:     #ECE3D1;
+    --bone-dim: #B9AE99;
+    --ash:      #877C6B;
+    --ink:      #1A140F;
+    --muted:    #6E6455;
+    --hairline: #E6DFD2;
+    --wash:     #F7F3EB;
+    --brass-ink:#96733B;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  @page{ size: A4; margin: 0; }
+  html{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body{ font-family:'Inter', system-ui, sans-serif; font-size: 9.2pt; line-height:1.45; color: var(--ink); }
+
+  .sheet{
+    width: 210mm; height: 297mm; overflow: hidden;
+    display: grid; grid-template-columns: 64mm 1fr;
+    page-break-after: always;
+  }
+  .sheet:last-child{ page-break-after: auto; }
+
+  /* ── Sidebar (dark) ─────────────────────── */
+  .side{
+    background: var(--ground); color: var(--bone);
+    padding: 14mm 8mm 12mm 9mm;
+    display:flex; flex-direction:column;
+  }
+  .side .brand{
+    font-family:'IBM Plex Mono', monospace; font-size: 7pt; letter-spacing:.13em;
+    color: var(--brass); margin-bottom: 10mm;
+  }
+  .side h3{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 7pt;
+    letter-spacing:.13em; color: var(--brass);
+    display:flex; align-items:center; gap:6pt;
+    margin: 8.5mm 0 3.2mm;
+  }
+  .side h3:first-of-type{ margin-top: 0; }
+  .side h3::after{ content:''; flex:1; border-top:1px solid var(--g-line); }
+  .side .block{ font-size: 8.3pt; color: var(--bone-dim); line-height: 1.55; }
+  .side .block b{ color: var(--bone); font-weight: 500; }
+  .side .kv{ margin-bottom: 2.2pt; }
+  .side .kv .k{
+    font-family:'IBM Plex Mono', monospace; font-size: 6.4pt; letter-spacing:.12em;
+    color: var(--ash); display:block; margin-bottom: .5pt;
+  }
+  .side .kv .v{ color: var(--bone); font-size: 8.6pt; }
+  .side ul{ list-style:none; }
+  .side li{ padding-left: 9pt; position:relative; margin-bottom: 2pt; color: var(--bone-dim); font-size:8.3pt; }
+  .side li::before{ content:'—'; position:absolute; left:0; color: var(--brass); }
+  .side li b{ color: var(--bone); font-weight:500; }
+  .side .push{ flex:1; }
+  .side .foot{
+    font-family:'IBM Plex Mono', monospace; font-size: 6.4pt; letter-spacing:.12em;
+    color: var(--ash); border-top: 1px solid var(--g-line); padding-top: 3mm;
+    white-space: nowrap;
+  }
+  .side .foot .b{ color: var(--brass); }
+
+  /* stat rows in sidebar */
+  .sstat{ display:flex; align-items:baseline; gap: 6pt; margin-bottom: 2.6pt; }
+  .sstat .v{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size: 12pt; color: var(--bone); min-width: 52pt; }
+  .sstat .l{ font-family:'IBM Plex Mono', monospace; font-size: 6.4pt; letter-spacing:.11em; color: var(--ash); }
+
+  /* ── Main column (paper) ────────────────── */
+  .main{ padding: 14mm 12mm 12mm 10mm; }
+  .name{
+    font-family:'Space Grotesk', sans-serif; font-weight:500;
+    font-size: 27pt; letter-spacing:-.02em; line-height:1.02;
+  }
+  .name em{ font-style: normal; color: var(--brass-ink); }
+  .role-line{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 8pt;
+    letter-spacing:.13em; color: var(--brass-ink); margin-top: 5pt;
+  }
+  .rule{ border:0; border-top: 1.4px solid var(--ink); margin: 8pt 0 0; }
+
+  .main h2{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 7.6pt;
+    letter-spacing:.13em; color: var(--brass-ink);
+    display:flex; align-items:center; gap: 8pt;
+    margin: 11pt 0 6pt;
+  }
+  .main h2 .n{ color: var(--ash); }
+  .main h2::after{ content:''; flex:1; border-top:1px solid var(--hairline); }
+
+  .summary{ font-size: 9.5pt; line-height: 1.55; }
+  .summary b{ font-weight:600; }
+
+  .job{ margin-bottom: 9pt; }
+  .job-head{ display:flex; justify-content:space-between; align-items:baseline; gap: 10pt; }
+  .job-title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size: 10.8pt; }
+  .job-title .co{ font-weight:500; color:#3A322A; }
+  .job-date{
+    font-family:'IBM Plex Mono', monospace; font-size: 7.4pt; letter-spacing:.1em;
+    color: var(--muted); white-space:nowrap;
+  }
+  .job-sub{ font-size: 8.5pt; color: var(--muted); margin-top: 1pt; }
+  .job ul{ list-style:none; margin-top: 3.5pt; }
+  .job li{ padding-left: 11pt; position:relative; margin-bottom: 2.2pt; }
+  .job li::before{ content:'—'; position:absolute; left:0; color: var(--brass-ink); }
+
+  .flagship{
+    margin-top: 5.5pt; padding: 6.5pt 10pt 6.5pt 11pt;
+    border-left: 2.5px solid var(--brass-ink); background: var(--wash);
+  }
+  .flagship .tag{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 6.8pt;
+    letter-spacing:.12em; color: var(--brass-ink);
+  }
+  .flagship .pname{ font-weight:600; font-size: 9.4pt; margin-top: 2pt; }
+  .flagship p{ margin-top: 2.5pt; font-size: 8.8pt; line-height: 1.48; color:#3A322A; }
+</style>
+</head>
+<body>
+
+<!-- ════════ PAGE 1 ════════ -->
+<div class="sheet">
+  <aside class="side">
+    <div class="brand">ECY · ARCHITECTURE &amp; BIM</div>
+
+    <h3>CONTACT</h3>
+    <div class="block">
+      <div class="kv"><span class="k">LOCATION</span><span class="v">Adana, Türkiye</span></div>
+      <div class="kv"><span class="k">PHONE</span><span class="v">+90 533 566 67 80</span></div>
+      <div class="kv"><span class="k">EMAIL</span><span class="v">ecy@ecy.com.tr</span></div>
+      <div class="kv"><span class="k">LINKEDIN</span><span class="v">linkedin.com/in/mimarecy</span></div>
+      <div class="kv"><span class="k">WEB</span><span class="v">ecy.com.tr</span></div>
+    </div>
+
+    <h3>AVAILABILITY</h3>
+    <div class="block">
+      <b>Remote-first</b> — comfortable collaboration across CET±3.<br>
+      Open to international relocation where travel and accommodation are supported.
+    </div>
+
+    <h3>IN NUMBERS</h3>
+    <div class="sstat"><span class="v">10+</span><span class="l">YEARS IN AEC / BIM</span></div>
+    <div class="sstat"><span class="v">17</span><span class="l">COUNTRIES DELIVERED</span></div>
+    <div class="sstat"><span class="v">85,000+</span><span class="l">M² MODELLED &amp; COORDINATED</span></div>
+    <div class="sstat"><span class="v">40–50</span><span class="l">DESIGNERS LED</span></div>
+
+    <h3>BIM MANAGEMENT</h3>
+    <ul>
+      <li><b>ISO 19650</b> information management</li>
+      <li>BEP / EIR authoring</li>
+      <li>BIM standards &amp; implementation</li>
+      <li>CDE administration — <b>ACC / BIM 360, Dalux</b></li>
+      <li>Federated model management</li>
+      <li>Clash detection &amp; model QA</li>
+      <li>4D/5D · quantity take-off</li>
+      <li>RIBA Plan of Work 2020</li>
+      <li>BS EN ISO 19650-2 naming</li>
+    </ul>
+
+    <h3>SOFTWARE</h3>
+    <ul>
+      <li><b>Revit</b> (expert) · Navisworks</li>
+      <li>Dynamo · Generative Design</li>
+      <li>Primavera P6 · AutoCAD</li>
+      <li>ReCap / point clouds · IFC</li>
+      <li>Custom Revit plug-in development</li>
+    </ul>
+
+    <div class="push"></div>
+    <div class="foot">CV · ENES CEMİL YAĞCI · <span class="b">01 / 02</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="name">Enes Cemil <em>Yağcı</em></div>
+    <div class="role-line">BIM MANAGER · ARCHITECT · AUTODESK EXPERT ELITE</div>
+    <hr class="rule">
+
+    <h2><span class="n">01</span> PROFILE</h2>
+    <p class="summary">
+      Architect and BIM Manager with <b>10+ years in the AEC industry</b>, including six years leading a
+      40–50-strong multidisciplinary design team at ESC Engineering — delivering BIM projects across
+      <b>17 countries and 85,000+ m²</b>: airports, hospitals, data centres, retail chains, high-rise and
+      heritage buildings. Led RIBA Stage 5–7 execution-drawing coordination on <b>Leas Pavilion, Folkestone
+      (UK)</b>. Now Founder &amp; BIM Manager of ECY Architecture &amp; BIM Solutions, delivering ISO 19650-aligned
+      Revit production, Scan-to-BIM and federated coordination remotely for clients across Europe and the
+      Middle East. <b>Autodesk Expert Elite</b> — one of ~290 professionals worldwide. Seeking a remote
+      BIM Manager or BIM Coordinator role with a UK or EU practice.
+    </p>
+
+    <h2><span class="n">02</span> EXPERIENCE</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title">Founder &amp; BIM Manager <span class="co">— ECY Architecture &amp; BIM Solutions</span></div>
+        <div class="job-date">MAR 2023 – PRESENT</div>
+      </div>
+      <div class="job-sub">Adana, Türkiye (remote-first) · BIM delivery consultancy for practices, contractors and survey firms across Europe and the Middle East — ecy.com.tr</div>
+      <ul>
+        <li>Deliver ISO 19650-aligned scopes end-to-end: BIM Execution Plans and CDE setup, Revit modelling at LOD 300–400 (as-built to LOD 500), Navisworks clash detection, and 4D/5D planning with Primavera P6.</li>
+        <li>Erbil International Hospital (Iraq) — structural BIM and federated coordination at LOD 350; <b>829 clashes resolved</b> across a 20-week programme.</li>
+        <li>HEMA, Emmen (Netherlands) — <b>3,500 m² Scan-to-BIM</b>: E57/RCP point cloud to as-built Revit model at LOD 300, delivered fully remotely in eight weeks.</li>
+        <li>Provide Revit and BIM-process training to practices and project teams; currently expanding into the UK market through a UK-based representative.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title">BIM Manager <span class="co">— ESC Engineering Ltd.</span></div>
+        <div class="job-date">APR 2017 – APR 2023</div>
+      </div>
+      <div class="job-sub">Adana, Türkiye · multidisciplinary engineering and architectural production for projects across Europe and beyond</div>
+      <ul>
+        <li>Led and supported a multidisciplinary team of <b>40–50 designers</b> delivering BIM projects across 17 countries and 85,000+ m² — airports, hospitals, data centres, retail chains, high-rise and heritage buildings, at every LOD.</li>
+        <li>Authored the firm's BIM standards, Execution Plans, user guides, templates and content libraries; completed the practice's full BIM implementation.</li>
+        <li>Administered CDEs on Autodesk BIM 360 / Collaborate Pro and Dalux; generated and managed federated and central models across disciplines.</li>
+        <li>Produced model-based quantity take-offs and cost analyses for quantity surveyors; delivered multidisciplinary Scan-to-BIM modelling from point-cloud surveys.</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<!-- ════════ PAGE 2 ════════ -->
+<div class="sheet">
+  <aside class="side">
+    <div class="brand">ECY · ARCHITECTURE &amp; BIM</div>
+
+    <h3>RECOGNITION</h3>
+    <div class="block" style="margin-bottom:4pt;">
+      <b>Autodesk Expert Elite</b><br>
+      <span style="font-size:7.8pt;">Oct 2022 – Present · ~290 members worldwide from 47 countries — one of only 20 in Türkiye.</span>
+    </div>
+    <div class="block">
+      <b>BIM4TURKEY — Regional Rep.</b><br>
+      <span style="font-size:7.8pt;">Apr 2022 – Present · national platform advancing BIM across industry, education and public institutions.</span>
+    </div>
+
+    <h3>CERTIFICATIONS</h3>
+    <ul>
+      <li><b>Oracle Primavera P6</b> — foundation &amp; advanced · AKIM Engineering, 2016</li>
+      <li>BIM Manager: Managing BIM 360 · LinkedIn Learning</li>
+      <li>Quantity Takeoffs for BIM · LinkedIn Learning</li>
+      <li>Short courses in AI for project management</li>
+    </ul>
+
+    <h3>EDUCATION</h3>
+    <div class="block">
+      <b>B.Arch — Architecture</b><br>
+      Çukurova University<br>
+      <span style="font-size:7.8pt;">Faculty of Engineering &amp; Architecture · 2012 – 2016</span>
+    </div>
+
+    <h3>LANGUAGES</h3>
+    <ul>
+      <li><b>Turkish</b> — native</li>
+      <li><b>English</b> — professional working</li>
+      <li><b>Dutch</b> — elementary</li>
+      <li><b>German</b> — beginner</li>
+    </ul>
+
+    <h3>TEACHING</h3>
+    <div class="block" style="font-size:7.9pt;">
+      Freelance Revit instructor since 2016 — two years pro bono at Çukurova University, then training for practices and professional groups.
+    </div>
+
+    <div class="push"></div>
+    <div class="foot">CV · ENES CEMİL YAĞCI · <span class="b">02 / 02</span></div>
+  </aside>
+
+  <main class="main" style="padding-top: 14mm;">
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title" style="font-size:9.5pt;">BIM Manager — ESC Engineering Ltd. <span class="co">(continued)</span></div>
+      </div>
+      <ul>
+        <li>Automated documentation and modelling workflows with Dynamo scripts and custom Revit plug-ins; wrote technology evaluations and budgets aligned to corporate goals.</li>
+        <li>Mentored Revit users daily to hold standards and productivity across the team; produced construction-drawing standards, layouts and photoreal visualisations.</li>
+      </ul>
+      <div class="flagship">
+        <div class="tag">SELECTED PROJECT — UNITED KINGDOM</div>
+        <div class="pname">Leas Pavilion, Folkestone — Grade II listed restoration + 9-storey, 91-apartment development (133,715 sq ft)</div>
+        <p>Restoration of the 1902 Edwardian tea room beneath a new nine-storey residential building. Led RIBA Stage 5–7
+        execution-drawing production and multidisciplinary coordination (structural, mechanical, electrical); reviewed
+        subcontractor BIM models and shop, installation and fabrication drawings for dimensional accuracy, coordination
+        tolerances and value engineering.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title">BIM Architect <span class="co">— Kulak Construction Co.</span></div>
+        <div class="job-date">AUG 2016 – APR 2017</div>
+      </div>
+      <div class="job-sub">Adana, Türkiye</div>
+      <ul>
+        <li>Ran 4D/5D phasing and cost-estimate tracking on site through the BIM model; contributed to planning works for the Kocaeli Integrated Health Campus — High Security Forensic Hospital.</li>
+        <li>Site chief for Kıyıboyu Housing, Adana (three 15-storey blocks, 140 apartments) — progress reporting, payment certificates, budgeting, work scheduling and shop-drawing supervision, all driven from the model.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title">Architect <span class="co">— artLeVeL Mimarlık</span></div>
+        <div class="job-date">FEB 2014 – MAR 2016</div>
+      </div>
+      <div class="job-sub">Adana, Türkiye · part-time alongside studies</div>
+      <ul>
+        <li>Produced schematic and construction drawings, BIM models, visualisations and animations; liaised with contractors and resolved design issues on site.</li>
+      </ul>
+    </div>
+
+    <h2><span class="n">03</span> HOW I WORK REMOTELY</h2>
+    <p class="summary" style="font-size:9pt;">
+      Proven remote delivery for clients in the Netherlands, Iraq and the UK from Türkiye — structured around
+      ISO 19650: agreed BEP and naming conventions up front, a clean CDE workflow (WIP → Shared → Published),
+      weekly federated-model coordination reviews, and clash reports with tracked issue resolution. One team,
+      one model, one point of responsibility — from point cloud or brief to handover documentation.
+    </p>
+  </main>
+</div>
+
+</body>
+</html>
