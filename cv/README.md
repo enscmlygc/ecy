@@ -6,6 +6,12 @@ Yurtdışı **Remote BIM Manager / BIM Coordinator** başvuruları için hazırl
 - `en/index.html` — İngilizce CV kaynağı (A4 baskı CSS'li tek HTML dosyası)
 - `en/Enes-Cemil-Yagci-CV-EN.pdf` — yurtdışı başvurularda kullanılacak nihai PDF (2 sayfa)
 - `tr/index.html` + `tr/Enes-Cemil-Yagci-CV-TR.pdf` — aynı tasarımla Türkçe versiyon (2 sayfa)
+- `en/showcase.html` + `en/Enes-Cemil-Yagci-CV-EN-Showcase.pdf` — **sunum versiyonu** (koyu yan panelli,
+  ECY deck kimliğinde): insan gözü için — direkt e-posta, networking, mülakat çıktısı
+- `tr/showcase.html` + `tr/Enes-Cemil-Yagci-CV-TR-Showcase.pdf` — sunum versiyonunun Türkçesi
+
+**Hangisi nerede kullanılır?** Portal / "Upload CV" / Easy Apply → sade versiyon (ATS-doğrulanmış).
+Bir insana direkt gönderim, LinkedIn paylaşımı, mülakat → showcase versiyonu.
 - `assets/fonts/` + `assets/fonts.css` — gömülü fontlar (Space Grotesk · Inter · IBM Plex Mono — ECY UK marka kimliğiyle uyumlu)
 
 Not (TR sürümü): Türkçe büyük harf duyarlılığı (i→İ, ı→I) nedeniyle başlık/etiket metinleri
